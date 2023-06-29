@@ -14,8 +14,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20.3.0'
-      - name: Eslint
-        run: yarn add lint
       - name: Prettier
-        run: yarn add prettier
+        run: prettier --check src/
     
