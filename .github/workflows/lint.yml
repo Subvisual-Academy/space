@@ -14,6 +14,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20.3.0'
-      - name: Prettier
+      - name: Install Dependencies
+        run: npm install
+      - name: Run Prettier
         run: prettier --check src/
     
