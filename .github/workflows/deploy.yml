@@ -5,6 +5,7 @@ permissions:
 
 jobs:
   build:
+    runs-on: ubuntu-latest
     steps:
       - name: Use upload artifacts
         uses: actions/upload-artifact@v3
