@@ -6,19 +6,13 @@ on:
     branches: [ "main"]
 jobs:
   build:
+    name: test
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout 
-      uses: actions/checkout
-
-      - name: Use Node
-      uses: actions/setup-node
+    steps: 
+      - uses: actions/checkout
+      - uses: actions/setup-node
       with:
         node-version: '14'
-
-      - name: Run ESLint
-        run: yarn add lint
-
-      - name: Run Prettier
-        run: yarn add prettier
+      - run: yarn add lint
+      - run: yarn add prettier
     
