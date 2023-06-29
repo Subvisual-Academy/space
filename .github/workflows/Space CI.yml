@@ -5,14 +5,17 @@ on:
   pull_request:
     branches: [ "main"]
 jobs:
-  build:
-    name: test
+  test:
     runs-on: ubuntu-latest
     steps: 
-      - uses: actions/checkout
-      - uses: actions/setup-node
-      with:
-        node-version: '14'
-      - run: yarn add lint
-      - run: yarn add prettier
+      - name: checkout
+        uses: actions/checkout
+      - name: Node
+        uses: actions/setup-node
+        with:
+          node-version: '20.3.0'
+      - name: Eslint
+        run: yarn add lint
+      - name: Prettier
+        run: yarn add prettier
     
