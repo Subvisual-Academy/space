@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: '20.3.0'
       - name: Install Dependencies
-        run: npm install
+        run: npm install -g prettier
       - name: Run Prettier
         run: prettier --check src/
     
