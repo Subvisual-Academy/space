@@ -12,7 +12,7 @@ function App() {
           alt="SpaceBg"
         />
         <img
-          className="absolute h-96 w-72 top-[calc(50%-192px)] left-[calc(50%-144px)]"
+          className="absolute h-96 w-72 top-[calc(50%-theme(space.96)/2)] left-[calc(50%-theme(space.72)/2)]"
           src={Logo}
           alt="SpaceBg"
         />
