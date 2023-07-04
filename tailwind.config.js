@@ -8,6 +8,12 @@ module.exports = {
       },
       colors: {
         "cod-gray": "#161616",
+        "med-purple": "#8556e0",
+        "alto": "#dcdcdc",
+        "silver": "#bcb9b9",
+        "gray": "#8C8C8C",
+        "mine-shaft": "#303030",
+        "dove-gray": "#636363"
       },
     },
   },
