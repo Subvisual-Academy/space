@@ -53,11 +53,12 @@ function App() {
       pass &&
       confirmPassword
     ) {
-      await user(mail, pass);
+      const id = await user(mail, pass).then((response) => response["id"]);
       const tokenRes = await login(mail, pass).then(
         (response) => response["token"]
       );
       localStorage.setItem("token", tokenRes);
+      localStorage.setItem("current", id);
       navigate("/home");
     } else {
       alert("E-mail or Password doesn't match!");
