@@ -48,7 +48,8 @@ function App() {
 
     if (mail === confirmEmail && pass === confirmPassword && mail && confirmEmail && pass && confirmPassword){
       await user(mail,pass);
-      const token = await login(mail,pass).then((response) => response['token']);
+      const tokenRes = await login(mail,pass).then((response) => response['token']);
+      localStorage.setItem('token', tokenRes);
       navigate('/home');
     }else{
       alert("E-mail or Password doesn't match!");
