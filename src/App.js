@@ -1,6 +1,6 @@
 import Background from "./assets/Background.svg";
 import Logo from "./assets/spacecenter1.svg";
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const LOGIN_API_URL = "http://localhost:3000/auth/login";
@@ -9,55 +9,62 @@ function App() {
 
   const navigate = useNavigate();
 
-  async function user(mail,pass){
+  async function user(mail, pass) {
     const response = await fetch(CREATE_USER_URL, {
-        method: "POST",
-        body: JSON.stringify({
-          email: mail,
-          password: pass 
-        }),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8"
-        }
-      });
+      method: "POST",
+      body: JSON.stringify({
+        email: mail,
+        password: pass,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
     const json = await response.json();
-    return json
+    return json;
   }
 
-  async function login(mail,pass){
+  async function login(mail, pass) {
     const response = await fetch(LOGIN_API_URL, {
-        method: "POST",
-        body: JSON.stringify({
-          email: mail,
-          password: pass 
-        }),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8"
-        }
-      });
+      method: "POST",
+      body: JSON.stringify({
+        email: mail,
+        password: pass,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
     const json = await response.json();
-    return json
+    return json;
   }
 
   const handleSubmit = async () => {
-
     const mail = document.getElementById("email").value;
     const pass = document.getElementById("password").value;
     const confirmEmail = document.getElementById("confirmEmail").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
 
-    if (mail === confirmEmail && pass === confirmPassword && mail && confirmEmail && pass && confirmPassword){
-      await user(mail,pass);
-      const tokenRes = await login(mail,pass).then((response) => response['token']);
-      localStorage.setItem('token', tokenRes);
-      navigate('/home');
-    }else{
+    if (
+      mail === confirmEmail &&
+      pass === confirmPassword &&
+      mail &&
+      confirmEmail &&
+      pass &&
+      confirmPassword
+    ) {
+      await user(mail, pass);
+      const tokenRes = await login(mail, pass).then(
+        (response) => response["token"]
+      );
+      localStorage.setItem("token", tokenRes);
+      navigate("/home");
+    } else {
       alert("E-mail or Password doesn't match!");
     }
   };
-  
+
   return (
-    
     <div className="flex items-start flex-auto bg-cod-gray">
       <div className="hidden md:block relative">
         <img
