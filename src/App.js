@@ -2,7 +2,7 @@ import Background from "./assets/Background.svg";
 import Logo from "./assets/spacecenter1.svg";
 import { useNavigate } from "react-router-dom";
 
-async function post(url,body){
+async function post(url, body) {
   const response = await fetch(process.env.REACT_APP_API_URL + url, {
     method: "POST",
     body: JSON.stringify(body),
@@ -18,8 +18,6 @@ function App() {
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
-
-
     const mail = document.getElementById("email").value;
     const pass = document.getElementById("password").value;
     const confirmEmail = document.getElementById("confirmEmail").value;
@@ -40,9 +38,7 @@ function App() {
       const tokenRes = await post(`auth/login`, {
         email: mail,
         password: pass,
-      }).then(
-        (response) => response["token"]
-      );
+      }).then((response) => response["token"]);
       localStorage.setItem("token", tokenRes);
       localStorage.setItem("current", id);
       navigate("/home");
@@ -75,7 +71,10 @@ function App() {
             Continue with Google
           </div>
         </button>
-        <form name="register" className="flex flex-col w-9/12 max-w-screen-sm  gap-12 mt-12">
+        <form
+          name="register"
+          className="flex flex-col w-9/12 max-w-screen-sm  gap-12 mt-12"
+        >
           <input
             id="email"
             type="text"
