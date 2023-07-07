@@ -2,59 +2,45 @@ import Background from "./assets/Background.svg";
 import Logo from "./assets/spacecenter1.svg";
 import { useNavigate } from "react-router-dom";
 
+async function post(url,body){
+  const response = await fetch(process.env.REACT_APP_API_URL + url, {
+    method: "POST",
+    body: JSON.stringify(body),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  });
+  const json = await response.json();
+  return json;
+}
+
 function App() {
-  const LOGIN_API_URL = "http://localhost:3000/auth/login";
-
-  const CREATE_USER_URL = "http://localhost:3000/users";
-
   const navigate = useNavigate();
 
-  async function user(mail, pass) {
-    const response = await fetch(CREATE_USER_URL, {
-      method: "POST",
-      body: JSON.stringify({
-        email: mail,
-        password: pass,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    });
-    const json = await response.json();
-    return json;
-  }
+  const handleSubmit = async (event) => {
 
-  async function login(mail, pass) {
-    const response = await fetch(LOGIN_API_URL, {
-      method: "POST",
-      body: JSON.stringify({
-        email: mail,
-        password: pass,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    });
-    const json = await response.json();
-    return json;
-  }
 
-  const handleSubmit = async () => {
     const mail = document.getElementById("email").value;
     const pass = document.getElementById("password").value;
     const confirmEmail = document.getElementById("confirmEmail").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
 
     if (
-      mail === confirmEmail &&
-      pass === confirmPassword &&
       mail &&
       confirmEmail &&
       pass &&
-      confirmPassword
+      confirmPassword &&
+      mail === confirmEmail &&
+      pass === confirmPassword
     ) {
-      const id = await user(mail, pass).then((response) => response["id"]);
-      const tokenRes = await login(mail, pass).then(
+      const id = await post(`users`, {
+        email: mail,
+        password: pass,
+      }).then((response) => response["id"]);
+      const tokenRes = await post(`auth/login`, {
+        email: mail,
+        password: pass,
+      }).then(
         (response) => response["token"]
       );
       localStorage.setItem("token", tokenRes);
@@ -89,7 +75,7 @@ function App() {
             Continue with Google
           </div>
         </button>
-        <form className="flex flex-col w-9/12 max-w-screen-sm gap-12 mt-12">
+        <form name="register" className="flex flex-col w-9/12 max-w-screen-sm  gap-12 mt-12">
           <input
             id="email"
             type="text"
