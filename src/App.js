@@ -62,18 +62,18 @@ function App() {
         />
       </div>
 
-      <div className="max-h-screen p-8 mt-28 flex flex-col grow items-center">
+      <div className="max-h-screen flex flex-col grow items-center mt-12">
         <button
           type="button"
           className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 duration-300 w-1/2 max-w-screen-sm"
         >
-          <div className="border-dove-gray border-2 rounded-3xl pt-4 text-silver text-xl h-16 mt-12">
+          <div className="border-dove-gray border-2 rounded-3xl pt-4 text-silver text-xl h-16">
             Continue with Google
           </div>
         </button>
         <form
           name="register"
-          className="flex flex-col w-9/12 max-w-screen-sm  gap-12 mt-12"
+          className="flex flex-col w-9/12 max-w-screen-sm  gap-8 mt-12"
         >
           <input
             id="email"
