@@ -49,7 +49,7 @@ function App() {
 
   return (
     <div className="flex items-start flex-auto bg-cod-gray">
-      <div className="hidden md:block relative">
+      <div className="hidden lg:block relative">
         <img
           className="max-h-screen basis-2/5 object-cover"
           src={Background}
@@ -62,7 +62,7 @@ function App() {
         />
       </div>
 
-      <div className="max-h-screen flex flex-col grow items-center mt-12">
+      <div className="p-8 flex flex-col grow items-center lg:max-h-screen xl:mt-28">
         <button
           type="button"
           className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 duration-300 w-1/2 max-w-screen-sm"
