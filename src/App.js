@@ -17,11 +17,12 @@ async function post(url, body) {
 function App() {
   const navigate = useNavigate();
 
-  const handleSubmit = async (event) => {
-    const mail = document.getElementById("email").value;
-    const pass = document.getElementById("password").value;
-    const confirmEmail = document.getElementById("confirmEmail").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
+  const handleSubmit = async () => {
+    const form = document.forms["register"];
+    const mail = form.elements.email.value;
+    const pass = form.elements.password.value;
+    const confirmEmail = form.elements.confirmEmail.value;
+    const confirmPassword = form.elements.confirmPassword.value;
 
     if (
       mail &&
