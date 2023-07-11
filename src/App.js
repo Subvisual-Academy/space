@@ -18,7 +18,7 @@ function App() {
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
     const data = new FormData(event.target);
     const mail = data.get("email");
     const pass = data.get("password");
