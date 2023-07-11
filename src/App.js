@@ -55,12 +55,12 @@ function App() {
         <img
           className="max-h-screen basis-2/5 object-cover"
           src={Background}
-          alt="Universe Background"
+          alt="A background image representing the Universe"
         />
         <img
           className="absolute h-96 w-72 top-[calc(50%-theme(space.96)/2)] left-[calc(50%-theme(space.72)/2)]"
           src={Logo}
-          alt="Space Center Logo"
+          alt="Image of Space Center Logo"
         />
       </div>
 
