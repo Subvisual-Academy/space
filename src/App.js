@@ -17,12 +17,13 @@ async function post(url, body) {
 function App() {
   const navigate = useNavigate();
 
-  const handleSubmit = async () => {
-    const form = document.forms["register"];
-    const mail = form.elements.email.value;
-    const pass = form.elements.password.value;
-    const confirmEmail = form.elements.confirmEmail.value;
-    const confirmPassword = form.elements.confirmPassword.value;
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    const data = new FormData(event.target);
+    const mail = data.get("email");
+    const pass = data.get("password");
+    const confirmEmail = data.get("confirmEmail");
+    const confirmPassword = data.get("confirmPassword");
 
     if (
       mail &&
@@ -75,34 +76,34 @@ function App() {
         <form
           name="register"
           className="flex flex-col w-9/12 max-w-screen-sm  gap-8 mt-12"
+          onSubmit={handleSubmit}
         >
           <input
-            id="email"
+            name="email"
             type="text"
             placeholder="E-mail"
             className="placeholder-gray placeholder:text-xl caret-gray text-gray pl-4 h-16 rounded-3xl bg-mine-shaft text-xl"
           />
           <input
-            id="confirmEmail"
+            name="confirmEmail"
             type="text"
             placeholder="Confirm e-mail"
             className="placeholder-gray placeholder:text-xl caret-gray text-gray pl-4 h-16 rounded-3xl bg-mine-shaft text-xl"
           />
           <input
-            id="password"
+            name="password"
             type="password"
             placeholder="Password"
             className="placeholder-gray placeholder:text-xl caret-gray text-gray pl-4 h-16 rounded-3xl bg-mine-shaft text-xl"
           />
           <input
-            id="confirmPassword"
+            name="confirmPassword"
             type="password"
             placeholder="Confirm Password"
             className="placeholder-gray placeholder:text-xl caret-gray text-gray pl-4 h-16 rounded-3xl bg-mine-shaft text-xl"
           />
           <button
-            type="button"
-            onClick={handleSubmit}
+            type="submit"
             className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 duration-300"
           >
             <div className="bg-med-purple rounded-3xl pt-3 text-alto text-3xl h-16">
