@@ -6,7 +6,7 @@ function Home() {
   let navigate = useNavigate();
 
   return (
-    <div className="bg-cod-gray font">
+    <div className="bg-cod-gray font absolute h-full w-full">
       <NavBar />
       <h1 className="text-white m-32 text-5xl">Space Center Activities</h1>
       <div className="m-32 flex gap-32">
@@ -16,11 +16,12 @@ function Home() {
         >
           QUESTION OF THE WEEK
         </button>
-        <a href="/friend">
-          <button className="rounded-3xl bg-cornflower-blue text-white p-4 h-64 w-64">
-            FRIEND OF THE WEEK
-          </button>
-        </a>
+        <button
+          onClick={() => navigate("/friend")}
+          className="rounded-3xl bg-cornflower-blue text-white p-4 h-64 w-64"
+        >
+          FRIEND OF THE WEEK
+        </button>
       </div>
     </div>
   );
