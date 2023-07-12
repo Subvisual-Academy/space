@@ -1,24 +1,27 @@
+import "./font.css";
+import NavBar from "../components/navBar";
+import { useNavigate } from "react-router-dom";
+
 function Home() {
-  const CURRENT_USER_URL = "http://localhost:3000/users/1";
-
-  async function getAPIData() {
-    const response = await fetch(CURRENT_USER_URL, {
-      credentials: "same-origin",
-      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-    });
-    const json = await response.json();
-    return json;
-  }
-
-  const user = async () => {
-    console.log(await getAPIData().then((response) => response["id"]));
-  };
-
-  user();
+  let navigate = useNavigate();
 
   return (
-    <div className="bg-cod-gray w-full h-full">
-      <h1 className="text-center text-white"> Weekly Task</h1>
+    <div className="bg-cod-gray font">
+      <NavBar />
+      <h1 className="text-white m-32 text-5xl">Space Center Activities</h1>
+      <div className="m-32 flex gap-32">
+        <button
+          onClick={() => navigate("/question")}
+          className="rounded-3xl bg-cornflower-blue text-white h-64 w-64"
+        >
+          QUESTION OF THE WEEK
+        </button>
+        <a href="/friend">
+          <button className="rounded-3xl bg-cornflower-blue text-white p-4 h-64 w-64">
+            FRIEND OF THE WEEK
+          </button>
+        </a>
+      </div>
     </div>
   );
 }

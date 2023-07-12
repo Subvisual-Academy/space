@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Open Sans", "sans-serif"],
+        sans: ["Open Sans", "AudioWide", "sans-serif"],
       },
       colors: {
         "cod-gray": "#161616",
@@ -13,7 +13,8 @@ module.exports = {
         "silver": "#bcb9b9",
         "gray": "#8C8C8C",
         "mine-shaft": "#303030",
-        "dove-gray": "#636363"
+        "dove-gray": "#636363",
+        "cornflower-blue": "#007B88"
       },
     },
   },
