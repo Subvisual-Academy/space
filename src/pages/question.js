@@ -36,28 +36,40 @@ const getQuestion = async () => {
   return content;
 };
 
-const getAnswers = async () => {
-  var answers = await getAPIData("answers").then((response) => {
-    var ret = []
-    for(let i=0;i<response.length;i++){
-      ret.push({
-        email: response[i]["email"]
-      })
-    }
-    return ret;
-  });
-  return answers;
-};
-
 function Question() {
-
   const [content, setContent] = useState("");
-  //const [content, setContent] = useState("");
-  var noAnswers = true;
+  var noAnswers = false;
   let navigate = useNavigate();
 
-  getQuestion().then((response) => setContent(response));
-  //getAnswers().then((response) => setAnswers(response));
+  const [answers, setAnswers] = useState([]);
+
+  async function getAll() {
+    const answers = await getAPIData("answers");
+
+    await Promise.all(
+      answers.map((answer) => {
+        return new Promise((res) => {
+          getAPIData("users/" + answer["user_id"].toString()).then((user) =>
+            res({ user, body: answer.body })
+          );
+        });
+      })
+    ).then((values) => {
+      console.log(values);
+      const data = values.map((value) => {
+        return {
+          email: value.user.email,
+          body: value.body,
+        };
+      });
+      setAnswers(data);
+    });
+  }
+
+  useEffect(() => {
+    getQuestion().then((response) => setContent(response));
+    getAll();
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -73,13 +85,6 @@ function Question() {
       question_id: question_id,
     });
   };
-
-  const renderAnswer = (body, email) => (
-    <div className="bg-dove-gray p-4 flex flex-col rounded-3xl h-auto w-72">
-      <div className="text-2xl">{email}</div>
-      <div className="text-base pt-4">{body}</div>
-    </div>
-  );
 
   return (
     <div className="audio">
@@ -120,11 +125,20 @@ function Question() {
           </form>
         </div>
         <div className="bg-blackcurrant flex flex-col grow items-center lg:max-h-screen xl:ml-28 h-full open-s">
-          <form className="mt-12 gap-8 text-white flex flex-col">
+          <form className="mt-12 gap-8 text-white flex flex-col overflow-scroll no-scrollbar">
             {noAnswers ? (
-              <div> There is no answers</div>
+              <h1> There's no answers</h1>
             ) : (
-              renderAnswer()
+              answers.map((item) => (
+                <div className="bg-dove-gray p-4 flex flex-col rounded-3xl h-auto w-72 items-center"  key={item.email}>
+                  <div className="text-xl">
+                    {item.email}
+                  </div>
+                  <div className="text-base pt-4">
+                    {item.body}
+                  </div>
+                </div>
+              ))
             )}
           </form>
         </div>
