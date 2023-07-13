@@ -14,7 +14,8 @@ module.exports = {
         "gray": "#8C8C8C",
         "mine-shaft": "#303030",
         "dove-gray": "#636363",
-        "cornflower-blue": "#007B88"
+        "cornflower-blue": "#007B88",
+        "blackcurrant": "#403347"
       },
     },
   },
