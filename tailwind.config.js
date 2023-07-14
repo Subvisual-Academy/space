@@ -4,7 +4,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Open Sans", "AudioWide", "sans-serif"],
+        sans: ["OpenSans", "sans-serif"],
+        audioWide: ["AudioWide"]
       },
       colors: {
         "cod-gray": "#161616",

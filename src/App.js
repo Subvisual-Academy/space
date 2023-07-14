@@ -64,7 +64,7 @@ function App() {
         />
       </div>
 
-      <div className="p-8 flex flex-col grow items-center lg:max-h-screen xl:mt-28">
+      <div className="p-8 flex flex-col grow items-center lg:max-h-screen">
         <button
           type="button"
           className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 duration-300 w-1/2 max-w-screen-sm"

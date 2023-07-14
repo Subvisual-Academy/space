@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Open Sans";
+  font-family: "OpenSans";
   font-style: normal;
   font-weight: 400;
-  src: local("Open Sans"), local("OpenSans"),
+  src: local("OpenSans"), local("OpenSans"),
     url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff)
       format("woff");
 }
@@ -32,4 +32,9 @@
           scrollbar-width: none;  /* Firefox */
       }
     }
+  }
+
+  html, body{
+    height: 100%;
+    background-color: #161616;
   }

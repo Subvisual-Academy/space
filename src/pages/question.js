@@ -38,14 +38,17 @@ const getQuestion = async () => {
 
 function Question() {
   const [content, setContent] = useState("");
-  var noAnswers = false;
+  const [noAnswers, setNoAnswers] = useState(true);
+  
   let navigate = useNavigate();
 
   const [answers, setAnswers] = useState([]);
 
   async function getAll() {
-    const answers = await getAPIData("answers");
-
+    var question_id = await getAPIData("weekly_question").then(
+      (response) => response["question_id"]
+    );
+    const answers = await getAPIData("answers/question/"+ question_id);
     await Promise.all(
       answers.map((answer) => {
         return new Promise((res) => {
@@ -55,8 +58,8 @@ function Question() {
         });
       })
     ).then((values) => {
-      console.log(values);
       const data = values.map((value) => {
+        setNoAnswers(false);
         return {
           email: value.user.email,
           body: value.body,
@@ -76,7 +79,7 @@ function Question() {
     const data = new FormData(event.target);
     const answer = data.get("answer");
     var question_id = await getAPIData(
-      process.env.REACT_APP_API_URL + "weekly_question"
+      "weekly_question"
     ).then((response) => response["question_id"]);
     const user = localStorage.getItem("current");
     await post("answers", {
@@ -87,12 +90,12 @@ function Question() {
   };
 
   return (
-    <div className="audio">
+    <div className="font-['audioWide']">
       <NavBar />
       <div className="bg-cod-gray absolute h-full w-full flex items-start flex-auto">
         <div>
           <h1 className="text-white m-32 text-5xl">{content}</h1>
-          <form className="ml-32 open-s" onSubmit={handleSubmit}>
+          <form className="ml-32 font-['OpenSans']" onSubmit={handleSubmit}>
             <input
               name="answer"
               className="bg-transparent border-none outline-0 placeholder:text-dove-gray max-w-xl text-gray text-2xl w-full"
@@ -117,20 +120,20 @@ function Question() {
               </div>
             </div>
             <button
-              className="bg-dove-gray p-2 mt-80 rounded-lg text-white text-sm"
+              className="bg-dove-gray p-2 lg:mt-40 mt-80 rounded-lg text-white text-sm"
               onClick={() => navigate("/home")}
             >
               Go Back
             </button>
           </form>
         </div>
-        <div className="bg-blackcurrant flex flex-col grow items-center lg:max-h-screen xl:ml-28 h-full open-s">
+        <div className="bg-blackcurrant flex flex-col grow items-center lg:max-h-screen xl:ml-28 h-full font-['OpenSans']">
           <form className="mt-12 gap-8 text-white flex flex-col overflow-scroll no-scrollbar">
             {noAnswers ? (
               <h1> There's no answers</h1>
             ) : (
               answers.map((item) => (
-                <div className="bg-dove-gray p-4 flex flex-col rounded-3xl h-auto w-72 items-center"  key={item.email}>
+                <div className="bg-dove-gray p-4 flex flex-col rounded-3xl h-auto w-72 items-center"  key={item.body}>
                   <div className="text-xl">
                     {item.email}
                   </div>
