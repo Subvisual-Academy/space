@@ -10,9 +10,11 @@ function Home() {
     return json;
   }
 
-  const User = async () => {
+  const user = async () => {
     console.log(await getAPIData().then((response) => response["id"]));
   };
+
+  user();
 
   return (
     <div className="bg-cod-gray w-full h-full">

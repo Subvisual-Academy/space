@@ -7,10 +7,12 @@ function App() {
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
-    const mail = document.getElementById("email").value;
-    const pass = document.getElementById("password").value;
-    const confirmEmail = document.getElementById("confirmEmail").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
+    event.preventDefault();
+    const data = new FormData(event.target);
+    const mail = data.get("email");
+    const pass = data.get("password");
+    const confirmEmail = data.get("confirmEmail");
+    const confirmPassword = data.get("confirmPassword");
 
     if (
       mail &&
@@ -38,11 +40,11 @@ function App() {
 
   return (
     <div className="flex items-start flex-auto bg-cod-gray">
-      <div className="hidden md:block relative">
+      <div className="hidden lg:block relative">
         <img
           className="max-h-screen basis-2/5 object-cover"
           src={Background}
-          alt="Universe Background"
+          alt="A background representing the Universe"
         />
         <img
           className="absolute h-96 w-72 top-[calc(50%-theme(space.96)/2)] left-[calc(50%-theme(space.72)/2)]"
@@ -51,7 +53,7 @@ function App() {
         />
       </div>
 
-      <div className="max-h-screen flex flex-col grow items-center mt-12">
+      <div className="p-8 flex flex-col grow items-center lg:max-h-screen xl:mt-28">
         <button
           type="button"
           className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 duration-300 w-1/2 max-w-screen-sm"
@@ -63,34 +65,34 @@ function App() {
         <form
           name="register"
           className="flex flex-col w-9/12 max-w-screen-sm  gap-8 mt-12"
+          onSubmit={handleSubmit}
         >
           <input
-            id="email"
+            name="email"
             type="text"
             placeholder="E-mail"
             className="placeholder-gray placeholder:text-xl caret-gray text-gray pl-4 h-16 rounded-3xl bg-mine-shaft text-xl"
           />
           <input
-            id="confirmEmail"
+            name="confirmEmail"
             type="text"
             placeholder="Confirm e-mail"
             className="placeholder-gray placeholder:text-xl caret-gray text-gray pl-4 h-16 rounded-3xl bg-mine-shaft text-xl"
           />
           <input
-            id="password"
+            name="password"
             type="password"
             placeholder="Password"
             className="placeholder-gray placeholder:text-xl caret-gray text-gray pl-4 h-16 rounded-3xl bg-mine-shaft text-xl"
           />
           <input
-            id="confirmPassword"
+            name="confirmPassword"
             type="password"
             placeholder="Confirm Password"
             className="placeholder-gray placeholder:text-xl caret-gray text-gray pl-4 h-16 rounded-3xl bg-mine-shaft text-xl"
           />
           <button
-            type="button"
-            onClick={handleSubmit}
+            type="submit"
             className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 duration-300"
           >
             <div className="bg-med-purple rounded-3xl pt-3 text-alto text-3xl h-16">
