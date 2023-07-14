@@ -39,7 +39,7 @@ const getQuestion = async () => {
 function Question() {
   const [content, setContent] = useState("");
   const [noAnswers, setNoAnswers] = useState(true);
-  
+
   let navigate = useNavigate();
 
   const [answers, setAnswers] = useState([]);
@@ -48,7 +48,7 @@ function Question() {
     var question_id = await getAPIData("weekly_question").then(
       (response) => response["question_id"]
     );
-    const answers = await getAPIData("answers/question/"+ question_id);
+    const answers = await getAPIData("answers/question/" + question_id);
     await Promise.all(
       answers.map((answer) => {
         return new Promise((res) => {
@@ -78,9 +78,9 @@ function Question() {
     event.preventDefault();
     const data = new FormData(event.target);
     const answer = data.get("answer");
-    var question_id = await getAPIData(
-      "weekly_question"
-    ).then((response) => response["question_id"]);
+    var question_id = await getAPIData("weekly_question").then(
+      (response) => response["question_id"]
+    );
     const user = localStorage.getItem("current");
     await post("answers", {
       body: answer,
@@ -133,13 +133,12 @@ function Question() {
               <h1> There's no answers</h1>
             ) : (
               answers.map((item) => (
-                <div className="bg-dove-gray p-4 flex flex-col rounded-3xl h-auto w-72 items-center"  key={item.body}>
-                  <div className="text-xl">
-                    {item.email}
-                  </div>
-                  <div className="text-base pt-4">
-                    {item.body}
-                  </div>
+                <div
+                  className="bg-dove-gray p-4 flex flex-col rounded-3xl h-auto w-72 items-center"
+                  key={item.body}
+                >
+                  <div className="text-xl">{item.email}</div>
+                  <div className="text-base pt-4">{item.body}</div>
                 </div>
               ))
             )}
