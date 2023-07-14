@@ -1,4 +1,4 @@
-import Background from "../assets/Background.svg";
+import Background from "../assets/universe_background.jpeg";
 import Logo from "../assets/spacecenter1.svg";
 import { useNavigate } from "react-router-dom";
 import {post} from '../Utils'
