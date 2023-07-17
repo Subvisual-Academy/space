@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import NavBar from "../components/navBar";
 import Vector from "../assets/Vector.svg";
 import Enter from "../assets/Enter_icon.svg";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 async function getAPIData(url) {
   const response = await fetch(process.env.REACT_APP_API_URL + url, {
@@ -33,22 +33,19 @@ const getQuestion = async () => {
   var content = await getAPIData("questions/" + question_id.toString()).then(
     (response) => response["content"]
   );
-  return content;
+  return {
+    question: content,
+    id: question_id,
+  };
 };
 
 function Question() {
   const [content, setContent] = useState("");
-  const [noAnswers, setNoAnswers] = useState(true);
-
-  let navigate = useNavigate();
-
+  const [question_id, setQuestionId] = useState(0);
   const [answers, setAnswers] = useState([]);
 
-  async function getAll() {
-    var question_id = await getAPIData("weekly_question").then(
-      (response) => response["question_id"]
-    );
-    const answers = await getAPIData("answers/question/" + question_id);
+  async function getAll(question_id) {
+    const answers = await getAPIData("questions/" + question_id + "/answers");
     await Promise.all(
       answers.map((answer) => {
         return new Promise((res) => {
@@ -59,7 +56,6 @@ function Question() {
       })
     ).then((values) => {
       const data = values.map((value) => {
-        setNoAnswers(false);
         return {
           email: value.user.email,
           body: value.body,
@@ -70,17 +66,17 @@ function Question() {
   }
 
   useEffect(() => {
-    getQuestion().then((response) => setContent(response));
-    getAll();
-  }, []);
+    getQuestion().then((response) => {
+      setContent(response.question);
+      setQuestionId(response.id);
+    });
+    getAll(question_id);
+  }, [question_id]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.target);
     const answer = data.get("answer");
-    var question_id = await getAPIData("weekly_question").then(
-      (response) => response["question_id"]
-    );
     const user = localStorage.getItem("current");
     await post("answers", {
       body: answer,
@@ -119,17 +115,16 @@ function Question() {
                 <img className="ml-2" src={Enter} alt="Space Center Logo" />
               </div>
             </div>
-            <button
-              className="bg-dove-gray p-2 lg:mt-40 mt-80 rounded-lg text-white text-sm"
-              onClick={() => navigate("/home")}
-            >
-              Go Back
-            </button>
+            <Link to="/home">
+              <button className="bg-dove-gray p-2 lg:mt-40 mt-80 rounded-lg text-white text-sm">
+                Go Back
+              </button>
+            </Link>
           </form>
         </div>
         <div className="bg-blackcurrant flex flex-col grow items-center lg:max-h-screen xl:ml-28 h-full font-['OpenSans']">
           <form className="mt-12 gap-8 text-white flex flex-col overflow-scroll no-scrollbar">
-            {noAnswers ? (
+            {answers.length === 0 ? (
               <h1> There's no answers</h1>
             ) : (
               answers.map((item) => (
