@@ -6,25 +6,25 @@ import { Link } from "react-router-dom";
 import { GET, POST } from "../utils/fetch";
 
 const getQuestion = async () => {
-  var QuestionId = await GET("weekly_question").then(
+  var questionId = await GET("weekly_question").then(
     (response) => response["question_id"]
   );
-  var content = await GET("questions/" + QuestionId.toString()).then(
+  var content = await GET("questions/" + questionId.toString()).then(
     (response) => response["content"]
   );
   return {
     question: content,
-    id: QuestionId,
+    id: questionId,
   };
 };
 
 function Question() {
   const [content, setContent] = useState("");
-  const [QuestionId, setQuestionId] = useState(0);
+  const [questionId, setQuestionId] = useState(0);
   const [answers, setAnswers] = useState([]);
 
-  async function getAll(QuestionId) {
-    const answers = await GET("questions/" + QuestionId + "/answers");
+  async function getAll(questionId) {
+    const answers = await GET("questions/" + questionId + "/answers");
     await Promise.all(
       answers.map((answer) => {
         return new Promise((res) => {
@@ -49,8 +49,8 @@ function Question() {
       setContent(response.question);
       setQuestionId(response.id);
     });
-    getAll(QuestionId);
-  }, [QuestionId]);
+    getAll(questionId);
+  }, [questionId]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -60,7 +60,7 @@ function Question() {
     await POST("answers", {
       body: answer,
       user_id: user,
-      question_id: QuestionId,
+      question_id: questionId,
     });
   };
 
