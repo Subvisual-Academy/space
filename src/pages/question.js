@@ -3,53 +3,32 @@ import NavBar from "../components/navBar";
 import Vector from "../assets/Vector.svg";
 import Enter from "../assets/Enter_icon.svg";
 import { Link } from "react-router-dom";
-
-async function getAPIData(url) {
-  const response = await fetch(process.env.REACT_APP_API_URL + url, {
-    credentials: "same-origin",
-    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-  });
-  const json = await response.json();
-  return json;
-}
-
-async function post(url, body) {
-  const response = await fetch(process.env.REACT_APP_API_URL + url, {
-    method: "POST",
-    body: JSON.stringify(body),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
-  });
-  const json = await response.json();
-  return json;
-}
+import { GET, POST } from "../utils/fetch";
 
 const getQuestion = async () => {
-  var question_id = await getAPIData("weekly_question").then(
+  var QuestionId = await GET("weekly_question").then(
     (response) => response["question_id"]
   );
-  var content = await getAPIData("questions/" + question_id.toString()).then(
+  var content = await GET("questions/" + QuestionId.toString()).then(
     (response) => response["content"]
   );
   return {
     question: content,
-    id: question_id,
+    id: QuestionId,
   };
 };
 
 function Question() {
   const [content, setContent] = useState("");
-  const [question_id, setQuestionId] = useState(0);
+  const [QuestionId, setQuestionId] = useState(0);
   const [answers, setAnswers] = useState([]);
 
-  async function getAll(question_id) {
-    const answers = await getAPIData("questions/" + question_id + "/answers");
+  async function getAll(QuestionId) {
+    const answers = await GET("questions/" + QuestionId + "/answers");
     await Promise.all(
       answers.map((answer) => {
         return new Promise((res) => {
-          getAPIData("users/" + answer["user_id"].toString()).then((user) =>
+          GET("users/" + answer["user_id"].toString()).then((user) =>
             res({ user, body: answer.body })
           );
         });
@@ -70,28 +49,28 @@ function Question() {
       setContent(response.question);
       setQuestionId(response.id);
     });
-    getAll(question_id);
-  }, [question_id]);
+    getAll(QuestionId);
+  }, [QuestionId]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.target);
     const answer = data.get("answer");
     const user = localStorage.getItem("current");
-    await post("answers", {
+    await POST("answers", {
       body: answer,
       user_id: user,
-      question_id: question_id,
+      question_id: QuestionId,
     });
   };
 
   return (
-    <div className="font-['audioWide']">
+    <div className="font-audioWide">
       <NavBar />
       <div className="bg-cod-gray absolute h-full w-full flex items-start flex-auto">
         <div>
           <h1 className="text-white m-32 text-5xl">{content}</h1>
-          <form className="ml-32 font-['OpenSans']" onSubmit={handleSubmit}>
+          <form className="ml-32 font-[OpenSans]" onSubmit={handleSubmit}>
             <input
               name="answer"
               className="bg-transparent border-none outline-0 placeholder:text-dove-gray max-w-xl text-gray text-2xl w-full"
@@ -122,7 +101,7 @@ function Question() {
             </Link>
           </form>
         </div>
-        <div className="bg-blackcurrant flex flex-col grow items-center lg:max-h-screen xl:ml-28 h-full font-['OpenSans']">
+        <div className="bg-blackcurrant flex flex-col grow items-center lg:max-h-screen xl:ml-28 h-full font-[OpenSans]">
           <form className="mt-12 gap-8 text-white flex flex-col overflow-scroll no-scrollbar">
             {answers.length === 0 ? (
               <h1> There's no answers</h1>

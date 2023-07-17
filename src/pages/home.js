@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Home() {
   return (
-    <div className="bg-cod-gray absolute h-full w-full font-['audioWide']">
+    <div className="bg-cod-gray absolute h-full w-full font-audioWide">
       <NavBar />
       <h1 className="text-white m-32 text-5xl">Space Center Activities</h1>
       <div className="m-32 flex gap-32">
