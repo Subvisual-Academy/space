@@ -18,7 +18,7 @@ function Login() {
       }).then((response) => {
         localStorage.setItem("token", response["token"]);
         localStorage.setItem("current", response["user"]);
-      });      
+      });
       navigate("/home");
     } else {
       alert("E-mail or Password doesn't match!");
