@@ -4,7 +4,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Open Sans", "AudioWide", "sans-serif"],
+        sans: ["OpenSans", "sans-serif"],
+        audioWide: ["AudioWide"]
       },
       colors: {
         "cod-gray": "#161616",
@@ -18,6 +19,7 @@ module.exports = {
         "dark-cyan": "#007B88",
         "register-cyan": "#40ACB8",
         "cornflower-blue": "#007B88"
+        "blackcurrant": "#403347"
       },
     },
   },
