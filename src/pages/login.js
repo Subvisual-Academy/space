@@ -6,26 +6,19 @@ import { post } from "../Utils";
 function Login() {
   const navigate = useNavigate();
 
-  const current_session = {
-    user: "",
-    token: "",
-  };
-
   const handleSubmit = async (event) => {
-    const mail = document.getElementById("email").value;
-    const pass = document.getElementById("password").value;
+    const data = new FormData(event.target);
+    const mail = data.getElementById("email").value;
+    const pass = data.getElementById("password").value;
 
     if (mail && pass) {
       await post(`auth/login`, {
         email: mail,
         password: pass,
       }).then((response) => {
-        current_session["user"] = response["user"];
-        current_session["token"] = response["response"];
-      });
-      console.log(current_session["token"]);
-      localStorage.setItem("token", current_session["token"]);
-      localStorage.setItem("current", current_session["user"]);
+        localStorage.setItem("token", response["token"]);
+        localStorage.setItem("current", response["user"]);
+      });      
       navigate("/home");
     } else {
       alert("E-mail or Password doesn't match!");
