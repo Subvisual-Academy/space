@@ -64,15 +64,15 @@ function App() {
         />
       </div>
 
-      <div className="p-8 flex flex-col grow items-center lg:max-h-screen xl:mt-28">
-        <button
+      <div className="p-8 flex flex-col grow items-center lg:max-h-screen mt-20">
+        {/* <button
           type="button"
           className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 duration-300 w-1/2 max-w-screen-sm"
         >
           <div className="border-dove-gray border-2 rounded-3xl pt-4 text-silver text-xl h-16">
             Continue with Google
           </div>
-        </button>
+        </button> */}
         <form
           name="register"
           className="flex flex-col w-9/12 max-w-screen-sm  gap-8 mt-12"

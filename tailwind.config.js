@@ -4,7 +4,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Open Sans", "AudioWide", "sans-serif"],
+        sans: ["OpenSans", "sans-serif"],
+        audioWide: ["AudioWide"]
       },
       colors: {
         "cod-gray": "#161616",
@@ -17,7 +18,8 @@ module.exports = {
         "cornflower-blue": "#007B88",
         "bkg-purple": "#403347",
         "button-gray": "#727171",
-        "back-gray": "#6C6868"
+        "back-gray": "#6C6868",
+        "blackcurrant": "#403347"
       },
       theme: {
         borderRadius: {
