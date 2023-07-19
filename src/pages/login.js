@@ -8,8 +8,8 @@ function Login() {
 
   const handleSubmit = async (event) => {
     const data = new FormData(event.target);
-    const mail = data.get("email").value;
-    const pass = data.get("password").value;
+    const mail = data.get("email");
+    const pass = data.get("password");
 
     if (mail && pass) {
       await post(`auth/login`, {
