@@ -14,8 +14,16 @@ module.exports = {
         "gray": "#8C8C8C",
         "mine-shaft": "#303030",
         "dove-gray": "#636363",
-        "cornflower-blue": "#007B88"
+        "cornflower-blue": "#007B88",
+        "bkg-purple": "#403347",
+        "button-gray": "#727171",
+        "back-gray": "#6C6868"
       },
+      theme: {
+        borderRadius: {
+          BUTTON: '27px'  
+        }
+      }
     },
   },
   plugins: [],
