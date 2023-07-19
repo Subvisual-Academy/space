@@ -18,7 +18,7 @@ module.exports = {
         "input-purple": "#B27BD0",
         "dark-cyan": "#007B88",
         "register-cyan": "#40ACB8",
-        "cornflower-blue": "#007B88"
+        "cornflower-blue": "#007B88",
         "blackcurrant": "#403347"
       },
     },
