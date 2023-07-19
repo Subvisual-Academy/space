@@ -27,7 +27,7 @@ const getQuestion = async () => {
     (response) => response["question_id"]
   );
   var content = await GET("questions/" + questionId.toString()).then(
-    (response) => response["content"]
+    (response) => response["body"]
   );
   return {
     question: content,
@@ -128,15 +128,18 @@ function Question() {
                   <img className="ml-2" src={Enter} alt="Space Center Logo" />
                 </div>
               </div>
-              <Link to="/home">
-                <button className="bg-dove-gray p-2 lg:mt-40 mt-80 rounded-lg text-white text-sm">
-                  Go Back
-                </button>
-              </Link>
             </form>
           )}
+          <Link to="/home">
+            <button
+              onClick="window.location.reload()"
+              className="bg-dove-gray p-2 m-32 lg:mt-40 mt-80 rounded-lg text-white text-sm"
+            >
+              Go Back
+            </button>
+          </Link>
         </div>
-        <div className="bg-blackcurrant flex flex-col grow items-center lg:max-h-screen xl:ml-28 h-full font-[IBMPlexSans]">
+        <div className="bg-blackcurrant flex flex-col grow items-center lg:max-h-screen w-full h-full font-[IBMPlexSans]">
           <form className="mt-12 gap-8 text-white flex flex-col overflow-scroll no-scrollbar">
             {answers.length === 0 ? (
               <h1> There's no answers</h1>
