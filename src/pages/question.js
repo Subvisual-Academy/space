@@ -22,6 +22,10 @@ const monthNames = [
 
 const curr = new Date();
 
+function Refresh() {
+  window.parent.location = window.parent.location.href;
+}
+
 const getQuestion = async () => {
   var questionId = await GET("weekly_question").then(
     (response) => response["question_id"]
@@ -90,6 +94,7 @@ function Question() {
       user_id: user,
       question_id: questionId,
     });
+    Refresh();
   };
 
   return (
@@ -131,10 +136,7 @@ function Question() {
             </form>
           )}
           <Link to="/home">
-            <button
-              onClick="window.location.reload()"
-              className="bg-dove-gray p-2 m-32 lg:mt-40 mt-80 rounded-lg text-white text-sm"
-            >
+            <button className="bg-dove-gray p-2 m-32 lg:mt-40 mt-80 rounded-lg text-white text-sm">
               Go Back
             </button>
           </Link>
