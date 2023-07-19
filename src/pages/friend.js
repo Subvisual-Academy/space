@@ -14,7 +14,6 @@ function Friend() {
       <NavBar />
       <div class="flex h-screen">
         <left class="bg-cod-gray">
-
           <h1 className="w-[50%] text-white ml-28 mt-48 text-5xl">
             Your friend this week is Pedro!
           </h1>
@@ -22,6 +21,8 @@ function Friend() {
           <h1 className="text-white ml-28 text-5xl">
             Name
           </h1>
+
+          <h1 className="text-white ml-28 text-5xl">Name</h1>
 
           <desc className="text-white ml-28 mb-80 text-2xl">
             It can be just a 15 min online coffee break or one of many cool
@@ -33,7 +34,6 @@ function Friend() {
           <button className="w-16 h-12 bg-back-gray text-white mb-28 ml-28 rounded-[7px]">
             Go back
           </button>
-
         </left>
 
         <right class="w-507 bg-bkg-purple">
@@ -48,7 +48,6 @@ function Friend() {
               </button>
             ))}
           </div>
-
         </right>
       </div>
     </screen>

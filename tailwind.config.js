@@ -19,16 +19,11 @@ module.exports = {
         "dark-cyan": "#007B88",
         "register-cyan": "#40ACB8",
         "cornflower-blue": "#007B88",
+        "blackcurrant": "#403347",
         "bkg-purple": "#403347",
         "button-gray": "#727171",
-        "back-gray": "#6C6868",
-        "blackcurrant": "#403347"
-      },
-      theme: {
-        borderRadius: {
-          BUTTON: '27px'  
-        }
-      }
+        "back-gray": "#6C6868"
+      }      
     },
   },
   plugins: [],
