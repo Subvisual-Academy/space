@@ -3,8 +3,11 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        "galaxy-pattern": "url('assets/galaxy.png')",
+      },
       fontFamily: {
-        sans: ["OpenSans", "sans-serif"],
+        sans: ["IBMPlexSans", "OpenSans", "sans-serif"],
         audioWide: ["AudioWide"],
         ibmPlex: ["IBMPlexSans"],
       },
