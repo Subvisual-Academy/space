@@ -1,4 +1,5 @@
 import NavBar from "../components/navBar";
+import { GET } from "react-router-dom";
 
 const activity = [
   "Doodle Race",
@@ -8,14 +9,25 @@ const activity = [
   "Code Numbers",
 ];
 
+const getFriendEmail = async () => {
+  const current_user = localStorage.getItem("current");
+  var friend_email = await GET("users/" + current_user + "/friends").then(
+    (response) => response["email"]
+  );
+  return {
+    friend_email,
+  };
+};
+
 function Friend() {
+  var friendEmail = getFriendEmail();
   return (
     <screen className="bg-cod-gray font absolute h-full w-full">
       <NavBar />
       <div class="flex h-screen">
         <left class="bg-cod-gray">
           <h1 className="w-[50%] text-white ml-28 mt-48 text-5xl">
-            Your friend this week is Pedro!
+            Your friend this week is {friendEmail}!
           </h1>
 
           <h1 className="text-white ml-28 text-5xl">
@@ -43,7 +55,7 @@ function Friend() {
 
           <div class="grid gap-8 justify-center mt-16">
             {activity.map((activity) => (
-              <button class="w-72 h-16 bg-button-gray text-white rounded-[27px] shadow-md">
+              <button class="w-64 h-16 bg-button-gray text-white rounded-[27px] shadow-md">
                 {activity}
               </button>
             ))}
