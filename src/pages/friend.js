@@ -53,17 +53,13 @@ function Friend() {
               {friendEmail}!
             </div>
             
-            <desc className="w-[50%] text-white mr-52 mb-64 text-base">
+            <div className="w-[50%] text-white mr-52 mb-64 text-base">
               Contact your friend of the week and choose together a quick
               activity you’d like to do together. It can be just a 15 min online
               coffee chat or any other entertainment to your taste. For
               inspiration, we prepared a list of cool quick games you could try.
               Go check it out!{" "}
-            </desc>
-
-            <button className="w-16 h-12 bg-back-gray text-white mb-28 ml-28 rounded-[7px]">
-              Go back
-            </button>
+            </div>
           </left>
 
           <right className="w-2/3 bg-bkg-purple">
