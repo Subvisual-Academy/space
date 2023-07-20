@@ -1,5 +1,8 @@
+import Background from "../assets/beautiful-shining-stars-night-sky 1.png"
+import { useEffect } from "react";
 import NavBar from "../components/navBar";
-import { GET } from "react-router-dom";
+import { GET } from "../utils/fetch";
+import { useState } from "react";
 
 const activity = [
   "Doodle Race",
@@ -14,13 +17,17 @@ const getFriendEmail = async () => {
   var friend_email = await GET("users/" + current_user + "/friends").then(
     (response) => response["email"]
   );
-  return {
-    friend_email,
-  };
+  return friend_email;
 };
 
 function Friend() {
-  var friendEmail = getFriendEmail();
+
+  const [friendEmail, setFriendEmail] = useState("")
+  useEffect(() => {
+    getFriendEmail().then((response) => setFriendEmail(response))
+  }, []);
+
+  console.log(friendEmail)
   return (
     <screen className="bg-cod-gray font absolute h-full w-full">
       <NavBar />
@@ -33,8 +40,6 @@ function Friend() {
           <h1 className="text-white ml-28 text-5xl">
             Name
           </h1>
-
-          <h1 className="text-white ml-28 text-5xl">Name</h1>
 
           <desc className="text-white ml-28 mb-80 text-2xl">
             It can be just a 15 min online coffee break or one of many cool
