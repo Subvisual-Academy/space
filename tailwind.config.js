@@ -22,7 +22,9 @@ module.exports = {
         "blackcurrant": "#403347",
         "bkg-purple": "#403347",
         "button-gray": "#727171",
-        "back-gray": "#6C6868"
+        "back-gray": "#6C6868",
+        "navbar-gray": "#4D4D4D",
+        "navbar-components-gray": "#8C8C8C",
       }      
     },
   },
