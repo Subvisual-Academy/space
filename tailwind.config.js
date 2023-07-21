@@ -7,6 +7,7 @@ module.exports = {
         sans: ["OpenSans", "sans-serif"],
         audioWide: ["AudioWide"]
       },
+
       colors: {
         "cod-gray": "#161616",
         "med-purple": "#8556e0",

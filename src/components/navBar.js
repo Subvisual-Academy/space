@@ -13,24 +13,15 @@ function NavBar() {
       </Link>
 
       <Link to="/home">
-        <button
-          className="text-navbar-components-gray">
-          Home   
-        </button>
+        <button className="text-navbar-components-gray">Home</button>
       </Link>
 
       <Link to="/question">
-        <button
-          className="text-navbar-components-gray">
-          Weekly Question  
-        </button>
+        <button className="text-navbar-components-gray">Weekly Question</button>
       </Link>
 
       <Link to="/friend">
-        <button
-          className="text-navbar-components-gray">
-          Weekly Friend
-        </button>
+        <button className="text-navbar-components-gray">Weekly Friend</button>
       </Link>
     </div>
   );
