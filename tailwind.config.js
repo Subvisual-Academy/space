@@ -7,9 +7,9 @@ module.exports = {
         "galaxy-pattern": "url('assets/galaxy.png')",
       },
       fontFamily: {
-        sans: ["IBMPlexSans", "OpenSans", "sans-serif"],
+        sans: ["IBMPlexSans", "sans-serif"],
         audioWide: ["AudioWide"],
-        ibmPlex: ["IBMPlexSans"],
+        openSans: ["OpenSans"],
       },
       colors: {
         "cod-gray": "#161616",

@@ -6,22 +6,11 @@ import Ok from "../assets/okkhand.png";
 import { Link } from "react-router-dom";
 import { GET, POST } from "../utils/fetch";
 
-const monthNames = [
-  "JANUARY",
-  "FEBRUARY",
-  "MARCH",
-  "APRIL",
-  "MAY",
-  "JUNE",
-  "JULY",
-  "AUGUST",
-  "SEPTEMBER",
-  "OCTOBER",
-  "NOVEMBER",
-  "DECEMBER",
-];
-
 const curr = new Date();
+
+const options = {
+  month: "long",
+};
 
 function Refresh() {
   window.parent.location = window.parent.location.href;
@@ -83,7 +72,7 @@ function Question() {
         setAnswered(true);
       }
     });
-  });
+  }, [answers]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -121,7 +110,7 @@ function Question() {
               <form onSubmit={handleSubmit}>
                 <h1 className="text-white mt-36 text-5xl">{content}</h1>
                 <h1 className="text-white mt-9">
-                  {7 - curr.getDay() + " Days Left"}
+                  {((7 - curr.getDay() + 1) % 7 || 7) + " Days Left"}
                 </h1>
                 <input
                   name="answer"
@@ -168,7 +157,9 @@ function Question() {
                 >
                   <div className="text-xl text-center">{item.email}</div>
                   <div className="text-xs text-center">
-                    {monthNames[item.time.getMonth()] +
+                    {item.time
+                      .toLocaleString(undefined, options)
+                      .toUpperCase() +
                       " " +
                       item.time.getUTCDate()}
                   </div>
