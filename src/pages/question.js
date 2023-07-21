@@ -5,6 +5,7 @@ import Enter from "../assets/Enter_icon.svg";
 import Ok from "../assets/okkhand.png";
 import { Link } from "react-router-dom";
 import { GET, POST } from "../utils/fetch";
+import Astronaut from "../assets/sadAstronaut.png";
 
 const curr = new Date();
 
@@ -103,7 +104,7 @@ function Question() {
                 <img
                   className="max-h-screen basis-2/5 object-cover mt-20 ml-20"
                   src={Ok}
-                  alt="A background representing the Universe"
+                  alt="An astronaut giving the ok sign"
                 />
               </div>
             ) : (
@@ -148,7 +149,15 @@ function Question() {
           <h1 className="text-white text-5xl mt-8">Answers of this week</h1>
           <form className="mt-8 gap-8 text-white flex flex-col overflow-scroll no-scrollbar">
             {answers.length === 0 ? (
-              <h1> There's no answers</h1>
+              <div className="h-full w-full items-center">
+                <h1 className="text-center">No answers yet</h1>
+                <img
+                  className="max-h-screen basis-2/5 object-cover mt-20 ml-20 relative"
+                  src={Astronaut}
+                  alt="Sad Astronaut sitting on a rock"
+                />
+                <h1 className="text-center mt-8">Be the first to answer!</h1>
+              </div>
             ) : (
               answers.map((item) => (
                 <div

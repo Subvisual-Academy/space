@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         "galaxy-pattern": "url('assets/galaxy.png')",
+        astronaut: "url('assets/sadAstronaut.png')",
       },
       fontFamily: {
         sans: ["IBMPlexSans", "sans-serif"],
