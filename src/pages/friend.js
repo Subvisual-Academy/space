@@ -2,7 +2,7 @@ import React from "react";
 import Background from "../assets/beautiful-shining-stars-night-sky 1.png";
 import AstronautPointing from "../assets/astronaut pointing 1.png";
 import AstronautChilling from "../assets/astronaut-chilling.png";
-import Avatar from "../assets/Avatar profile.png"
+import Avatar from "../assets/Avatar profile.png";
 import { useEffect } from "react";
 import NavBar from "../components/navBar";
 import { GET } from "../utils/fetch";
@@ -65,7 +65,7 @@ function Friend() {
                   sure you answer the question of this week and relax. See you
                   next week, we’ve got someone very cool in store for you.{" "}
                 </div>
-                
+
                 <img
                   className="ml-96 mt-12 h-3/5 relative z-10"
                   src={AstronautChilling}
@@ -117,7 +117,6 @@ function Friend() {
                   <div className="text-white text-3xl font-bold">
                     {friendData.email}!
                   </div>
-
                 </div>
 
                 <div className="items-center mt-2 flex">
@@ -128,10 +127,11 @@ function Friend() {
                   />
 
                   <div className="w-[35%] text-base text-white">
-                      Contact your friend of the week and choose together a quick activity
-                      you’d like to do together. It can be just a 15 min online coffee chat
-                      or any other entertainment to your taste. For inspiration, we prepared
-                      a list of cool quick games you could try. Go check it out!{" "}
+                    Contact your friend of the week and choose together a quick
+                    activity you’d like to do together. It can be just a 15 min
+                    online coffee chat or any other entertainment to your taste.
+                    For inspiration, we prepared a list of cool quick games you
+                    could try. Go check it out!{" "}
                   </div>
                 </div>
               </div>
