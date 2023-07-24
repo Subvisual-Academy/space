@@ -22,6 +22,7 @@ module.exports = {
         "dove-gray": "#636363",
         "cornflower-blue": "#007B88",
         blackcurrant: "#403347",
+        cerulean: "#06B4C6",
       },
     },
   },

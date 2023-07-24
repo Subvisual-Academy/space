@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import NavBar from "../components/navBar";
-import Vector from "../assets/Vector.svg";
+import Check from "../assets/Check.svg";
 import Enter from "../assets/Enter_icon.svg";
 import Ok from "../assets/okkhand.png";
 import { Link } from "react-router-dom";
@@ -94,7 +94,7 @@ function Question() {
       <div className="bg-cod-gray absolute h-full w-full flex items-start flex-auto">
         <div className="bg-cover bg-no-repeat bg-galaxy-pattern h-full">
           <div className="ml-32">
-            <h1 className="text-white text-5xl mt-8">Question of the Week</h1>
+            <h1 className="text-white text-xl mt-8">Question of the Week</h1>
             {answered ? (
               <div className="text-white mt-36 text-xl mr-24">
                 <h1>
@@ -111,38 +111,41 @@ function Question() {
               <form onSubmit={handleSubmit}>
                 <h1 className="text-white mt-36 text-5xl">{content}</h1>
                 <h1 className="text-white mt-9">
-                  {((7 - curr.getDay() + 1) % 7 || 7) + " Days Left"}
+                  {((7 - curr.getDay() + 1) % 7 || 7) + " DAYS LEFT TO ANSWER"}
                 </h1>
-                <input
-                  name="answer"
-                  className="bg-transparent border-none outline-0 placeholder:text-dove-gray max-w-xl text-gray text-2xl w-full mt-12"
-                  placeholder="Type your answer here"
-                />
-                <div className="bg-white h-1 max-w-xl min-w-min mt-2" />
+                <div className="relative mt-2">
+                  <input
+                    type="text"
+                    name="answer"
+                    className="peer block w-2/4 border-0 bg-gray-50 py-1.5 pl-3 text-gray-900 focus:ring-0 sm:text-sm sm:leading-6 mt-12 placeholder:text-base"
+                    placeholder="Type your answer here"
+                  />
+                  <div
+                    className="absolute bottom-0 border-t border-gray-300 peer-focus:border-t-2 peer-focus:border-indigo-600"
+                    aria-hidden="true"
+                  />
+                </div>
                 <div className="flex gap-8 mt-10">
                   <button
-                    className="bg-cornflower-blue rounded-lg p-4 flex text-white"
                     type="submit"
+                    className="inline-flex items-center gap-x-2 rounded-md bg-cerulean px-3.5 py-2.5 text-base text-white shadow-sm hover:bg-cerulean focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cerulean"
                   >
-                    OK
+                    Answer
                     <img
                       className="pl-4 pt-1"
-                      src={Vector}
+                      src={Check}
                       alt="Space Center Logo"
                     />
                   </button>
                   <div className="flex">
-                    <div className="mt-2 text-2xl text-dove-gray">press </div>
-                    <img className="ml-2" src={Enter} alt="Space Center Logo" />
+                    <div className="mt-2 text-base text-white w-20 whitespace-nowrap">
+                      Press Enter
+                    </div>
+                    <img className="ml-2" src={Enter} alt="Enter Arrow" />
                   </div>
                 </div>
               </form>
             )}
-            <Link to="/home">
-              <button className="bg-dove-gray p-2 lg:mt-40 xl:mt-10 rounded-lg text-white text-sm">
-                Go Back
-              </button>
-            </Link>
           </div>
         </div>
         <div className="bg-blackcurrant flex flex-col grow items-center lg:max-h-screen w-full h-full">
