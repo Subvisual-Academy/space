@@ -18,7 +18,7 @@ const activity = [
   "Checkers",
 ];
 
-const current_user_id = 2; //localStorage.getItem("current");
+const current_user_id = 1; //localStorage.getItem("current");
 
 const getFriend = async () => {
   var response = await GET("/friends/" + current_user_id);

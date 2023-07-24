@@ -8,21 +8,24 @@ function NavBar() {
         <img className="ml-4 mr-60" src={Logo} alt="Space Center Logo" />
       </Link>
 
-      <Link to="/home">
-        <button className="text-navbar-components-gray ml-96 mr-8">Home</button>
-      </Link>
+     
+      <div className="text-navbar-components-gray ml-96 mr-8">
+        <Link to="/home">
+        Home
+        </Link>
+      </div>
 
-      <Link to="/question">
-        <button className="text-navbar-components-gray mr-8">
+      <div className="text-navbar-components-gray mr-8">
+        <Link to="/question">
           Weekly Question
-        </button>
-      </Link>
+        </Link>
+      </div>
 
-      <Link to="/friend">
-        <button className="text-navbar-components-gray mr-8">
+      <div className="text-navbar-components-gray mr-8">
+        <Link to="/friend">
           Weekly Friend
-        </button>
-      </Link>
+        </Link>
+      </div>
     </div>
   );
 }
