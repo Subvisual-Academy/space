@@ -26,6 +26,7 @@ module.exports = {
         "back-gray": "#6C6868",
         "navbar-gray": "#4D4D4D",
         "navbar-components-gray": "#8C8C8C",
+        "highlighted-button-blue": "#39E7F9",
       }      
     },
   },
