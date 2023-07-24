@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import NavBar from "../components/navBar";
-import Vector from "../assets/Vector.svg";
+import Vector from "../assets/Checkmark.svg";
 import Enter from "../assets/Enter_icon.svg";
 import { Link } from "react-router-dom";
 import { GET, POST } from "../utils/fetch";
