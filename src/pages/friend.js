@@ -21,7 +21,7 @@ const activity = [
 const current_user_id = 1; //localStorage.getItem("current");
 
 const getFriend = async () => {
-  var response = await GET("/friends/" + current_user_id);
+  var response = await GET("weekly_friends/" + current_user_id);
   return response;
 };
 
