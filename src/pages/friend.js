@@ -3,19 +3,18 @@ import Background from "../assets/beautiful-shining-stars-night-sky 1.png";
 import AstronautPointing from "../assets/astronaut pointing 1.png";
 import AstronautChilling from "../assets/astronaut-chilling.png";
 import Avatar from "../assets/Avatar profile.png";
+
+import Skriblio from "../assets/skriblio.png";
+import CardGames from "../assets/card_games.png"
+import Battleship from "../assets/battleship.png";
+import OnlineMiniGames from "../assets/online_mini_games.png";
+import Chess from "../assets/chess.png";
+import TriviaGames from "../assets/trivia_games.png";
+
 import { useEffect } from "react";
 import NavBar from "../components/navBar";
 import { GET } from "../utils/fetch";
 import { useState } from "react";
-
-const activity = [
-  "Skribl.io",
-  "Cards Games",
-  "Battleship",
-  "Online mini-games",
-  "Chess",
-  "Trivia Games",
-];
 
 const current_user_id = 1; //localStorage.getItem("current");
 
@@ -114,16 +113,54 @@ function Friend() {
             </div>
 
             <div className="grid gap-16 justify-center mt-12">
-              {activity.map((activity) => (
-                <button class="w-72 h-20 bg-button-gray text-white text-lg font-bold rounded-[27px] shadow-md">
-                  {activity}
-                </button>
-              ))}
+
+              <button
+                className="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center"
+                style={{ backgroundImage: `url(${Skriblio})` }}
+              >
+                Skribl.io
+              </button>
+
+              <button 
+                class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center"
+                style={{ backgroundImage: `url(${CardGames})` }}
+              >
+                Cards Games
+              </button>
+
+              <button 
+                class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center"
+                style={{ backgroundImage: `url(${Battleship})` }}
+              >
+                Battleship
+              </button>
+
+              <button 
+                class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center"
+                style={{ backgroundImage: `url(${OnlineMiniGames})` }}
+              >
+                Online mini-games
+              </button>
+
+              <button 
+                class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center"
+                style={{ backgroundImage: `url(${Chess})` }}
+              >
+                Chess
+              </button>
+
+              <button 
+                class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center"
+                style={{ backgroundImage: `url(${TriviaGames})` }}
+              >
+                Trivia Games
+              </button>
+
             </div>
+          </div>
           </div>
         </div>
       </div>
-    </div>
   );
 }
 
