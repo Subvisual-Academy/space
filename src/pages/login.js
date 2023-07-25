@@ -34,19 +34,19 @@ function Login() {
           Login to your account
         </div>
 
-        <form name="register" className="flex flex-col mt-8">
+        <form name="login" className="flex flex-col mt-8">
           <div className="text-white text-base"> Email address </div>
           <input
             id="email"
             type="text"
-            className="bg-white rounded-md w-[422px] h-[38px]"
+            className="bg-white rounded-md w-[422px] h-[38px] hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login"
           />
 
           <div className="text-white text-base mt-6"> Password </div>
           <input
             id="password"
             type="password"
-            className="bg-white rounded-md w-[422px] h-[38px]"
+            className="bg-white rounded-md w-[422px] h-[38px] hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login"
           />
 
           <button
