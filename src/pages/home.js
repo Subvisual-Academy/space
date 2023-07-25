@@ -1,7 +1,5 @@
 import NavBar from "../components/navBar";
 import Footer from "../components/footer";
-import Question from "../assets/Question_of_the_week.png";
-import Friend from "../assets/Question_of_the_week.png";
 import { Link } from "react-router-dom";
 
 function Home() {
@@ -19,20 +17,22 @@ function Home() {
       </div>
       <div className="ml-32 mt-32 flex gap-5 h-80 w-full flex-shrink max-sm:flex-col">
         <Link to="/question">
-          <button className=" max-w-[510px] max-sm:max-w-[255px] rounded-3xl bg-question text-white p-4 h-full bg-cover bg-center">
+          <button className=" max-w-[510px] max-sm:max-w-[255px] rounded-3xl bg-question text-white p-9 h-full bg-cover bg-center">
             <h1 className="text-base">QUESTION OF THE WEEK</h1>
             <div className="text-sm">
-              Get to know your community by sharing a glimpse of your life and
-              checking the answers of other members of the Subvisual Universe
+              Get to know your community by sharing a glimpse of your
+              <br /> life and checking the answers of other members of the
+              <br /> Subvisual Universe
             </div>
           </button>
         </Link>
         <Link to="/friend">
-          <button className=" max-w-[510px] max-sm:max-w-[255px] rounded-3xl bg-friend text-white p-4 h-full bg-cover bg-center">
+          <button className=" max-w-[510px] max-sm:max-w-[255px] rounded-3xl bg-friend text-white p-10 h-full bg-cover bg-center">
             <h1 className="text-base">FRIEND OF THE WEEK</h1>
             <div className="text-sm">
-              Get in touch with a member of the Subvisual Universe assigned to
-              you
+              Get in touch with a member of the Subvisual Universe
+              <br />
+              assigned to you
             </div>
           </button>
         </Link>
