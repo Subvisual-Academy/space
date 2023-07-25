@@ -27,22 +27,14 @@ function Login() {
 
   return (
     <div className="flex bg-cod-gray">
-
       <div className="flex-col ml-32 w-1/2 mt-80">
-        <img
-            className="w-64 h-14"
-            src={Logo}
-            alt="Logo"
-          />
+        <img className="w-64 h-14" src={Logo} alt="Logo" />
 
         <div className="text-4xl font-bold text-white mt-6">
           Login to your account
         </div>
 
-        <form
-          name="register"
-          className="flex flex-col mt-8"
-        >
+        <form name="register" className="flex flex-col mt-8">
           <div className="text-white text-base"> Email address </div>
           <input
             id="email"
@@ -60,7 +52,8 @@ function Login() {
           <button
             type="button"
             onClick={handleSubmit}
-            className="bg-blue-login rounded-md w-[422px] h-[38px] text-white text-base font-bold mt-10">
+            className="bg-blue-login rounded-md w-[422px] h-[38px] text-white text-base font-bold mt-10"
+          >
             Login
           </button>
 
@@ -70,25 +63,21 @@ function Login() {
               Register
             </a>
           </div>
-
         </form>
-
       </div>
-      
+
       <div className="flex-shrink-0 w-1/2 hidden md:block relative">
         <img
-            className="h-full w-full"
-            src={Background}
-            alt="Universe Background"
-          />
-          <img
-            className="absolute top-[calc(50%-theme(space.96)/4)] left-[calc(50%-theme(space.72)/1.25)]"
-            src={Logo}
-            alt="Space Center Logo"
-          />
+          className="h-full w-full"
+          src={Background}
+          alt="Universe Background"
+        />
+        <img
+          className="absolute top-[calc(50%-theme(space.96)/4)] left-[calc(50%-theme(space.72)/1.25)]"
+          src={Logo}
+          alt="Space Center Logo"
+        />
       </div>
-      
-
     </div>
   );
 }
