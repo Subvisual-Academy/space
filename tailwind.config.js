@@ -3,9 +3,14 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        "galaxy-pattern": "url('assets/galaxy.png')",
+        astronaut: "url('assets/sadAstronaut.png')",
+      },
       fontFamily: {
-        sans: ["OpenSans", "sans-serif"],
+        sans: ["IBMPlexSans", "sans-serif"],
         audioWide: ["AudioWide"],
+        openSans: ["OpenSans"],
       },
       colors: {
         "cod-gray": "#161616",

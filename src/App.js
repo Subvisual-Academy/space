@@ -26,7 +26,8 @@ function App() {
       }).then((response) => response["token"]);
       localStorage.setItem("token", tokenRes);
       localStorage.setItem("current", id);
-      navigate("/home");
+      if (id) navigate("/home");
+      else alert("Account already created!");
     } else {
       alert("E-mail or Password doesn't match!");
     }
