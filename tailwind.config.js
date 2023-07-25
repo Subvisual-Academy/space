@@ -19,7 +19,9 @@ module.exports = {
         "dark-cyan": "#007B88",
         "register-cyan": "#40ACB8",
         "cornflower-blue": "#007B88",
-        "blackcurrant": "#403347"
+        "blackcurrant": "#403347",
+        "blue-login": "#06B4C6",
+        "light-gray": "#CCCCCC",
       },
     },
   },
