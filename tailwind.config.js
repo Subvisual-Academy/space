@@ -6,10 +6,13 @@ module.exports = {
       backgroundImage: {
         friend: "url('assets/Friend_of_the_week.png')",
         question: "url('assets/Question_of_the_week.png')",
+        "galaxy-pattern": "url('assets/galaxy.png')",
+        astronaut: "url('assets/sadAstronaut.png')",
       },
       fontFamily: {
-        sans: ["OpenSans", "sans-serif"],
+        sans: ["IBMPlexSans", "sans-serif"],
         audioWide: ["AudioWide"],
+        openSans: ["OpenSans"],
       },
       colors: {
         "cod-gray": "#161616",
@@ -24,6 +27,7 @@ module.exports = {
         "register-cyan": "#40ACB8",
         "cornflower-blue": "#007B88",
         blackcurrant: "#403347",
+        cerulean: "#06B4C6",
       },
     },
   },
