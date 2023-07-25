@@ -19,6 +19,15 @@
     url("./fonts/Audiowide-Regular.woff") format("woff");
 }
 
+@font-face {
+  font-family: "IBMPlexSans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/ibmplexsans/v19/zYX9KVElMYYaJe8bpLHnCwDKjSL9AIFsdA.woff2)
+    format("woff2");
+}
+
 @layer utilities {
   @variants responsive {
     /* Hide scrollbar for Chrome, Safari and Opera */
