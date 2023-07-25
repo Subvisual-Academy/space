@@ -1,24 +1,41 @@
 import Logo from "../assets/logo.png";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function NavBar() {
+  const activeClassName= 'border-b-4 border-highlighted-button-blue';
+
   return (
     <div className="bg-navbar-gray items-center p-4 flex gap-8 max-h-16">
-      <Link to="/home">
+      <NavLink to="/home">
         <img className="ml-4 mr-60" src={Logo} alt="Space Center Logo" />
-      </Link>
+      </NavLink>
 
-      <button className="h-16 text-navbar-components-gray ml-96 mr-8 font-bold hover:text-white hover:border-b-4 border-highlighted-button-blue">
-        <Link to="/home">Home</Link>
-      </button>
-
-      <button className="h-16 text-navbar-components-gray mr-8 font-bold hover:text-white hover:border-b-4 hover:border-highlighted-button-blue">
-        <Link to="/question">Weekly Question</Link>
-      </button>
-
-      <button className="h-16 text-navbar-components-gray mr-8 font-bold hover:text-white hover:border-b-4 hover:border-highlighted-button-blue">
-        <Link to="/friend">Weekly Friend</Link>
-      </button>
+      <NavLink to="/home" activeClassName={activeClassName}
+        className={({ isActive, isPending }) => 
+          isPending ? "h-16 text-navbar-components-gray mr-8 hover:text-white hover:border-b-4 hover:border-highlighted-button-blue"
+          : "h-16 text-white font-bold border-b-4 border-highlighted-button-blue"
+        }
+      >
+        Home
+      </NavLink>
+       
+      <NavLink to="/question" 
+        className={({ isActive, isPending }) => 
+          isPending ? "h-16 text-navbar-components-gray mr-8 hover:text-white hover:border-b-4 hover:border-highlighted-button-blue"
+          : "h-16 text-white font-bold border-b-4 border-highlighted-button-blue"
+        }
+      >
+        Weekly Question
+      </NavLink>
+     
+      <NavLink to="/friend"
+        className={({ isActive, isPending }) => 
+          isPending ? "h-16 text-navbar-components-gray mr-8 hover:text-white hover:border-b-4 hover:border-highlighted-button-blue"
+          : "h-16 text-white font-bold border-b-4 border-highlighted-button-blue"
+        }
+      >
+        Weekly Friend
+      </NavLink>
     </div>
   );
 }

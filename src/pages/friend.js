@@ -96,7 +96,7 @@ function Friend() {
                     alt="AstronautPointing"
                   />
 
-                  <div className="w-[35%] text-base text-white">
+                  <div className="w-[45%] text-base text-white">
                     Contact your friend of the week and choose together a quick
                     activity you’d like to do together. It can be just a 15 min
                     online coffee chat or any other entertainment to your taste.
@@ -109,13 +109,13 @@ function Friend() {
           )}
 
           <div className="w-1/3 h-[1080px] bg-bkg-purple flex-shrink-0">
-            <div className="text-white mt-[30px] text-center text-[32px] font-bold">
+            <div className="text-white mt-20 text-center text-[32px] font-bold">
               Suggested Activities
             </div>
 
-            <div className="grid gap-8 justify-center mt-12">
+            <div className="grid gap-16 justify-center mt-12">
               {activity.map((activity) => (
-                <button class="w-72 h-16 bg-button-gray text-white font-bold rounded-[27px] shadow-md">
+                <button class="w-72 h-20 bg-button-gray text-white text-lg font-bold rounded-[27px] shadow-md">
                   {activity}
                 </button>
               ))}
