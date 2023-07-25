@@ -102,7 +102,7 @@ function App() {
           </button>
           <div className="text-silver text-2xl text-center">
             Already have an account?{" "}
-            <a className="underline text-blue-500" href="/login">
+            <a className="underline text-blue-500" href="#/login">
               Login
             </a>
           </div>

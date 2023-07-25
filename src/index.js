@@ -3,15 +3,15 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/home";
 import Login from "./pages/login";
 import Question from "./pages/question";
 import Friend from "./pages/friend";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
-    path: "space",
+    path: "/",
     element: <App />,
   },
   {
