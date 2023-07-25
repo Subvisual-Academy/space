@@ -115,42 +115,42 @@ function Friend() {
             <div className="grid gap-16 justify-center mt-12">
 
               <button
-                className="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center"
+                className="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
                 style={{ backgroundImage: `url(${Skriblio})` }}
               >
                 Skribl.io
               </button>
 
               <button 
-                class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center"
+                class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
                 style={{ backgroundImage: `url(${CardGames})` }}
               >
                 Cards Games
               </button>
 
               <button 
-                class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center"
+                class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
                 style={{ backgroundImage: `url(${Battleship})` }}
               >
                 Battleship
               </button>
 
               <button 
-                class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center"
+                class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
                 style={{ backgroundImage: `url(${OnlineMiniGames})` }}
               >
                 Online mini-games
               </button>
 
               <button 
-                class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center"
+                class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
                 style={{ backgroundImage: `url(${Chess})` }}
               >
                 Chess
               </button>
 
               <button 
-                class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center"
+                class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
                 style={{ backgroundImage: `url(${TriviaGames})` }}
               >
                 Trivia Games
