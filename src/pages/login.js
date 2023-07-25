@@ -52,7 +52,7 @@ function Login() {
           <button
             type="button"
             onClick={handleSubmit}
-            className="bg-blue-login rounded-md w-[422px] h-[38px] text-white text-base font-bold mt-10"
+            className="bg-blue-login rounded-md w-[422px] h-[38px] text-white text-base font-bold mt-10 hover:bg-dark-cyan focus:border-4 focus:border-white"
           >
             Login
           </button>

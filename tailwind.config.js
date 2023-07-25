@@ -16,7 +16,7 @@ module.exports = {
         "mine-shaft": "#303030",
         "dove-gray": "#636363",
         "input-purple": "#B27BD0",
-        "dark-cyan": "#007B88",
+        "dark-cyan": "#035A63",
         "register-cyan": "#40ACB8",
         "cornflower-blue": "#007B88",
         "blackcurrant": "#403347",
