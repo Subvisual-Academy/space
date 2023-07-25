@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div className="flex items-start flex-auto bg-cod-gray">
-      <div className="p-8 flex flex-col grow items-start lg:max-h-screen mt-20 ml-32">
+      <div className="p-8 flex flex-col grow items-start lg:max-h-screen ml-32 mt-2">
         <img
           className="max-h-screen basis-2/5 object-cover"
           src={Logo}
@@ -120,9 +120,9 @@ function App() {
           </div>
         </form>
       </div>
-      <div className="hidden lg:block relative">
+      <div className="hidden lg:block relative h-full">
         <img
-          className="max-h-screen basis-2/5 object-cover"
+          className="max-h-screen basis-2/5 object-cover lg:w-[838px]"
           src={Background}
           alt="A background representing the Universe"
         />
