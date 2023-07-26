@@ -1,7 +1,7 @@
 import Background from "./assets/universe_background.png";
 import Logo from "./assets/logo.svg";
 import { useNavigate } from "react-router-dom";
-import { post } from "./Utils";
+import { POST } from "./Utils";
 
 function App() {
   const navigate = useNavigate();
@@ -15,12 +15,12 @@ function App() {
     const confirmPassword = data.get("confirmPassword");
 
     if (mail && name && pass && confirmPassword && pass === confirmPassword) {
-      const id = await post(`users`, {
+      const id = await POST(`users`, {
         email: mail,
         name: name,
         password: pass,
       }).then((response) => response["id"]);
-      const tokenRes = await post(`auth/login`, {
+      const tokenRes = await POST(`auth/login`, {
         email: mail,
         password: pass,
       }).then((response) => response["token"]);
