@@ -12,11 +12,10 @@ function NavBar() {
 
       <NavLink
         to="/home"
-        activeClassName={activeClassName}
         className={({ isActive, isPending }) =>
           isActive
-            ? "text-white font-bold border-b-4 border-highlighted-button-blue"
-            : "text-navbar-components-gray mr-8 hover:text-white hover:border-b-4 hover:border-highlighted-button-blue"
+            ? "ml-96 text-white font-bold border-b-4 border-highlighted-button-blue"
+            : "ml-96 text-navbar-components-gray mr-8 hover:text-white hover:border-b-4 hover:border-highlighted-button-blue"
         }
       >
         Home
@@ -37,8 +36,8 @@ function NavBar() {
         to="/friend"
         className={({ isActive, isPending }) =>
           isActive
-          ? "text-white font-bold border-b-4 border-highlighted-button-blue"
-          : "text-navbar-components-gray mr-8 hover:text-white hover:border-b-4 hover:border-highlighted-button-blue"
+            ? "text-white font-bold border-b-4 border-highlighted-button-blue"
+            : "text-navbar-components-gray mr-8 hover:text-white hover:border-b-4 hover:border-highlighted-button-blue"
         }
       >
         Weekly Friend
