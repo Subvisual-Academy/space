@@ -36,11 +36,9 @@ function NavBar() {
       <NavLink
         to="/friend"
         className={({ isActive, isPending }) =>
-          isPending
-            ? "h-16 text-navbar-components-gray mr-8 hover:text-white hover:border-b-4 hover:border-highlighted-button-blue"
-            : isActive
-            ? "text-white font-bold border-b-4 border-highlighted-button-blue"
-            : ""
+          isActive
+          ? "text-white font-bold border-b-4 border-highlighted-button-blue"
+          : "text-navbar-components-gray mr-8 hover:text-white hover:border-b-4 hover:border-highlighted-button-blue"
         }
       >
         Weekly Friend
