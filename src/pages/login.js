@@ -7,6 +7,7 @@ function Login() {
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
+    event.preventDefault();
     const data = new FormData(event.target);
     const mail = data.get("email");
     const pass = data.get("password");
@@ -34,10 +35,11 @@ function Login() {
           Login to your account
         </div>
 
-        <form name="login" className="flex flex-col mt-8">
+        <form name="login" className="flex flex-col mt-8" onSubmit={handleSubmit}>
           <div className="text-white text-base"> Email address </div>
           <input
             id="email"
+            name="email"
             type="text"
             className="bg-white rounded-md w-[422px] h-[38px] hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login placeholder:text-gray" 
             placeholder="you@example.com" 
@@ -46,14 +48,14 @@ function Login() {
           <div className="text-white text-base mt-6"> Password </div>
           <input
             id="password"
+            name="password"
             type="password"
             className="bg-white rounded-md w-[422px] h-[38px] hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login placeholder:text-gray"
             placeholder="your password"
           />
 
           <button
-            type="button"
-            onClick={handleSubmit}
+            type="submit"
             className="bg-blue-login rounded-md w-[422px] h-[38px] text-white text-base font-bold mt-10 hover:bg-dark-cyan focus:border-4 focus:border-white"
           >
             Login
