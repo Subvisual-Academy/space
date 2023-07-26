@@ -119,7 +119,7 @@ function App() {
           </button>
           <div className="text-silver text-2xl text-center">
             Already have an account?{" "}
-            <a className="underline text-cerulean" href="/login">
+            <a className="underline text-cerulean" href="#/login">
               Login
             </a>
           </div>
