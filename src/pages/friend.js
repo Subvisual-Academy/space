@@ -116,8 +116,11 @@ function Friend() {
               <button
                 className="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
                 style={{ backgroundImage: `url(${Skriblio})` }}
-                onMouseOver={e => e.target.innerText = "Draw and guess what your friends are drawing"}
-                onMouseLeave={e => e.target.innerText = "Skribl.io"}
+                onMouseOver={(e) =>
+                  (e.target.innerText =
+                    "Draw and guess what your friends are drawing")
+                }
+                onMouseLeave={(e) => (e.target.innerText = "Skribl.io")}
               >
                 Skribl.io
               </button>
@@ -125,8 +128,10 @@ function Friend() {
               <button
                 class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
                 style={{ backgroundImage: `url(${CardGames})` }}
-                onMouseOver={e => e.target.innerText = "Play from a selection of card games!"}
-                onMouseLeave={e => e.target.innerText = "Cards Games"}
+                onMouseOver={(e) =>
+                  (e.target.innerText = "Play from a selection of card games!")
+                }
+                onMouseLeave={(e) => (e.target.innerText = "Cards Games")}
               >
                 Cards Games
               </button>
@@ -134,8 +139,11 @@ function Friend() {
               <button
                 class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
                 style={{ backgroundImage: `url(${Battleship})` }}
-                onMouseOver={e => e.target.innerText = "Play the online version of the classic battleship game"}
-                onMouseLeave={e => e.target.innerText = "Battleship"}
+                onMouseOver={(e) =>
+                  (e.target.innerText =
+                    "Play the online version of the classic battleship game")
+                }
+                onMouseLeave={(e) => (e.target.innerText = "Battleship")}
               >
                 Battleship
               </button>
@@ -143,8 +151,10 @@ function Friend() {
               <button
                 class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
                 style={{ backgroundImage: `url(${OnlineMiniGames})` }}
-                onMouseOver={e => e.target.innerText = "Choose a game to play with a friend!"}
-                onMouseLeave={e => e.target.innerText = "Online mini-games"}
+                onMouseOver={(e) =>
+                  (e.target.innerText = "Choose a game to play with a friend!")
+                }
+                onMouseLeave={(e) => (e.target.innerText = "Online mini-games")}
               >
                 Online mini-games
               </button>
@@ -152,8 +162,11 @@ function Friend() {
               <button
                 class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
                 style={{ backgroundImage: `url(${Chess})` }}
-                onMouseOver={e => e.target.innerText = "Play the classic chess game with your friend"}
-                onMouseLeave={e => e.target.innerText = "Chess"}
+                onMouseOver={(e) =>
+                  (e.target.innerText =
+                    "Play the classic chess game with your friend")
+                }
+                onMouseLeave={(e) => (e.target.innerText = "Chess")}
               >
                 Chess
               </button>
@@ -161,8 +174,10 @@ function Friend() {
               <button
                 class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
                 style={{ backgroundImage: `url(${TriviaGames})` }}
-                onMouseOver={e => e.target.innerText = "Answer questions about any topic!"}
-                onMouseLeave={e => e.target.innerText = "Trivia Games"}
+                onMouseOver={(e) =>
+                  (e.target.innerText = "Answer questions about any topic!")
+                }
+                onMouseLeave={(e) => (e.target.innerText = "Trivia Games")}
               >
                 Trivia Games
               </button>
