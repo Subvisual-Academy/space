@@ -52,13 +52,14 @@ function App() {
               for="email"
               className="block text-base font-medium leading-6 text-white"
             >
-              Email adress
+              Email address
             </label>
             <div class="mt-2">
               <input
+                id="email"
                 type="email"
                 name="email"
-                className="block w-full pl-3 rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full pl-3 rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cerulean sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -71,9 +72,10 @@ function App() {
             </label>
             <div class="mt-2">
               <input
+                id="name"
                 type="text"
                 name="name"
-                className="block w-full pl-3 rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full pl-3 rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cerulean sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -86,24 +88,26 @@ function App() {
             </label>
             <div class="mt-2">
               <input
+                id="password"
                 name="password"
                 type="password"
-                className="block w-full pl-3 rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full pl-3 rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cerulean sm:text-sm sm:leading-6"
               />
             </div>
           </div>
           <div>
             <label
-              for="password"
+              for="confirmPassword"
               className="block text-base font-medium leading-6 text-white"
             >
               Confirm Password
             </label>
             <div class="mt-2">
               <input
+                id="confirmPassword"
                 name="confirmPassword"
                 type="password"
-                className="block w-full pl-3 rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full pl-3 rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cerulean sm:text-sm sm:leading-6"
               />
             </div>
           </div>
