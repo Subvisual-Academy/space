@@ -35,14 +35,18 @@ function Login() {
           Login to your account
         </div>
 
-        <form name="login" className="flex flex-col mt-8" onSubmit={handleSubmit}>
+        <form
+          name="login"
+          className="flex flex-col mt-8"
+          onSubmit={handleSubmit}
+        >
           <div className="text-white text-base"> Email address </div>
           <input
             id="email"
             name="email"
             type="text"
-            className="bg-white rounded-md w-[422px] h-[38px] hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login placeholder:text-gray" 
-            placeholder="you@example.com" 
+            className="bg-white rounded-md w-[422px] h-[38px] hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login placeholder:text-gray"
+            placeholder="you@example.com"
           />
 
           <div className="text-white text-base mt-6"> Password </div>
