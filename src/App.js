@@ -32,7 +32,8 @@ function App() {
       }).then((response) => response["token"]);
       localStorage.setItem("token", tokenRes);
       localStorage.setItem("current", id);
-      navigate("/home");
+      if (id) navigate("/home");
+      else alert("Account already created!");
     } else {
       alert("E-mail or Password doesn't match!");
     }
@@ -101,7 +102,7 @@ function App() {
           </button>
           <div className="text-silver text-2xl text-center">
             Already have an account?{" "}
-            <a className="underline text-blue-500" href="/login">
+            <a className="underline text-blue-500" href="#/login">
               Login
             </a>
           </div>
