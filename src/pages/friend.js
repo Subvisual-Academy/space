@@ -114,7 +114,7 @@ function Friend() {
             </div>
 
             <div className="grid gap-16 justify-center mt-12">
-              <Link to= "https://skribbl.io">
+              <Link to="https://skribbl.io">
                 <button
                   className="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
                   style={{ backgroundImage: `url(${Skriblio})` }}
@@ -127,21 +127,22 @@ function Friend() {
                   Skribl.io
                 </button>
               </Link>
-              
-              <Link to= "https://playingcards.io/">
+
+              <Link to="https://playingcards.io/">
                 <button
                   class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
                   style={{ backgroundImage: `url(${CardGames})` }}
                   onMouseOver={(e) =>
-                    (e.target.innerText = "Play from a selection of card games!")
+                    (e.target.innerText =
+                      "Play from a selection of card games!")
                   }
                   onMouseLeave={(e) => (e.target.innerText = "Cards Games")}
                 >
                   Cards Games
                 </button>
               </Link>
-              
-              <Link to= "http://en.battleship-game.org/">
+
+              <Link to="http://en.battleship-game.org/">
                 <button
                   class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
                   style={{ backgroundImage: `url(${Battleship})` }}
@@ -154,21 +155,24 @@ function Friend() {
                   Battleship
                 </button>
               </Link>
-              
-              <Link to= "https://toughlovearena.com/">
+
+              <Link to="https://toughlovearena.com/">
                 <button
                   class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
                   style={{ backgroundImage: `url(${OnlineMiniGames})` }}
                   onMouseOver={(e) =>
-                    (e.target.innerText = "Play a fun mini-game with your friend!")
+                    (e.target.innerText =
+                      "Play a fun mini-game with your friend!")
                   }
-                  onMouseLeave={(e) => (e.target.innerText = "Online mini-games")}
+                  onMouseLeave={(e) =>
+                    (e.target.innerText = "Online mini-games")
+                  }
                 >
                   Online mini-games
                 </button>
               </Link>
 
-              <Link to= "https://www.chess.com">
+              <Link to="https://www.chess.com">
                 <button
                   class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
                   style={{ backgroundImage: `url(${Chess})` }}
@@ -181,8 +185,8 @@ function Friend() {
                   Chess
                 </button>
               </Link>
-              
-              <Link to= "https://www.trivianerd.com/">
+
+              <Link to="https://www.trivianerd.com/">
                 <button
                   class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
                   style={{ backgroundImage: `url(${TriviaGames})` }}
@@ -194,7 +198,6 @@ function Friend() {
                   Trivia Games
                 </button>
               </Link>
-              
             </div>
           </div>
         </div>
