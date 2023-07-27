@@ -1,7 +1,7 @@
 import Background from "./assets/universe_background.png";
 import Logo from "./assets/logo.svg";
 import { useNavigate } from "react-router-dom";
-import { POST } from "./Utils";
+import { POST } from "./utils/fetch";
 
 function App() {
   const navigate = useNavigate();
@@ -49,12 +49,12 @@ function App() {
         >
           <div>
             <label
-              for="email"
+              htmlFor="email"
               className="block text-base font-medium leading-6 text-white"
             >
               Email address
             </label>
-            <div class="mt-2">
+            <div className="mt-2">
               <input
                 id="email"
                 type="email"
@@ -65,12 +65,12 @@ function App() {
           </div>
           <div>
             <label
-              for="name"
+              htmlFor="name"
               className="block text-base font-medium leading-6 text-white"
             >
               Full Name
             </label>
-            <div class="mt-2">
+            <div className="mt-2">
               <input
                 id="name"
                 type="text"
@@ -81,12 +81,12 @@ function App() {
           </div>
           <div>
             <label
-              for="password"
+              htmlFor="password"
               className="block text-base font-medium leading-6 text-white"
             >
               Password
             </label>
-            <div class="mt-2">
+            <div className="mt-2">
               <input
                 id="password"
                 name="password"
@@ -97,12 +97,12 @@ function App() {
           </div>
           <div>
             <label
-              for="confirmPassword"
+              htmlFor="confirmPassword"
               className="block text-base font-medium leading-6 text-white"
             >
               Confirm Password
             </label>
-            <div class="mt-2">
+            <div className="mt-2">
               <input
                 id="confirmPassword"
                 name="confirmPassword"
@@ -113,7 +113,7 @@ function App() {
           </div>
           <button
             type="submit"
-            class="mt-1 text-base transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 duration-300 rounded-md bg-cerulean p-4 font-semibold text-white shadow-sm hover:bg-cerulean focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cerulean"
+            className="mt-1 text-base transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 duration-300 rounded-md bg-cerulean p-4 font-semibold text-white shadow-sm hover:bg-cerulean focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cerulean"
           >
             Register
           </button>
