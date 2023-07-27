@@ -15,7 +15,7 @@ function Home() {
         tasks every week and make new connections. And who knows, maybe it's
         here where you'll find some very good friends.
       </div>
-      <div className="ml-32 mt-32 flex gap-5 h-80 w-full flex-shrink max-sm:flex-col">
+      <div className="ml-32 mt-32 flex gap-5 h-80 flex-shrink max-sm:flex-col">
         <Link to="/question">
           <button className=" max-w-[510px] max-sm:max-w-[255px] rounded-3xl bg-question text-white p-9 h-full bg-cover bg-center">
             <h1 className="text-base">QUESTION OF THE WEEK</h1>
