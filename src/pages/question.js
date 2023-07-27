@@ -5,16 +5,13 @@ import Enter from "../assets/Enter_icon.svg";
 import Ok from "../assets/okkhand.png";
 import { GET, POST } from "../utils/fetch";
 import Astronaut from "../assets/sadAstronaut.png";
+import { useNavigate } from "react-router";
 
 const curr = new Date();
 
 const options = {
   month: "long",
 };
-
-function Refresh() {
-  window.parent.location = window.parent.location.href;
-}
 
 const getQuestion = async () => {
   var questionId = await GET("weekly_question").then(
@@ -34,6 +31,7 @@ function Question() {
   const [questionId, setQuestionId] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [answered, setAnswered] = useState(false);
+  const navigate = useNavigate();
 
   async function getAll(questionId) {
     const answers = await GET("questions/" + questionId + "/answers");
@@ -84,7 +82,7 @@ function Question() {
       user_id: user,
       question_id: questionId,
     });
-    Refresh();
+    navigate(0);
   };
 
   return (
