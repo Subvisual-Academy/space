@@ -1,5 +1,5 @@
-import Background from "../assets/universe_background.jpeg";
-import Logo from "../assets/spacecenter1.svg";
+import Background from "../assets/space-background.png";
+import Logo from "../assets/login-logo.png";
 import { useNavigate } from "react-router-dom";
 import { post } from "../Utils";
 
@@ -7,6 +7,7 @@ function Login() {
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
+    event.preventDefault();
     const data = new FormData(event.target);
     const mail = data.get("email");
     const pass = data.get("password");
@@ -26,53 +27,64 @@ function Login() {
   };
 
   return (
-    <div className="flex items-start flex-auto bg-cod-gray">
-      <div className="hidden md:block relative">
-        <img
-          className="max-h-screen basis-2/5 object-cover"
-          src={Background}
-          alt="Universe Background"
-        />
-        <img
-          className="absolute h-96 w-72 top-[calc(50%-theme(space.96)/2)] left-[calc(50%-theme(space.72)/2)]"
-          src={Logo}
-          alt="Space Center Logo"
-        />
-      </div>
+    <div className="flex bg-cod-gray">
+      <div className="flex-col ml-32 w-1/2 mt-80">
+        <img className="w-64 h-14" src={Logo} alt="Logo" />
 
-      <div className="max-h-screen flex flex-col grow items-center mb-20">
+        <div className="text-4xl font-bold text-white mt-6">
+          Login to your account
+        </div>
+
         <form
-          name="register"
-          className="flex flex-col w-9/12 max-w-screen-sm gap-8 mt-96"
+          name="login"
+          className="flex flex-col mt-8"
+          onSubmit={handleSubmit}
         >
+          <div className="text-white text-base"> Email address </div>
           <input
             id="email"
+            name="email"
             type="text"
-            placeholder="E-mail"
-            className="placeholder-gray placeholder:text-xl caret-gray text-gray pl-4 h-16 w-122 rounded-3xl bg-mine-shaft text-xl border-2 border-input-purple"
+            className="bg-white rounded-md w-[422px] h-[38px] hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login placeholder:text-gray"
+            placeholder="you@example.com"
           />
+
+          <div className="text-white text-base mt-6"> Password </div>
           <input
             id="password"
+            name="password"
             type="password"
-            placeholder="Password"
-            className="placeholder-gray placeholder:text-xl caret-gray text-gray pl-4 h-16 rounded-3xl bg-mine-shaft text-xl border-2 border-input-purple"
+            className="bg-white rounded-md w-[422px] h-[38px] hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login placeholder:text-gray"
+            placeholder="your password"
           />
+
           <button
-            type="button"
-            onClick={handleSubmit}
-            className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 duration-300 w-72 ml-48"
+            type="submit"
+            className="bg-blue-login rounded-md w-[422px] h-[38px] text-white text-base font-bold mt-10 hover:bg-dark-cyan focus:border-4 focus:border-white"
           >
-            <div className="bg-dark-cyan rounded-3xl pt-3 text-alto text-3xl h-16">
-              Continue
-            </div>
+            Login
           </button>
-          <div className="text-gray text-2xl text-center">
+
+          <div className="text-light-gray text-base mt-8 ml-24">
             Don't have an account?{" "}
-            <a className="underline text-register-cyan" href="/space">
+            <a className="underline text-blue-login" href="/space">
               Register
             </a>
           </div>
         </form>
+      </div>
+
+      <div className="flex-shrink-0 w-1/2 hidden md:block relative">
+        <img
+          className="h-full w-full"
+          src={Background}
+          alt="Universe Background"
+        />
+        <img
+          className="absolute top-[calc(50%-theme(space.96)/4)] left-[calc(50%-theme(space.72)/1.25)]"
+          src={Logo}
+          alt="Space Center Logo"
+        />
       </div>
     </div>
   );
