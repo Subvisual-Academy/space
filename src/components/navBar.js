@@ -2,8 +2,6 @@ import Logo from "../assets/logo.png";
 import { NavLink } from "react-router-dom";
 
 function NavBar() {
-  const activeClassName = "border-b-4 border-highlighted-button-blue";
-
   return (
     <div className="bg-navbar-gray items-center p-4 flex gap-8 max-h-16">
       <NavLink to="/home">
