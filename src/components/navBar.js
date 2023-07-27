@@ -1,24 +1,47 @@
-import Logo from "../assets/spacecenterlogo.svg";
-import { Link } from "react-router-dom";
+import Logo from "../assets/logo.png";
+import { NavLink } from "react-router-dom";
 
 function NavBar() {
+  const activeClassName = "border-b-4 border-highlighted-button-blue";
+
   return (
-    <div className="bg-mine-shaft items-center p-4 flex gap-8 max-h-28">
-      <Link to="/home">
-        <img
-          className=" p-8 items-center gap-8"
-          src={Logo}
-          alt="Space Center Logo"
-        />
-      </Link>
-      <Link to="/home">
-        <h1 className="text-white text-3xl">
-          {" "}
-          Space
-          <br />
-          Center
-        </h1>
-      </Link>
+    <div className="bg-navbar-gray items-center p-4 flex gap-8 max-h-16">
+      <NavLink to="/home">
+        <img className="ml-4 mr-60" src={Logo} alt="Space Center Logo" />
+      </NavLink>
+
+      <NavLink
+        to="/home"
+        className={({ isActive, isPending }) =>
+          isActive
+            ? "ml-96 text-white font-bold border-b-4 border-highlighted-button-blue"
+            : "ml-96 text-navbar-components-gray mr-8 hover:text-white hover:border-b-4 hover:border-highlighted-button-blue"
+        }
+      >
+        Home
+      </NavLink>
+
+      <NavLink
+        to="/question"
+        className={({ isActive, isPending }) =>
+          isActive
+            ? "text-white font-bold border-b-4 border-highlighted-button-blue"
+            : "text-navbar-components-gray mr-8 hover:text-white hover:border-b-4 hover:border-highlighted-button-blue"
+        }
+      >
+        Weekly Question
+      </NavLink>
+
+      <NavLink
+        to="/friend"
+        className={({ isActive, isPending }) =>
+          isActive
+            ? "text-white font-bold border-b-4 border-highlighted-button-blue"
+            : "text-navbar-components-gray mr-8 hover:text-white hover:border-b-4 hover:border-highlighted-button-blue"
+        }
+      >
+        Weekly Friend
+      </NavLink>
     </div>
   );
 }
