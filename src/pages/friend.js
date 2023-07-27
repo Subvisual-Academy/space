@@ -11,12 +11,13 @@ import OnlineMiniGames from "../assets/online_mini_games.png";
 import Chess from "../assets/chess.png";
 import TriviaGames from "../assets/trivia_games.png";
 
+import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import NavBar from "../components/navBar";
 import { GET } from "../utils/fetch";
 import { useState } from "react";
 
-const current_user_id = 1; //localStorage.getItem("current");
+const current_user_id = localStorage.getItem("current");
 
 const getFriend = async () => {
   var response = await GET("weekly_friends/" + current_user_id);
@@ -113,74 +114,87 @@ function Friend() {
             </div>
 
             <div className="grid gap-16 justify-center mt-12">
-              <button
-                className="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
-                style={{ backgroundImage: `url(${Skriblio})` }}
-                onMouseOver={(e) =>
-                  (e.target.innerText =
-                    "Draw and guess what your friends are drawing")
-                }
-                onMouseLeave={(e) => (e.target.innerText = "Skribl.io")}
-              >
-                Skribl.io
-              </button>
+              <Link to= "https://skribbl.io">
+                <button
+                  className="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
+                  style={{ backgroundImage: `url(${Skriblio})` }}
+                  onMouseOver={(e) =>
+                    (e.target.innerText =
+                      "Draw and guess what your friends are drawing")
+                  }
+                  onMouseLeave={(e) => (e.target.innerText = "Skribl.io")}
+                >
+                  Skribl.io
+                </button>
+              </Link>
+              
+              <Link to= "https://playingcards.io/">
+                <button
+                  class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
+                  style={{ backgroundImage: `url(${CardGames})` }}
+                  onMouseOver={(e) =>
+                    (e.target.innerText = "Play from a selection of card games!")
+                  }
+                  onMouseLeave={(e) => (e.target.innerText = "Cards Games")}
+                >
+                  Cards Games
+                </button>
+              </Link>
+              
+              <Link to= "http://en.battleship-game.org/">
+                <button
+                  class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
+                  style={{ backgroundImage: `url(${Battleship})` }}
+                  onMouseOver={(e) =>
+                    (e.target.innerText =
+                      "Play the online version of the classic battleship game")
+                  }
+                  onMouseLeave={(e) => (e.target.innerText = "Battleship")}
+                >
+                  Battleship
+                </button>
+              </Link>
+              
+              <Link to= "https://toughlovearena.com/">
+                <button
+                  class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
+                  style={{ backgroundImage: `url(${OnlineMiniGames})` }}
+                  onMouseOver={(e) =>
+                    (e.target.innerText = "Play a fun mini-game with your friend!")
+                  }
+                  onMouseLeave={(e) => (e.target.innerText = "Online mini-games")}
+                >
+                  Online mini-games
+                </button>
+              </Link>
 
-              <button
-                class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
-                style={{ backgroundImage: `url(${CardGames})` }}
-                onMouseOver={(e) =>
-                  (e.target.innerText = "Play from a selection of card games!")
-                }
-                onMouseLeave={(e) => (e.target.innerText = "Cards Games")}
-              >
-                Cards Games
-              </button>
-
-              <button
-                class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
-                style={{ backgroundImage: `url(${Battleship})` }}
-                onMouseOver={(e) =>
-                  (e.target.innerText =
-                    "Play the online version of the classic battleship game")
-                }
-                onMouseLeave={(e) => (e.target.innerText = "Battleship")}
-              >
-                Battleship
-              </button>
-
-              <button
-                class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
-                style={{ backgroundImage: `url(${OnlineMiniGames})` }}
-                onMouseOver={(e) =>
-                  (e.target.innerText = "Choose a game to play with a friend!")
-                }
-                onMouseLeave={(e) => (e.target.innerText = "Online mini-games")}
-              >
-                Online mini-games
-              </button>
-
-              <button
-                class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
-                style={{ backgroundImage: `url(${Chess})` }}
-                onMouseOver={(e) =>
-                  (e.target.innerText =
-                    "Play the classic chess game with your friend")
-                }
-                onMouseLeave={(e) => (e.target.innerText = "Chess")}
-              >
-                Chess
-              </button>
-
-              <button
-                class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
-                style={{ backgroundImage: `url(${TriviaGames})` }}
-                onMouseOver={(e) =>
-                  (e.target.innerText = "Answer questions about any topic!")
-                }
-                onMouseLeave={(e) => (e.target.innerText = "Trivia Games")}
-              >
-                Trivia Games
-              </button>
+              <Link to= "https://www.chess.com">
+                <button
+                  class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
+                  style={{ backgroundImage: `url(${Chess})` }}
+                  onMouseOver={(e) =>
+                    (e.target.innerText =
+                      "Play the classic chess game with your friend")
+                  }
+                  onMouseLeave={(e) => (e.target.innerText = "Chess")}
+                >
+                  Chess
+                </button>
+              </Link>
+              
+              <Link to= "https://www.trivianerd.com/">
+                <button
+                  class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
+                  style={{ backgroundImage: `url(${TriviaGames})` }}
+                  onMouseOver={(e) =>
+                    (e.target.innerText = "Answer questions about any topic!")
+                  }
+                  onMouseLeave={(e) => (e.target.innerText = "Trivia Games")}
+                >
+                  Trivia Games
+                </button>
+              </Link>
+              
             </div>
           </div>
         </div>
