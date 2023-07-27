@@ -4,6 +4,8 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
+        friend: "url('assets/Friend_of_the_week.png')",
+        question: "url('assets/Question_of_the_week.png')",
         "galaxy-pattern": "url('assets/galaxy.png')",
         astronaut: "url('assets/sadAstronaut.png')",
       },
