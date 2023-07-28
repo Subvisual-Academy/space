@@ -33,7 +33,7 @@ function Friend() {
   }, [notPaired]);
 
   useEffect(() => {
-    if (friendData.id === current_user_id) {
+    if (friendData.id === parseInt(current_user_id)) {
       setNotPaired(true);
     }
   }, [notPaired, friendData]);
