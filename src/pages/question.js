@@ -111,10 +111,10 @@ function Question() {
                   {((7 - curr.getDay() + 1) % 7 || 7) + " DAYS LEFT TO ANSWER"}
                 </h1>
                 <div className="relative mt-2">
-                  <input
+                  <textarea
                     type="text"
                     name="answer"
-                    className="peer block w-2/4 border-0 bg-gray-50 py-1.5 pl-3 text-gray-900 focus:ring-0 sm:text-sm sm:leading-6 mt-12 placeholder:text-base"
+                    className="no-scrollbar peer block w-2/4 border-0 bg-gray-50 py-1.5 pl-3 text-gray-900 focus:ring-0 sm:text-sm sm:leading-6 mt-12 placeholder:text-base"
                     placeholder="Type your answer here"
                   />
                   <div
