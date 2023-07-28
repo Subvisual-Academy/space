@@ -116,7 +116,7 @@ function Friend() {
             <div className="grid gap-16 justify-center mt-12">
               <Link to="https://skribbl.io">
                 <button
-                  className="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
+                  className="relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
                   style={{ backgroundImage: `url(${Skriblio})` }}
                   onMouseOver={(e) =>
                     (e.target.innerText =
@@ -130,7 +130,7 @@ function Friend() {
 
               <Link to="https://playingcards.io/">
                 <button
-                  class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
+                  class="relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
                   style={{ backgroundImage: `url(${CardGames})` }}
                   onMouseOver={(e) =>
                     (e.target.innerText =
@@ -144,7 +144,7 @@ function Friend() {
 
               <Link to="http://en.battleship-game.org/">
                 <button
-                  class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
+                  class="relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
                   style={{ backgroundImage: `url(${Battleship})` }}
                   onMouseOver={(e) =>
                     (e.target.innerText =
@@ -158,7 +158,7 @@ function Friend() {
 
               <Link to="https://toughlovearena.com/">
                 <button
-                  class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
+                  class="relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
                   style={{ backgroundImage: `url(${OnlineMiniGames})` }}
                   onMouseOver={(e) =>
                     (e.target.innerText =
@@ -174,7 +174,7 @@ function Friend() {
 
               <Link to="https://www.chess.com">
                 <button
-                  class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
+                  class="relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
                   style={{ backgroundImage: `url(${Chess})` }}
                   onMouseOver={(e) =>
                     (e.target.innerText =
@@ -188,7 +188,7 @@ function Friend() {
 
               <Link to="https://www.trivianerd.com/">
                 <button
-                  class="w-72 h-20 relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
+                  class="relative flex flex-col items-center justify-center w-72 h-20 rounded-[27px] text-white text-lg font-bold bg-cover bg-center focus:border-4 focus:border-white"
                   style={{ backgroundImage: `url(${TriviaGames})` }}
                   onMouseOver={(e) =>
                     (e.target.innerText = "Answer questions about any topic!")
