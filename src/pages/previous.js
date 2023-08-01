@@ -8,6 +8,7 @@ async function getQuestions() {
   const questions = [];
   for (const value in weekly_questions) {
     questions.push({
+      id: weekly_questions[value].weekly_question.question_id,
       body: weekly_questions[value].question_body,
       time: new Date(weekly_questions[value].weekly_question.week),
     });
@@ -15,9 +16,13 @@ async function getQuestions() {
   return questions;
 }
 
+const options = {
+  month: "long",
+};
+
 function Previous() {
   const [questions, setQuestions] = useState([]);
-  const [answers, setAnswers] = useState([]);
+  const [answers, setAnswers] = useState({});
   const [answersVisibility, setAnswersVisibility] = useState({});
 
   useEffect(() => {
@@ -26,12 +31,40 @@ function Previous() {
     });
   }, []);
 
-  const viewAnswers = (item) => {
+  const viewAnswers = (questionId) => {
     setAnswersVisibility((prevVisibility) => ({
       ...prevVisibility,
-      [item.body]: !prevVisibility[item.body],
+      [questionId]: !prevVisibility[questionId],
     }));
+
+    getAll(questionId);
   };
+
+  async function getAll(questionId) {
+    const answers = await GET("questions/" + questionId + "/answers");
+    await Promise.all(
+      answers.map((answer) => {
+        return new Promise((res) => {
+          GET("users/" + answer["user_id"].toString()).then((user) =>
+            res({ user, body: answer.body, time: new Date(answer.created_at) })
+          );
+        });
+      })
+    ).then((values) => {
+      const data = values.map((value) => {
+        return {
+          email: value.user.email,
+          body: value.body,
+          time: value.time,
+          user: value.user.id,
+        };
+      });
+      setAnswers((prevAnswers) => ({
+        ...prevAnswers,
+        [questionId]: data,
+      }));
+    });
+  }
 
   function renderDate(date) {
     const startDate = new Date(date.getTime());
@@ -67,30 +100,49 @@ function Previous() {
         .map((questionItem) => (
           <div
             className=" mt-16 ml-96 gap-8 w-4/6 overflow-scroll no-scrollbar"
-            key={questionItem.body}
+            key={questionItem.id}
           >
-            <div className="flex gap-6 border-b-2 border-white px-2">
-              <h1 className="text-white w-28 pb-8">
-                {renderDate(questionItem.time)}
-              </h1>
-              <h1 className="text-white w-9">
-                {questionItem.time.getFullYear()}
-              </h1>
-              <h1 className="text-white text-xl w-full">{questionItem.body}</h1>
-              <img
-                src={Chevron}
-                onClick={() => viewAnswers(questionItem)}
-                alt="Chevron icon"
-                className={`cursor-pointer ${
-                  answersVisibility[questionItem.body] ? "rotate-180" : ""
-                }`}
-              />
-            </div>
-            {answersVisibility[questionItem.body] && (
-              <div>
-                <h1 className="text-white text-9xl">Answers</h1>
+            <div className="border-b-2 border-white px-2 pb-8">
+              <div className="flex gap-6">
+                <h1 className="text-white w-28 pb-8">
+                  {renderDate(questionItem.time)}
+                </h1>
+                <h1 className="text-white w-9">
+                  {questionItem.time.getFullYear()}
+                </h1>
+                <h1 className="text-white text-xl w-full">
+                  {questionItem.body}
+                </h1>
+                <img
+                  src={Chevron}
+                  onClick={() => viewAnswers(questionItem.id)}
+                  alt="Chevron icon"
+                  className={`cursor-pointer ${
+                    answersVisibility[questionItem.id] ? "rotate-180" : ""
+                  }`}
+                />
               </div>
-            )}
+              <div className="items-center overflow-scroll no-scrollbar max-h-96">
+                {answersVisibility[questionItem.id] &&
+                  answers[questionItem.id]?.map((item) => (
+                    <div
+                      className="bg-dark-cyan p-4 flex flex-col rounded-3xl h-auto w-full text-white mb-3"
+                      key={item.body}
+                    >
+                      <div className="text-xl ml-14">{item.email}</div>
+                      <div className="text-xs ml-14">
+                        {item.time
+                          .toLocaleString(undefined, options)
+                          .toUpperCase() +
+                          " " +
+                          item.time.getUTCDate()}
+                      </div>
+
+                      <div className="text-base pt-4">{item.body}</div>
+                    </div>
+                  ))}
+              </div>
+            </div>
           </div>
         ))}
     </div>

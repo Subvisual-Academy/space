@@ -170,7 +170,7 @@ function Question() {
             ) : (
               answers.map((item) => (
                 <div
-                  className="bg-dove-gray p-4 flex flex-col rounded-3xl h-auto w-72"
+                  className="bg-dark-cyan p-4 flex flex-col rounded-3xl h-auto w-72"
                   key={item.body}
                 >
                   <div className="text-xl text-center">{item.email}</div>
