@@ -1,7 +1,7 @@
 import Logo from "../assets/logo.png";
 import { NavLink } from "react-router-dom";
-import Settings from "../assets/Dropdown.png"
-import Profile from "../assets/Avatar.png"
+import Settings from "../assets/Dropdown.png";
+import Profile from "../assets/Avatar.png";
 
 function NavBar() {
   return (
@@ -56,7 +56,7 @@ function NavBar() {
             Members
           </NavLink>
         </div>
-        
+
         <div className="flex items-center ml-auto mr-8">
           <img
             className="mr-3 hover:border-4 hover:border-highlighted-button-blue"
@@ -69,8 +69,8 @@ function NavBar() {
             src={Settings}
             alt="Settings Button"
           />
-        </div>  
-      </div>          
+        </div>
+      </div>
     </div>
   );
 }
