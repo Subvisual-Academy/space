@@ -38,8 +38,8 @@ function NavBar() {
             to="/friend"
             className={({ isActive, isPending }) =>
               isActive
-                ? "text-white font-bold border-b-4 border-highlighted-button-blue"
-                : "text-navbar-components-gray hover:text-white hover:border-b-4 hover:border-highlighted-button-blue"
+                ? "mr-8 text-white font-bold border-b-4 border-highlighted-button-blue"
+                : "mr-8 text-navbar-components-gray hover:text-white hover:border-b-4 hover:border-highlighted-button-blue"
             }
           >
             Weekly Friend
