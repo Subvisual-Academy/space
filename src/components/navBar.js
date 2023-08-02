@@ -44,6 +44,17 @@ function NavBar() {
           >
             Weekly Friend
           </NavLink>
+
+          <NavLink
+            to="/members"
+            className={({ isActive, isPending }) =>
+              isActive
+                ? "text-white font-bold border-b-4 border-highlighted-button-blue"
+                : "text-navbar-components-gray hover:text-white hover:border-b-4 hover:border-highlighted-button-blue"
+            }
+          >
+            Members
+          </NavLink>
         </div>
         
         <div className="flex items-center ml-auto mr-8">
