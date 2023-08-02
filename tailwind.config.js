@@ -37,6 +37,7 @@ module.exports = {
         "blue-login": "#06B4C6",
         "light-gray": "#CCCCCC",
         "cerulean": "#06B4C6",
+        "lilac": "#36293D",
       },
     },
   },

@@ -2,7 +2,7 @@ import React from "react";
 import Background from "../assets/beautiful-shining-stars-night-sky 1.png";
 import AstronautPointing from "../assets/astronaut pointing 1.png";
 import AstronautChilling from "../assets/astronaut-chilling.png";
-import Avatar from "../assets/Avatar profile.png";
+import Avatar from "../assets/avatar-profile.png";
 
 import Skriblio from "../assets/skriblio.png";
 import CardGames from "../assets/card_games.png";
