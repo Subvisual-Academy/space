@@ -8,9 +8,9 @@ async function getQuestions() {
   const questions = [];
   for (const value in weekly_questions) {
     questions.push({
-      id: weekly_questions[value].weekly_question.question_id,
-      body: weekly_questions[value].question_body,
-      time: new Date(weekly_questions[value].weekly_question.week),
+      id: weekly_questions[value].question_id,
+      body: weekly_questions[value].question.body,
+      time: new Date(weekly_questions[value].week),
     });
   }
   return questions;
