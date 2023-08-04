@@ -14,22 +14,33 @@ function App() {
     const name = data.get("name");
     const confirmPassword = data.get("confirmPassword");
 
-    if (mail && name && pass && confirmPassword && pass === confirmPassword) {
-      const id = await POST(`users`, {
-        email: mail,
-        name: name,
-        password: pass,
-      }).then((response) => response["id"]);
-      const tokenRes = await POST(`auth/login`, {
-        email: mail,
-        password: pass,
-      }).then((response) => response["token"]);
-      localStorage.setItem("token", tokenRes);
-      localStorage.setItem("current", id);
-      if (id) navigate("/home");
-      else alert("Account already created!");
+    if (pass === confirmPassword) {
+      try {
+        const id = await POST(`users`, {
+          email: mail,
+          name: name,
+          password: pass,
+          company_id: 1, // temporarily so people can still test the app while we make the registering process
+        }).then((response) => response["id"]);
+
+        try {
+          const tokenRes = await POST(`auth/login`, {
+            email: mail,
+            password: pass,
+          }).then((response) => response["token"]);
+
+          localStorage.setItem("token", tokenRes);
+          navigate("/home");
+        } catch (error) {
+          alert(error.message);
+        }
+
+        localStorage.setItem("current", id);
+      } catch (error) {
+        alert(error.message);
+      }
     } else {
-      alert("E-mail or Password doesn't match!");
+      alert("Password doesn't match!");
     }
   };
 
@@ -56,6 +67,7 @@ function App() {
             </label>
             <div className="mt-2">
               <input
+                required
                 id="email"
                 type="email"
                 name="email"
@@ -72,6 +84,7 @@ function App() {
             </label>
             <div className="mt-2">
               <input
+                required
                 id="name"
                 type="text"
                 name="name"
@@ -88,9 +101,12 @@ function App() {
             </label>
             <div className="mt-2">
               <input
+                required
                 id="password"
                 name="password"
                 type="password"
+                pattern=".{6,}"
+                title="Password needs at least 6 characters"
                 className="block w-full pl-3 rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cerulean sm:text-sm sm:leading-6"
               />
             </div>
@@ -104,6 +120,7 @@ function App() {
             </label>
             <div className="mt-2">
               <input
+                required
                 id="confirmPassword"
                 name="confirmPassword"
                 type="password"
