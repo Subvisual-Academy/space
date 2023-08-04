@@ -8,7 +8,7 @@ import Home from "./pages/home";
 import Login from "./pages/login";
 import Question from "./pages/question";
 import Friend from "./pages/friend";
-import Previous from "./pages/previous_questions";
+import PreviousQuestions from "./pages/previous_questions";
 
 const router = createHashRouter([
   {
@@ -25,7 +25,7 @@ const router = createHashRouter([
   },
   {
     path: "previous",
-    element: <Previous />,
+    element: <PreviousQuestions />,
   },
   {
     path: "friend",
