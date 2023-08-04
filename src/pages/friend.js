@@ -1,5 +1,5 @@
 import React from "react";
-import Background from "../assets/beautiful-shining-stars-night-sky 1.png";
+import Background from "../assets/beautiful-shining-stars-night-sky.png";
 import AstronautPointing from "../assets/astronaut pointing 1.png";
 import AstronautChilling from "../assets/astronaut-chilling.png";
 import Avatar from "../assets/Avatar profile.png";
@@ -40,16 +40,12 @@ function Friend() {
 
   return (
     <div>
-      <div className="absolute inset-0 z-0">
-        <img
-          className="relative z-10 h-1/1 w-full object-cover"
-          src={Background}
-          alt="Universe Background"
-        />
-      </div>
+      <div 
+        className="bg-cover bg-center h-screen"
+        style={{ backgroundImage: `url(${Background})` }}>
 
-      <div className="relative z-10">
         <NavBar />
+        
         <div className="flex">
           {notPaired ? (
             <div className="w-2/3 h-full">
@@ -97,7 +93,7 @@ function Friend() {
                   <div className="items-center ml-2 flex">
                     
                     <div className="flex-col items-center">
-                      
+
                       <div className="flex text-[1rem]">
                         <div className="text-white"> Email: </div>
                         <div className="ml-2 text-highlighted-button-blue"> example </div>
