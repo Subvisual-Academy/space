@@ -1,7 +1,7 @@
 import Background from "../assets/space-background.png";
 import Logo from "../assets/login-logo.png";
 import { useNavigate } from "react-router-dom";
-import { post } from "../Utils";
+import { POST } from "../utils/fetch";
 
 function Login() {
   const navigate = useNavigate();
@@ -14,21 +14,18 @@ function Login() {
 
     if (mail && pass) {
       try{
-        const response = await post(`auth/login`, {
+        const response = await POST(`auth/login`, {
           email: mail,
           password: pass,
         });
-      
-        if(response.status === 200 || response.status === 201) {
-          const responseData = await response.json()
-          localStorage.setItem("token", responseData["token"]);
-          localStorage.setItem("current", responseData["user"]);
-          navigate("/home");
-        } else {
-          alert("Invalid credentials. Please check your email and password.");
-        }
+        
+        localStorage.setItem("token", response["token"]);
+        localStorage.setItem("current", response["user"]);
+        navigate("/home");
+       
       } catch (error){
         console.error("Error occured during login:", error.message);
+        alert("Invalid credentials. Please, try again.");
       }
     } else {
       alert("Please enter both email and password.");
