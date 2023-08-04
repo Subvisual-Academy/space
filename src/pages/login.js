@@ -13,24 +13,23 @@ function Login() {
     const pass = data.get("password");
 
     if (mail && pass) {
-      try{
+      try {
         const response = await POST(`auth/login`, {
           email: mail,
           password: pass,
         });
-        
+
         localStorage.setItem("token", response["token"]);
         localStorage.setItem("current", response["user"]);
         navigate("/home");
-       
-      } catch (error){
+      } catch (error) {
         console.error("Error occured during login:", error.message);
         alert("Invalid credentials. Please, try again.");
       }
     } else {
       alert("Please enter both email and password.");
     }
-}
+  };
 
   return (
     <div className="flex bg-cod-gray">
@@ -51,7 +50,7 @@ function Login() {
             id="email"
             name="email"
             type="text"
-            className="bg-white rounded-md w-[422px] h-[38px] hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login placeholder:text-gray"
+            className="bg-white rounded-md w-[422px] h-[38px] hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login placeholder:text-gray p-2"
             placeholder="you@example.com"
           />
 
@@ -60,7 +59,7 @@ function Login() {
             id="password"
             name="password"
             type="password"
-            className="bg-white rounded-md w-[422px] h-[38px] hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login placeholder:text-gray"
+            className="bg-white rounded-md w-[422px] h-[38px] hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login placeholder:text-gray p-2"
             placeholder="your password"
           />
 
