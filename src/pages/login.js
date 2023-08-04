@@ -13,18 +13,27 @@ function Login() {
     const pass = data.get("password");
 
     if (mail && pass) {
-      await post(`auth/login`, {
-        email: mail,
-        password: pass,
-      }).then((response) => {
-        localStorage.setItem("token", response["token"]);
-        localStorage.setItem("current", response["user"]);
-      });
-      navigate("/home");
+      try{
+        const response = await post(`auth/login`, {
+          email: mail,
+          password: pass,
+        });
+      
+        if(response.status === 200 || response.status === 201) {
+          const responseData = await response.json()
+          localStorage.setItem("token", responseData["token"]);
+          localStorage.setItem("current", responseData["user"]);
+          navigate("/home");
+        } else {
+          alert("Invalid credentials. Please check your email and password.");
+        }
+      } catch (error){
+        console.error("Error occured during login:", error.message);
+      }
     } else {
-      alert("E-mail or Password doesn't match!");
+      alert("Please enter both email and password.");
     }
-  };
+}
 
   return (
     <div className="flex bg-cod-gray">
