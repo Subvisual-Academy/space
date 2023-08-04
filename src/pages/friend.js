@@ -45,7 +45,7 @@ function Friend() {
         style={{ backgroundImage: `url(${Background})` }}>
 
         <NavBar />
-        
+
         <div className="flex">
           {notPaired ? (
             <div className="w-2/3 h-full">
@@ -80,7 +80,7 @@ function Friend() {
                     alt="AvatarProfile"
                   />
 
-                  <div className="ml-[1rem] text-[1.25rem] text-white"> Name </div>
+                  <div className="ml-[1rem] text-[1.25rem] text-white"> {friendData.name} </div>
                 </div>
 
                 <div className="flex">
@@ -96,12 +96,12 @@ function Friend() {
 
                       <div className="flex text-[1rem]">
                         <div className="text-white"> Email: </div>
-                        <div className="ml-2 text-highlighted-button-blue"> example </div>
+                        <div className="ml-2 text-highlighted-button-blue"> {friendData.email} </div>
                       </div>
 
                       <div className="flex text-[1rem] text-white">
                         <div className="text-white"> Discord: </div>
-                        <div className="ml-2 text-highlighted-button-blue"> example </div>
+                        <div className="ml-2 text-highlighted-button-blue"> {friendData.discord} </div>
                       </div>
 
                       <div className="mt-[1rem] text-[1rem] text-white">
@@ -122,7 +122,7 @@ function Friend() {
 
           <div className="w-1/3 h-[1080px] bg-bkg-purple flex-shrink-0">
             <div className="text-white mt-[2.19rem] text-center text-[1.25rem] font-bold">
-              Suggested Activities to do with Name
+              Suggested Activities to do with {friendData.name}
             </div>
 
             <div className="grid gap-[3.5rem] justify-center mt-[2.5rem]">
