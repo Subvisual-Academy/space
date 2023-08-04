@@ -1,41 +1,47 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { createHashRouter, RouterProvider } from "react-router-dom";
+import {
+  HashRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Home from "./pages/home";
 import Login from "./pages/login";
 import Question from "./pages/question";
 import Friend from "./pages/friend";
 
-const router = createHashRouter([
-  {
-    path: "/",
-    element: <App />,
-  },
-  {
-    path: "home",
-    element: <Home />,
-  },
-  {
-    path: "question",
-    element: <Question />,
-  },
-  {
-    path: "friend",
-    element: <Friend />,
-  },
-  {
-    path: "login",
-    element: <Login />,
-  },
-]);
+function MainRouter() {
+  const isAuthenticated = !!localStorage.getItem("token");
+
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<App />} />
+        {isAuthenticated ? (
+          <>
+            <Route path="/home" element={<Home />} />
+            <Route path="/question" element={<Question />} />
+            <Route path="/friend" element={<Friend />} />
+          </>
+        ) : (
+          <>
+            <Route path="/login" element={<Login />} />
+            <Route path="/*" element={<Navigate to="/login" />} />
+          </>
+        )}
+      </Routes>
+    </Router>
+  );
+}
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <MainRouter />
   </React.StrictMode>
 );
 
