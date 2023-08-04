@@ -50,7 +50,7 @@ function Login() {
             id="email"
             name="email"
             type="text"
-            className="bg-white rounded-md w-[422px] h-[38px] hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login placeholder:text-gray p-2"
+            className="bg-white text-sm rounded-md w-[422px] h-[38px] hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login placeholder:text-gray p-2"
             placeholder="you@example.com"
           />
 
@@ -59,7 +59,7 @@ function Login() {
             id="password"
             name="password"
             type="password"
-            className="bg-white rounded-md w-[422px] h-[38px] hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login placeholder:text-gray p-2"
+            className="bg-white text-sm rounded-md w-[422px] h-[38px] hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login placeholder:text-gray p-2"
             placeholder="your password"
           />
 
