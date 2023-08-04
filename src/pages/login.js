@@ -21,6 +21,7 @@ function Login() {
         localStorage.setItem("current", response["user"]);
       });
       navigate("/home");
+      navigate(0);
     } else {
       alert("E-mail or Password doesn't match!");
     }
