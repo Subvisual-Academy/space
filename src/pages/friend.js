@@ -49,27 +49,27 @@ function Friend() {
         <div className="flex">
           {notPaired ? (
             <div className="w-2/3 h-full">
-            <div className="ml-32">
-              <div className="text-white mt-9 text-5xl font-bold">
-                Vacation week!
-              </div>
+              <div className="ml-32">
+                <div className="text-white mt-9 text-5xl font-bold">
+                  Vacation week!
+                </div>
 
-              <div className="w-7/12 mt-6 text-base text-white">
-                Well, there ain’t one week like the other, right? 
-                <br />
-                <br /> This time you haven’t got anyone, no worries. Maybe,
-                it’s just a sign from the Universe to have some me-time, get a
-                nice drink and devote 15 min to yourself. Don’t forget to
-                answer the question of the week and get back next week!{" "}
-              </div>
+                <div className="w-7/12 mt-6 text-base text-white">
+                  Well, there ain’t one week like the other, right? 
+                  <br />
+                  <br /> This time you haven’t got anyone, no worries. Maybe,
+                  it’s just a sign from the Universe to have some me-time, get a
+                  nice drink and devote 15 min to yourself. Don’t forget to
+                  answer the question of the week and get back next week!{" "}
+                </div>
 
-              <img
-                className="mt-8 h-2/3 relative z-10"
-                src={AstronautChilling}
-                alt="AstronautChilling"
-              />
+                <img
+                  className="mt-8 h-2/3 relative z-10"
+                  src={AstronautChilling}
+                  alt="AstronautChilling"
+                />
+              </div>
             </div>
-          </div> 
           ) : (
             <div>
               <div>
@@ -92,10 +92,7 @@ function Friend() {
 
                 <div className="flex">
                   <div className="w-5/12 ml-18 h-3/4">
-                    <img
-                      src={AstronautPointing}
-                      alt="AstronautPointing"
-                    />
+                    <img src={AstronautPointing} alt="AstronautPointing" />
                   </div>
 
                   <div className="w-1/2 items-center mt-36">
@@ -127,7 +124,7 @@ function Friend() {
                   </div>
                 </div>
               </div>
-          </div>
+            </div>
           )}
 
           <div className="w-1/3 h-1/1 bg-bkg-purple flex-shrink-0">
