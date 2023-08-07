@@ -17,7 +17,7 @@ import NavBar from "../components/navBar";
 import { GET } from "../utils/fetch";
 import { useState } from "react";
 
-const current_user_id = localStorage.getItem("current");
+const current_user_id = 7; //localStorage.getItem("current");
 
 const getFriend = async () => {
   var response = await GET("weekly_friends/" + current_user_id);
@@ -131,7 +131,7 @@ function Friend() {
 
           <div className="w-1/3 h-[1080px] bg-bkg-purple flex-shrink-0">
             {notPaired ? (
-              <div className="text-white mt-[2.19rem] text-center text-[1.25rem] font-bold"> 
+              <div className="text-white mt-[2.19rem] text-center text-[1.25rem] font-bold">
                 Suggested Activities for next week
               </div>
             ) : (
@@ -139,7 +139,7 @@ function Friend() {
                 Suggested Activities to do with {friendData.name}
               </div>
             )}
-              
+
             <div className="grid gap-[3.5rem] justify-center mt-[2.5rem]">
               <Link to="https://skribbl.io">
                 <button
