@@ -31,6 +31,7 @@ function App() {
 
           localStorage.setItem("token", tokenRes);
           navigate("/home");
+          navigate(0);
         } catch (error) {
           alert(error.message);
         }
