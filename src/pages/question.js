@@ -5,7 +5,7 @@ import Enter from "../assets/Enter_icon.svg";
 import Ok from "../assets/okkhand.png";
 import { GET, POST } from "../utils/fetch";
 import Astronaut from "../assets/sadAstronaut.png";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router-dom";
 
 const curr = new Date();
 
@@ -114,7 +114,8 @@ function Question() {
                   <textarea
                     type="text"
                     name="answer"
-                    className="no-scrollbar peer block w-2/4 border-0 bg-gray-50 py-1.5 pl-3 text-gray-900 focus:ring-0 sm:text-sm sm:leading-6 mt-12 placeholder:text-base"
+                    rows="4"
+                    className="no-scrollbar mr-1 rounded-md peer block w-8/12 text-gray-900 border-0 shadow-sm bg-gray-50 py-1.5 pl-3 text-gray-900 focus:ring-cerulean ring-1 ring-inset ring-cerulean focus:ring-inset sm:text-sm sm:leading-6 mt-12 placeholder:text-base placeholder:text-gray-400"
                     placeholder="Type your answer here"
                   />
                   <div
@@ -143,6 +144,14 @@ function Question() {
                 </div>
               </form>
             )}
+            <Link to="/previous">
+              <button
+                type="button"
+                class="rounded-md lg:mt-40 mt-80 bg-transparent px-3.5 py-2.5 text-sm border-cerulean border-2 font-semibold text-white shadow-sm bg-border focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cerulean"
+              >
+                Previous questions
+              </button>
+            </Link>
           </div>
         </div>
         <div className="bg-blackcurrant flex flex-col grow items-center lg:max-h-screen w-full h-full">
@@ -161,7 +170,7 @@ function Question() {
             ) : (
               answers.map((item) => (
                 <div
-                  className="bg-dove-gray p-4 flex flex-col rounded-3xl h-auto w-72"
+                  className="bg-dark-cyan p-4 flex flex-col rounded-3xl h-auto w-72"
                   key={item.body}
                 >
                   <div className="text-xl text-center">{item.email}</div>
