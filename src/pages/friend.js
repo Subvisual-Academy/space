@@ -17,7 +17,7 @@ import NavBar from "../components/navBar";
 import { GET } from "../utils/fetch";
 import { useState } from "react";
 
-const current_user_id = 8; //localStorage.getItem("current");
+const current_user_id = localStorage.getItem("current");
 
 const getFriend = async () => {
   var response = await GET("weekly_friends/" + current_user_id);
