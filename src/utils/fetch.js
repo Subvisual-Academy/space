@@ -16,6 +16,10 @@ export async function POST(url, body) {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   });
+  if (!response.ok) {
+    const errorMessage = await response.text();
+    throw new Error(errorMessage);
+  }
   const json = await response.json();
   return json;
 }
