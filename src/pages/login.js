@@ -33,7 +33,7 @@ function Login() {
 
   return (
     <div className="flex bg-cod-gray">
-      <div className="flex-col ml-32 w-1/2 mt-80">
+      <div className="flex-col ml-32 w-1/2 h-full mt-44">
         <img className="w-64 h-14" src={Logo} alt="Logo" />
 
         <div className="text-4xl font-bold text-white mt-6">
@@ -50,7 +50,7 @@ function Login() {
             id="email"
             name="email"
             type="text"
-            className="bg-white text-sm rounded-md w-[422px] h-[38px] hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login placeholder:text-gray p-2"
+            className="bg-white text-sm rounded-md w-3/4 h-10 hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login placeholder:text-gray p-2"
             placeholder="you@example.com"
           />
 
@@ -59,37 +59,43 @@ function Login() {
             id="password"
             name="password"
             type="password"
-            className="bg-white text-sm rounded-md w-[422px] h-[38px] hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login placeholder:text-gray p-2"
+            className="bg-white text-sm rounded-md w-3/4 h-10 hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login placeholder:text-gray p-2"
             placeholder="your password"
           />
 
           <button
             type="submit"
-            className="bg-blue-login rounded-md w-[422px] h-[38px] text-white text-base font-bold mt-10 hover:bg-dark-cyan focus:border-4 focus:border-white"
+            className="bg-blue-login rounded-md w-3/4 h-10 text-white text-base font-bold mt-10 hover:bg-dark-cyan focus:border-4 focus:border-white"
           >
             Login
           </button>
 
-          <div className="text-light-gray text-base mt-8 ml-24">
+          <div className="text-light-gray text-base mt-8 ml-40">
             Don't have an account?{" "}
-            <a className="underline text-blue-login" href="/space">
+            <a className="text-blue-login" href="/space">
               Register
             </a>
           </div>
+
+          <a className="text-blue-login text-base mt-2 ml-48" href="/password">
+            Forgot your password?
+          </a>
         </form>
       </div>
 
-      <div className="flex-shrink-0 w-1/2 hidden md:block relative">
+      <div className="w-1/2" style={{ backgroundImage: `url(${Background})`, backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundSize: "100% 100%"}}> 
         <img
-          className="h-full w-full"
-          src={Background}
-          alt="Universe Background"
+          className="mt-96 ml-40"
+          src={Logo}
+          alt="Space Center Logo"
         />
+        {/*
         <img
           className="absolute top-[calc(50%-theme(space.96)/4)] left-[calc(50%-theme(space.72)/1.25)]"
           src={Logo}
           alt="Space Center Logo"
         />
+  */}
       </div>
     </div>
   );
