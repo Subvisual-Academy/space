@@ -13,19 +13,19 @@ function Login() {
     const pass = data.get("password");
 
     if (mail && pass) {
-      try {
-        const response = await POST(`auth/login`, {
-          email: mail,
-          password: pass,
+      POST(`auth/login`, {
+        email: mail,
+        password: pass,
+      })
+        .then((response) => {
+          localStorage.setItem("token", response["token"]);
+          localStorage.setItem("current", response["user"]);
+          navigate("/home");
+        })
+        .catch((error) => {
+          console.error("Error occurred during login:", error.message);
+          alert("Invalid credentials. Please, try again.");
         });
-
-        localStorage.setItem("token", response["token"]);
-        localStorage.setItem("current", response["user"]);
-        navigate("/home");
-      } catch (error) {
-        console.error("Error occured during login:", error.message);
-        alert("Invalid credentials. Please, try again.");
-      }
     } else {
       alert("Please enter both email and password.");
     }
