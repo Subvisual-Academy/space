@@ -59,13 +59,13 @@ function NavBar() {
 
         <div className="flex items-center ml-auto mr-8">
           <NavLink to="/profile">
-            <button className="mr-[1rem] w-[2rem] h-[2rem] rounded-full hover:ring hover: ring-opacity hover:ring-highlighted-button-blue">
+            <button className="mr-4 w-8 h-8 rounded-full hover:ring hover: ring-opacity hover:ring-highlighted-button-blue">
               <img src={Profile} alt="Profile" />
             </button>
           </NavLink>
 
           <NavLink to="/settings">
-            <button className="w-[1.5rem] h-[1.5rem] rounded-full hover:ring hover: ring-opacity hover:ring-highlighted-button-blue">
+            <button className="w-6 h-6 rounded-full hover:ring hover: ring-opacity hover:ring-highlighted-button-blue">
               <img src={Settings} alt="Settings Button" />
             </button>
           </NavLink>
