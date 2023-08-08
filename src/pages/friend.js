@@ -14,6 +14,7 @@ import TriviaGames from "../assets/trivia_games.png";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import NavBar from "../components/navBar";
+import ActivityCard from "../components/activity";
 import { GET } from "../utils/fetch";
 import { useState } from "react";
 
@@ -139,111 +140,47 @@ function Friend() {
             )}
 
             <div className="grid gap-14 justify-center mt-10">
-              <Link to="https://skribbl.io">
-                <button
-                  className="w-60 h-14 rounded-full text-white bg-cover bg-center focus:border-4 focus:border-white"
-                  style={{ backgroundImage: `url(${Skriblio})` }}
-                  onMouseOver={(e) => {
-                    e.target.innerText =
-                      "Draw and guess what your friends are drawing";
-                    e.target.style.fontSize = "text-base";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.innerText = "Skribl.io";
-                    e.target.style.fontSize = "text-xl";
-                  }}
-                >
-                  Skribl.io
-                </button>
-              </Link>
+              <ActivityCard
+                url="https://skribbl.io"
+                image={`url(${Skriblio})`}
+                defaultText="Skribl.io"
+                hoverText="Draw and guess what your friends are drawing"
+              />
 
-              <Link to="https://playingcards.io/">
-                <button
-                  class="w-60 h-14 rounded-full text-white bg-cover bg-center focus:border-4 focus:border-white"
-                  style={{ backgroundImage: `url(${CardGames})` }}
-                  onMouseOver={(e) => {
-                    e.target.innerText = "Play from a selection of card games!";
-                    e.target.style.fontSize = "text-base";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.innerText = "Cards Games";
-                    e.target.style.fontSize = "text-xl";
-                  }}
-                >
-                  Cards Games
-                </button>
-              </Link>
+              <ActivityCard
+                url="https://playingcards.io/"
+                image={`url(${CardGames})`}
+                defaultText="Card Games"
+                hoverText="Play from a selection of card games!"
+              />
 
-              <Link to="http://en.battleship-game.org/">
-                <button
-                  class="w-60 h-14 rounded-full text-white bg-cover bg-center focus:border-4 focus:border-white"
-                  style={{ backgroundImage: `url(${Battleship})` }}
-                  onMouseOver={(e) => {
-                    e.target.innerText =
-                      "Play the online version of the classic battleship game";
-                    e.target.style.fontSize = "text-base";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.innerText = "Battleship";
-                    e.target.style.fontSize = "text-xl";
-                  }}
-                >
-                  Battleship
-                </button>
-              </Link>
+              <ActivityCard
+                url="http://en.battleship-game.org/"
+                image={`url(${Battleship})`}
+                defaultText="Battleship"
+                hoverText="Play the online version of the classic battleship game"
+              />
 
-              <Link to="https://toughlovearena.com/">
-                <button
-                  class="w-60 h-14 rounded-full text-white bg-cover bg-center focus:border-4 focus:border-white"
-                  style={{ backgroundImage: `url(${OnlineMiniGames})` }}
-                  onMouseOver={(e) => {
-                    e.target.innerText =
-                      "Play a fun mini-game with your friend!";
-                    e.target.style.fontSize = "text-base";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.innerText = "Online mini-games";
-                    e.target.style.fontSize = "text-xl";
-                  }}
-                >
-                  Online mini-games
-                </button>
-              </Link>
+              <ActivityCard
+                url="https://toughlovearena.com/"
+                image={`url(${OnlineMiniGames})`}
+                defaultText="Online mini-games"
+                hoverText="Play a fun mini-game with your friend!"
+              />
 
-              <Link to="https://www.chess.com">
-                <button
-                  class="w-60 h-14 rounded-full text-white bg-cover bg-center focus:border-4 focus:border-white"
-                  style={{ backgroundImage: `url(${Chess})` }}
-                  onMouseOver={(e) => {
-                    e.target.innerText =
-                      "Play the classic chess game with your friend";
-                    e.target.style.fontSize = "text-base";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.innerText = "Chess";
-                    e.target.style.fontSize = "text-xl";
-                  }}
-                >
-                  Chess
-                </button>
-              </Link>
+              <ActivityCard
+                url="https://www.chess.com"
+                image={`url(${Chess})`}
+                defaultText="Chess"
+                hoverText="Play the classic chess game with your friend"
+              />
 
-              <Link to="https://www.trivianerd.com/">
-                <button
-                  class="w-60 h-14 rounded-full text-white bg-cover bg-center focus:border-4 focus:border-white"
-                  style={{ backgroundImage: `url(${TriviaGames})` }}
-                  onMouseOver={(e) => {
-                    e.target.innerText = "Answer questions about any topic!";
-                    e.target.style.fontSize = "text-base";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.innerText = "Trivia Games";
-                    e.target.style.fontSize = "text-xl";
-                  }}
-                >
-                  Trivia Games
-                </button>
-              </Link>
+              <ActivityCard
+                url="https://www.trivianerd.com/"
+                image={`url(${TriviaGames})`}
+                defaultText="Trivia Games"
+                hoverText="Answer questions about any topic!"
+              />
             </div>
           </div>
         </div>
