@@ -72,7 +72,7 @@ function App() {
                 id="email"
                 type="email"
                 name="email"
-                className="block w-full pl-3 rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cerulean sm:text-sm sm:leading-6"
+                className="block w-full pl-3 rounded-md focus:border-cerulean border-2 outline-none border-transparent py-2 text-gray-900 shadow-sm sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -89,7 +89,7 @@ function App() {
                 id="name"
                 type="text"
                 name="name"
-                className="block w-full pl-3 rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cerulean sm:text-sm sm:leading-6"
+                className="block w-full pl-3 rounded-md focus:border-cerulean border-2 outline-none border-transparent py-2 text-gray-900 shadow-sm sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -108,7 +108,7 @@ function App() {
                 type="password"
                 pattern=".{6,}"
                 title="Password needs at least 6 characters"
-                className="block w-full pl-3 rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cerulean sm:text-sm sm:leading-6"
+                className="block w-full pl-3 rounded-md focus:border-cerulean border-2 outline-none border-transparent py-2 text-gray-900 shadow-sm sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -125,7 +125,7 @@ function App() {
                 id="confirmPassword"
                 name="confirmPassword"
                 type="password"
-                className="block w-full pl-3 rounded-md focus:ring-2 focus:ring-inset py-2.5 text-gray-900 shadow-sm sm:text-sm sm:leading-6"
+                className="block w-full pl-3 rounded-md focus:border-cerulean border-2 outline-none border-transparent py-2 text-gray-900 shadow-sm sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -145,7 +145,7 @@ function App() {
       </div>
       <div className="hidden lg:block relative h-full">
         <img
-          className="lg:h-full basis-2/5 object-cover"
+          className="lg:h-full  basis-2/5 object-cover"
           src={Background}
           alt="A background representing the Universe"
         />

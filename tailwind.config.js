@@ -4,8 +4,10 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        friend: "url('assets/Friend_of_the_week.png')",
-        question: "url('assets/Question_of_the_week.png')",
+        friend:
+          "linear-gradient(to right, rgba(26,26,26,0.5), rgba(26,26,26,0.5)), url('assets/Friend_of_the_week.png')",
+        question:
+          "linear-gradient(to right, rgba(26,26,26,0.5), rgba(26,26,26,0.5)), url('assets/Question_of_the_week.png')",
         "galaxy-pattern": "url('assets/galaxy.png')",
         astronaut: "url('assets/sadAstronaut.png')",
         previous: "url('assets/previous_background.png')",
