@@ -34,11 +34,9 @@ function PreviousQuestions() {
       <div className="bg-previous min-h-screen bg-cover">
         <div className="flex ml-32 text-xl">
           <h1 className="text-cerulean hover:underline mt-8">
-            {" "}
             <a href="#/question">Weekly Question</a>
           </h1>
           <h1 className="text-white no-underline mt-8">
-            {" "}
             &nbsp;&gt; Previous Questions
           </h1>
         </div>

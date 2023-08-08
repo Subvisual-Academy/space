@@ -18,7 +18,7 @@ function Home() {
       <div className="ml-32 mt-32 flex gap-5 h-80 flex-shrink max-sm:flex-col mr-32">
         <Link to="/question" className="flex-1">
           <button className="w-full rounded-3xl bg-question text-white p-9 h-full bg-cover bg-center">
-            <h1 className="text-xl">WEEKLY QUESTION</h1>
+            <h1 className="text-xl">{"question of the week".toUpperCase()}</h1>
             <div className="text-base font-IBMPlexSansRegular">
               Get to know your community by sharing a glimpse of your
               <br /> life and checking the answers of other members of the
@@ -28,7 +28,7 @@ function Home() {
         </Link>
         <Link to="/friend" className="flex-1">
           <button className="w-full rounded-3xl bg-friend text-white p-10 h-full bg-cover bg-center ">
-            <h1 className="text-xl">WEEKLY FRIEND</h1>
+            <h1 className="text-xl">{"friend of the week".toUpperCase()}</h1>
             <div className="text-base font-IBMPlexSansRegular">
               Get in touch with a member of the Subvisual Universe
               <br />
