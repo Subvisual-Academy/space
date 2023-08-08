@@ -15,8 +15,6 @@ module.exports = {
       fontFamily: {
         sans: ["IBM Plex Sans Medium", "sans-serif"],
         IBMPlexSansRegular: ["IBM Plex Sans Regular"],
-        audioWide: ["AudioWide"],
-        openSans: ["OpenSans"],
       },
 
       colors: {

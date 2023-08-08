@@ -3,23 +3,6 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "OpenSans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("OpenSans"), local("OpenSans"),
-    url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff)
-      format("woff");
-}
-
-@font-face {
-  font-family: "AudioWide";
-  font-style: normal;
-  font-weight: 400;
-  src: url("./fonts/Audiowide-Regular.woff2") format("woff2"),
-    url("./fonts/Audiowide-Regular.woff") format("woff");
-}
-
-@font-face {
   font-family: "IBM Plex Sans Medium";
   font-style: normal;
   font-weight: 500;
