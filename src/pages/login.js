@@ -50,7 +50,7 @@ function Login() {
             id="email"
             name="email"
             type="text"
-            className="bg-white text-sm rounded-md w-3/4 h-10 hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login placeholder:text-gray p-2"
+            className="bg-white text-base rounded-md w-3/4 h-10 hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login placeholder:text-gray p-2"
             placeholder="you@example.com"
           />
 
@@ -59,7 +59,7 @@ function Login() {
             id="password"
             name="password"
             type="password"
-            className="bg-white text-sm rounded-md w-3/4 h-10 hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login placeholder:text-gray p-2"
+            className="bg-white text-base rounded-md w-3/4 h-10 hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login placeholder:text-gray p-2"
             placeholder="your password"
           />
 
@@ -83,12 +83,16 @@ function Login() {
         </form>
       </div>
 
-      <div className="w-1/2" style={{ backgroundImage: `url(${Background})`, backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundSize: "100% 100%"}}> 
-        <img
-          className="mt-96 ml-40"
-          src={Logo}
-          alt="Space Center Logo"
-        />
+      <div
+        className="w-1/2"
+        style={{
+          backgroundImage: `url(${Background})`,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "100% 100%",
+        }}
+      >
+        <img className="mt-96 ml-40" src={Logo} alt="Space Center Logo" />
         {/*
         <img
           className="absolute top-[calc(50%-theme(space.96)/4)] left-[calc(50%-theme(space.72)/1.25)]"
