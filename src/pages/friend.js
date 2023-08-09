@@ -29,14 +29,15 @@ function Friend() {
   const [notPaired, setNotPaired] = useState(false);
 
   useEffect(() => {
-    getFriend().then((response) => setFriendData(response));
+    getFriend()
+      .then((response) => {
+        if (response.error) {
+          setNotPaired(true); 
+        } else {
+          setFriendData(response);
+        }
+      });
   }, [notPaired]);
-
-  useEffect(() => {
-    if (friendData.id === parseInt(current_user_id)) {
-      setNotPaired(true);
-    }
-  }, [notPaired, friendData]);
 
   return (
     <div>
