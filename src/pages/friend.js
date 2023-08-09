@@ -11,7 +11,6 @@ import OnlineMiniGames from "../assets/online_mini_games.png";
 import Chess from "../assets/chess.png";
 import TriviaGames from "../assets/trivia_games.png";
 
-import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import NavBar from "../components/navBar";
 import ActivityCard from "../components/activity";
