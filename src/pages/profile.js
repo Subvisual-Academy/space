@@ -1,7 +1,12 @@
 import Avatar from "../assets/avatar-profile.png";
 import NavBar from "../components/navBar";
 import Pencil from "../assets/pencil-icon.png";
+import Suitcase from "../assets/role_icon.png";
+import Pin from "../assets/location_icon.png";
+import Discord from "../assets/discord_icon.png";
+import Envelope from "../assets/email_icon.png";
 import List from "../components/list";
+import Info from "../components/info";
 import { GET } from "../utils/fetch";
 import { useState, useEffect } from "react";
 
@@ -90,35 +95,30 @@ function Profile() {
       <NavBar />
       <div className="flex">
         <div className="flex-none w-1/3">
+
           <div className="flex-col ml-32 mt-16">
             <img
-              className="h-[243px] w-[243px]"
+              className="h-60 w-60"
               src={Avatar}
               alt="AvatarProfile"
             />
 
-            <div className="text-white text-xl mt-[34px]">
-              {" "}
-              {userData.company}{" "}
+            <div className="mt-8 mb-8 text-white text-3xl">
+              Name
             </div>
 
-            <div className="text-white text-xl mt-4"> {userData.role} </div>
+            <Info info={userData.company} icon={Pencil} alt={"Pencil"} />
+            <Info info={userData.role} icon={Suitcase} alt={"Role icon"} />
+            <Info info={userData.base_office} icon={Pin} alt={"Location icon"} />
+            <Info info={userData.discord} icon={Discord} alt={"Discord icon"} />
+            <Info info={userData.email} icon={Envelope} alt={"Email icon"} />
 
-            <div className="text-white text-xl mt-4"> {userData.email} </div>
-
-            <div className="text-white text-xl mt-4"> {userData.discord} </div>
-
-            <div className="text-white text-xl mt-4">
-              {" "}
-              {userData.base_office}{" "}
-            </div>
-
-            <div className="text-white text-base mt-8 w-[245px]">
+            <div className="text-white text-base mt-8 w-60">
               {" "}
               {userData.bio}{" "}
             </div>
 
-            <button className="mt-10 w-[157px] h-[36px] bg-cerulean text-white text-base rounded-[6px]">
+            <button className="mt-10 w-40 h-9 bg-cerulean text-white text-base rounded-[6px]">
               Edit Profile
             </button>
           </div>
