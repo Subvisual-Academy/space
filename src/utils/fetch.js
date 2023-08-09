@@ -7,16 +7,14 @@ export async function GET(url) {
   return json;
 }
 
-const DEFAULT_HEADERS = {
-  "Content-type": "application/json; charset=UTF-8",
-  Authorization: `Bearer ${localStorage.getItem("token")}`,
-};
-
-export async function POST(url, body, headers = DEFAULT_HEADERS) {
+export async function POST(url, body) {
   const response = await fetch(process.env.REACT_APP_API_URL + url, {
     method: "POST",
-    body: body,
-    headers: headers,
+    body: JSON.stringify(body),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
   });
   if (!response.ok) {
     const errorMessage = await response.text();

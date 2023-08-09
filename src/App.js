@@ -17,9 +17,15 @@ function App() {
 
     if (pass === confirmPassword) {
       try {
-        const id = await POST(`users`, formData, {}).then(
-          (response) => response["id"]
-        );
+        const response = await fetch(process.env.REACT_APP_API_URL + `users`, {
+          method: "POST",
+          body: formData,
+        });
+        if (!response.ok) {
+          const errorMessage = await response.text();
+          throw new Error(errorMessage);
+        }
+        const id = await response.json().then((response) => response["id"]);
 
         try {
           const tokenRes = await POST(`auth/login`, {
