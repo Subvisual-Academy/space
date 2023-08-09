@@ -39,7 +39,7 @@ function Friend() {
   }, [notPaired, friendData]);
 
   return (
-    <div>
+    <div className="font-medium">
       <div className="absolute inset-0 z-0">
         <img
           className="relative z-10 h-1/1 w-full object-cover"

@@ -46,7 +46,7 @@ function App() {
   };
 
   return (
-    <div className="flex items-start flex-auto bg-cod-gray">
+    <div className="flex items-start flex-auto bg-cod-gray font-medium">
       <div className="p-8 flex flex-col grow items-start lg:max-h-screen ml-32 mt-2">
         <img
           className="max-h-screen basis-2/5 object-cover"
@@ -62,7 +62,7 @@ function App() {
           <div>
             <label
               htmlFor="email"
-              className="block text-base font-medium leading-6 text-white font-IBMPlexSansRegular"
+              className="block text-base leading-6 text-white font-normal"
             >
               Email address
             </label>
@@ -79,7 +79,7 @@ function App() {
           <div>
             <label
               htmlFor="name"
-              className="block text-base font-medium leading-6 text-white font-IBMPlexSansRegular"
+              className="block text-base leading-6 text-white font-normal"
             >
               Name
             </label>
@@ -96,7 +96,7 @@ function App() {
           <div>
             <label
               htmlFor="password"
-              className="block text-base font-medium leading-6 text-white font-IBMPlexSansRegular"
+              className="block text-base leading-6 text-white font-normal"
             >
               Password
             </label>
@@ -115,7 +115,7 @@ function App() {
           <div>
             <label
               htmlFor="confirmPassword"
-              className="block text-base font-medium leading-6 text-white font-IBMPlexSansRegular"
+              className="block text-base leading-6 text-white font-normal"
             >
               Confirm Password
             </label>

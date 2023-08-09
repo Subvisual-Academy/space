@@ -29,7 +29,7 @@ function PreviousQuestions() {
   };
 
   return (
-    <div>
+    <div className="font-medium">
       <NavBar />
       <div className="bg-previous min-h-screen bg-cover">
         <div className="flex ml-32 text-xl">
@@ -48,10 +48,10 @@ function PreviousQuestions() {
           >
             <div className="border-b-2 border-white px-2 pb-8">
               <div className="flex gap-6">
-                <h1 className="text-white w-32 pb-8">
+                <h1 className="text-white w-32 pb-8 font-normal">
                   {questionItem.formatted_week}
                 </h1>
-                <h1 className="text-white w-9">
+                <h1 className="text-white w-9 font-normal">
                   {new Date(questionItem.week).getFullYear()}
                 </h1>
                 <h1 className="text-white text-xl w-full">
@@ -74,7 +74,7 @@ function PreviousQuestions() {
                       key={answer.body}
                     >
                       <div className="text-xl ml-14">{answer.user.email}</div>
-                      <div className="text-xs ml-14">
+                      <div className="text-xs ml-14 font-normal">
                         {new Date(answer.created_at)
                           .toLocaleString(undefined, options)
                           .toUpperCase() +
@@ -82,7 +82,9 @@ function PreviousQuestions() {
                           new Date(answer.created_at).getUTCDate()}
                       </div>
 
-                      <div className="text-base pt-4">{answer.body}</div>
+                      <div className="text-base pt-4 font-normal">
+                        {answer.body}
+                      </div>
                     </div>
                   ))}
               </div>

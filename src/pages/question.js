@@ -88,14 +88,14 @@ function Question() {
   return (
     <div>
       <NavBar />
-      <div className="bg-cod-gray absolute min-h-screen w-full flex flex-shrink items-start flex-auto">
+      <div className="bg-cod-gray absolute min-h-screen w-full flex flex-shrink items-start flex-auto font-medium">
         <div className="bg-cover bg-no-repeat bg-galaxy-pattern basis-2/3 min-h-screen">
           <div className="ml-32">
             <h1 className="text-white text-xl mt-8">Weekly Question</h1>
             <h1 className="text-white mt-20 text-3xl">{content}</h1>
             {answered ? (
               <div className="text-white mt-20 text-xl mr-24">
-                <h1 className="font-IBMPlexSansRegular">
+                <h1 className="font-normal">
                   Cool, thank you for sharing. Now you can go check the answers
                   of other members of the Subvisual Universe!
                 </h1>
@@ -135,7 +135,7 @@ function Question() {
                 <div className="flex gap-8 mt-10">
                   <button
                     type="submit"
-                    className="inline-flex font-IBMPlexSansRegular items-center gap-x-2 rounded-md bg-cerulean py-2 px-6 text-base text-white shadow-sm hover:bg-dark-cyan focus:border-white focus:border-2"
+                    className="inline-flex font-normal items-center gap-x-2 rounded-md bg-cerulean py-2 px-6 text-base text-white shadow-sm hover:bg-dark-cyan focus:border-white focus:border-2"
                   >
                     Answer
                     <img
@@ -185,16 +185,14 @@ function Question() {
                   key={item.body}
                 >
                   <div className="text-xl text-center">{item.email}</div>
-                  <div className="text-xs text-center font-IBMPlexSansRegular">
+                  <div className="text-xs text-center font-normal">
                     {item.time
                       .toLocaleString(undefined, options)
                       .toUpperCase() +
                       " " +
                       item.time.getUTCDate()}
                   </div>
-                  <div className="text-base pt-4 font-IBMPlexSansRegular">
-                    {item.body}
-                  </div>
+                  <div className="text-base pt-4 font-normal">{item.body}</div>
                 </div>
               ))
             )}

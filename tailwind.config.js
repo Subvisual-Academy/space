@@ -13,8 +13,7 @@ module.exports = {
         previous: "url('assets/previous_background.png')",
       },
       fontFamily: {
-        sans: ["IBM Plex Sans Medium", "sans-serif"],
-        IBMPlexSansRegular: ["IBM Plex Sans Regular"],
+        sans: ["IBM Plex Sans"],
       },
 
       colors: {

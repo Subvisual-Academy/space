@@ -28,7 +28,7 @@ function Login() {
   };
 
   return (
-    <div className="flex bg-cod-gray">
+    <div className="flex bg-cod-gray font-medium">
       <div className="flex-col ml-32 w-1/2 mt-80">
         <img className="w-64 h-14" src={Logo} alt="Logo" />
 
@@ -39,32 +39,30 @@ function Login() {
           className="flex flex-col mt-8"
           onSubmit={handleSubmit}
         >
-          <div className="text-white text-base"> Email address </div>
+          <div className="text-white text-base font-normal">Email address</div>
           <input
             id="email"
             name="email"
             type="text"
             className="bg-white rounded-md w-[422px] h-[38px] hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login placeholder:text-gray"
-            placeholder="you@example.com"
           />
 
-          <div className="text-white text-base mt-6"> Password </div>
+          <div className="text-white text-base mt-6 font-normal">Password</div>
           <input
             id="password"
             name="password"
             type="password"
             className="bg-white rounded-md w-[422px] h-[38px] hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login placeholder:text-gray"
-            placeholder="your password"
           />
 
           <button
             type="submit"
-            className="bg-blue-login rounded-md w-[422px] h-[38px] text-white text-base font-bold mt-10 hover:bg-dark-cyan focus:border-4 focus:border-white"
+            className="bg-blue-login rounded-md w-[422px] h-[38px] text-white text-base font-normal mt-10 hover:bg-dark-cyan focus:border-4 focus:border-white"
           >
             Login
           </button>
 
-          <div className="text-light-gray text-base mt-8 ml-24">
+          <div className="text-light-gray text-base mt-8 ml-24 font-normal">
             Don't have an account?{" "}
             <a className="underline text-blue-login" href="/space">
               Register
