@@ -8,23 +8,16 @@ function App() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.target);
-    const mail = data.get("email");
-    const pass = data.get("password");
-    const name = data.get("name");
-    const image_data = data.get("file");
-    const confirmPassword = data.get("confirmPassword");
+    const formData = new FormData(event.target);
+    formData.append("company_id", 1);
 
-    const formData = new FormData();
-    formData.append("user[profile_pic]", image_data);
-    formData.append("user[name]", name);
-    formData.append("user[email]", mail);
-    formData.append("user[password]", pass);
-    formData.append("user[company_id]", 1);
+    const mail = formData.get("email");
+    const pass = formData.get("password");
+    const confirmPassword = formData.get("confirmPassword");
 
     if (pass === confirmPassword) {
       try {
-        const id = await POST(`users`, formData).then(
+        const id = await POST(`users`, formData, {}).then(
           (response) => response["id"]
         );
 
@@ -135,7 +128,12 @@ function App() {
             </div>
           </div>
           <div className="mt-2 text-white">
-            <input id="file" name="file" type="file" accept="image/*" />
+            <input
+              id="profile_pic"
+              name="profile_pic"
+              type="file"
+              accept="image/*"
+            />
           </div>
           <button
             type="submit"
