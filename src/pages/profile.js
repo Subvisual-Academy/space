@@ -1,83 +1,164 @@
 import Avatar from "../assets/avatar-profile.png";
 import NavBar from "../components/navBar";
-import Pencil from "../assets/pencil-icon.png"
+import Pencil from "../assets/pencil-icon.png";
+import { GET } from "../utils/fetch";
+import { useState, useEffect } from "react";
 
-const hobbies = [
-    'Frontend dev','Java','Web Dev','Python',
-    'Backend dev','React','Ruby','CSS','HTML',
-    'JavaScript','TypeScript','Git/Github','Node.js',
-    'Branding','Creative Coding','NextJS','Interface Design',
-    'Graphic Design','Database','Usability testing','Figma',
-    'Blender','Elixir','User research','Phoenix','Adobe Creative Cloud'
-]
+const skills = [
+  "Frontend dev",
+  "Java",
+  "Web Dev",
+  "Python",
+  "Backend dev",
+  "React",
+  "Ruby",
+  "CSS",
+  "HTML",
+  "JavaScript",
+  "TypeScript",
+  "Git/Github",
+  "Node.js",
+  "Branding",
+  "Creative Coding",
+  "NextJS",
+  "Interface Design",
+  "Graphic Design",
+  "Database",
+  "Usability testing",
+  "Figma",
+  "Blender",
+  "Elixir",
+  "User research",
+  "Phoenix",
+  "Adobe Creative Cloud",
+];
 
-function Profile(){
-    return(
-        <div>
-            <NavBar />
-            <div className="flex">
-                <div className="w-2/5 flex flex-col ml-32">
-                    <img
-                        className="mt-16 h-[243px] w-[243px]"
-                        src={Avatar}
-                        alt="AvatarProfile"
-                    />
+const current_user_id = 6; //localStorage.getItem("current");
 
-                    <div className="text-white text-xl mt-[34px]"> Company </div>
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  const options = { month: "short", day: "2-digit" };
+  return date.toLocaleString("en-US", options);
+};
 
-                    <div className="text-white text-xl mt-4">  Role </div>
+const getAnswers = async () => {
+  var response = await GET("users/" + current_user_id + "/answers");
+  return response;
+};
 
-                    <div className="text-white text-xl mt-4">  Email </div>
+const getQuestion = async(question_id) => {
+  var response = await GET("question/" + question_id);
+  return response;
+}
 
-                    <div className="text-white text-xl mt-4">  Discord </div>
+const getUserData = async () => {
+  var response = await GET("users/" + current_user_id);
+  return response;
+};
 
-                    <div className="text-white text-xl mt-4">  Location </div>
+function Profile() {
+  const [answers, setAnswers] = useState([]);
+  const [answersFetched, setAnswersFetched] = useState(false);
+  const [questions, setQuestions] = useState([]);
+  const [questionsFetched, setQuestionsFetched] = useState(false);
+  const [userData, setUserData] = useState({});
 
-                    <div className="text-white text-base mt-8 w-[245px]">  
-                        Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio Bio
-                    </div>
 
-                    <button className="mt-10 w-[157px] h-[36px] bg-cerulean text-white text-base rounded-[6px]">
-                        Edit Profile
-                    </button>
+  useEffect(() => {
+    getAnswers().then((response) => {
+      setAnswers(response);
+      setAnswersFetched(true);
+    });
+  }, []);
 
-                </div>
+  useEffect(() => {
+    getUserData().then((response) => setUserData(response));
+  }, []);
 
-                <div className="mt-16 w-3/5 flex-shrink-0 items-center">
-                    <div className="w-3/5 flex flex-col p-8 bg-lilac rounded-[20px]">
-                        <div className="flex text-white text-xl"> 
-                            Skills 
-                        </div>
+  useEffect(() => {
+    Promise.all(answers.map((answer) => getQuestion(answer.question_id)))
+      .then((questionsData) => {
+        setQuestions(questionsData);
+        setQuestionsFetched(true);
+        console.log(questionsData)
+      });
+  }, [answers]);
 
-                        {/*<div className="flex mr-96 items-center"> 
-                            <div className= "text-white text-base"> Edit </div>
-                            <button>
-                                <img
-                                    className="mr-6"
-                                    src={Pencil}
-                                    alt="Pencil icon"
-                                />
-                            </button>
-    </div>*/}
+  return (
+    <div>
+      <NavBar />
+      <div className="flex">
+        <div className="flex-none w-1/3">
+          <div className= "flex-col ml-32 mt-16">
+            <img
+              className="h-[243px] w-[243px]"
+              src={Avatar}
+              alt="AvatarProfile"
+            />
 
-                        <div className="mt-6">
-                            {hobbies.map((hobby) => (
-                                <div
-                                    key={hobby}
-                                    className="bg-lilac text-white text-base inline-block py-2 px-4 ml-4 mt-4 border-2 border-white rounded-[20px]"
-                                >
-                                    {hobby}
-                                </div>
-                            ))} 
-                        </div>
+            <div className="text-white text-xl mt-[34px]"> {userData.company} </div>
 
-                                
+            <div className="text-white text-xl mt-4"> {userData.role} </div>
 
-                    </div>
-                </div>
+            <div className="text-white text-xl mt-4"> {userData.email} </div>
+
+            <div className="text-white text-xl mt-4"> {userData.discord} </div>
+
+            <div className="text-white text-xl mt-4">
+              {" "}
+              {userData.base_office}{" "}
             </div>
+
+            <div className="text-white text-base mt-8 w-[245px]"> {userData.bio} </div>
+
+            <button className="mt-10 w-[157px] h-[36px] bg-cerulean text-white text-base rounded-[6px]">
+              Edit Profile
+            </button>
+
+          </div>
         </div>
-    );
+
+        <div className="flex-grow">
+          <div className="flex">
+            <div className="flex-none w-4/5">
+              <div className="mt-16 w-full bg-lilac p-8 rounded-[20px] text-5xl"> 
+                <div className="text-white text-xl">Skills</div>
+                  <div className="mt-6 space-x-4">
+                    {skills.map((skill) => (
+                      <div
+                        key={skill}
+                        className="bg-lilac text-white text-base inline-block py-2 px-4 mt-4 border-2 border-white rounded-[20px]"
+                      >
+                        {skill}
+                      </div>
+                    ))}
+                  </div>
+              </div>
+
+              <div className="mt-10 mb-6 text-white text-xl">Weekly Answers</div>
+              
+              <div className="space-y-4">
+                {answersFetched && questionsFetched ? (
+                  answers.map((answer, index) => (
+                    <div key={index}>
+                      <div className="bg-dark-cyan text-white p-4 rounded-[20px]"> 
+                        <p className="text-base"> {answer.question_id} </p>
+                        <p className="text-xs"> {formatDate(answer.updated_at)} </p>
+                        <p className="text-base"> {answer.body} </p>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <div className="text-white">Loading answers...</div>
+                )}
+              </div>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default Profile;

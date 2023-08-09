@@ -8,7 +8,7 @@ import Home from "./pages/home";
 import Login from "./pages/login";
 import Question from "./pages/question";
 import Friend from "./pages/friend";
-import Profile from "./pages/profile"
+import Profile from "./pages/profile";
 
 const router = createHashRouter([
   {
