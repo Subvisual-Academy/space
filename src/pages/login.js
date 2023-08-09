@@ -32,45 +32,40 @@ function Login() {
   };
 
   return (
-    <div className="flex bg-cod-gray">
+    <div className="flex bg-cod-gray font-medium">
       <div className="flex-col ml-32 w-1/2 h-full mt-44">
         <img className="w-64 h-14" src={Logo} alt="Logo" />
 
-        <div className="text-4xl font-bold text-white mt-6">
-          Login to your account
-        </div>
+        <div className="text-4xl text-white mt-6">Login to your account</div>
 
         <form
           name="login"
           className="flex flex-col mt-8"
           onSubmit={handleSubmit}
         >
-          <div className="text-white text-base"> Email address </div>
+          <div className="text-white text-base font-normal">Email address</div>
           <input
             id="email"
             name="email"
             type="text"
-            className="bg-white text-base rounded-md w-3/4 h-10 hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login placeholder:text-gray p-2"
-            placeholder="you@example.com"
+            className="bg-white text-base rounded-md w-3/4 h-10 hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login p-2"
           />
 
-          <div className="text-white text-base mt-6"> Password </div>
+          <div className="text-white text-base mt-6 font-normal">Password</div>
           <input
             id="password"
             name="password"
             type="password"
-            className="bg-white text-base rounded-md w-3/4 h-10 hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login placeholder:text-gray p-2"
-            placeholder="your password"
+            className="bg-white text-base rounded-md w-3/4 h-10 hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login p-2"
           />
 
           <button
             type="submit"
-            className="bg-blue-login rounded-md w-3/4 h-10 text-white text-base font-bold mt-10 hover:bg-dark-cyan focus:border-4 focus:border-white"
+            className="bg-blue-login rounded-md w-3/4 h-10 text-white text-base font-normal mt-10 hover:bg-dark-cyan focus:border-4 focus:border-white"
           >
             Login
           </button>
-
-          <div className="text-light-gray text-base mt-8 ml-40">
+          <div className="text-light-gray text-base mt-8 ml-40 font-normal">
             Don't have an account?{" "}
             <a className="text-blue-login" href="/space">
               Register

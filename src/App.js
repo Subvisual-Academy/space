@@ -46,7 +46,7 @@ function App() {
   };
 
   return (
-    <div className="flex items-start flex-auto bg-cod-gray">
+    <div className="flex items-start flex-auto bg-cod-gray font-medium">
       <div className="p-8 flex flex-col grow items-start lg:max-h-screen ml-32 mt-2">
         <img
           className="max-h-screen basis-2/5 object-cover"
@@ -62,7 +62,7 @@ function App() {
           <div>
             <label
               htmlFor="email"
-              className="block text-base font-medium leading-6 text-white"
+              className="block text-base leading-6 text-white font-normal"
             >
               Email address
             </label>
@@ -72,16 +72,16 @@ function App() {
                 id="email"
                 type="email"
                 name="email"
-                className="block w-full pl-3 rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cerulean sm:text-sm sm:leading-6"
+                className="block w-full pl-3 rounded-md focus:border-cerulean border-2 outline-none border-transparent py-2 text-gray-900 shadow-sm sm:text-sm sm:leading-6"
               />
             </div>
           </div>
           <div>
             <label
               htmlFor="name"
-              className="block text-base font-medium leading-6 text-white"
+              className="block text-base leading-6 text-white font-normal"
             >
-              Full Name
+              Name
             </label>
             <div className="mt-2">
               <input
@@ -89,14 +89,14 @@ function App() {
                 id="name"
                 type="text"
                 name="name"
-                className="block w-full pl-3 rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cerulean sm:text-sm sm:leading-6"
+                className="block w-full pl-3 rounded-md focus:border-cerulean border-2 outline-none border-transparent py-2 text-gray-900 shadow-sm sm:text-sm sm:leading-6"
               />
             </div>
           </div>
           <div>
             <label
               htmlFor="password"
-              className="block text-base font-medium leading-6 text-white"
+              className="block text-base leading-6 text-white font-normal"
             >
               Password
             </label>
@@ -108,14 +108,14 @@ function App() {
                 type="password"
                 pattern=".{6,}"
                 title="Password needs at least 6 characters"
-                className="block w-full pl-3 rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cerulean sm:text-sm sm:leading-6"
+                className="block w-full pl-3 rounded-md focus:border-cerulean border-2 outline-none border-transparent py-2 text-gray-900 shadow-sm sm:text-sm sm:leading-6"
               />
             </div>
           </div>
           <div>
             <label
               htmlFor="confirmPassword"
-              className="block text-base font-medium leading-6 text-white"
+              className="block text-base leading-6 text-white font-normal"
             >
               Confirm Password
             </label>
@@ -125,13 +125,13 @@ function App() {
                 id="confirmPassword"
                 name="confirmPassword"
                 type="password"
-                className="block w-full pl-3 rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cerulean sm:text-sm sm:leading-6"
+                className="block w-full pl-3 rounded-md focus:border-cerulean border-2 outline-none border-transparent py-2 text-gray-900 shadow-sm sm:text-sm sm:leading-6"
               />
             </div>
           </div>
           <button
             type="submit"
-            className="mt-1 text-base transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-100 duration-300 rounded-md bg-cerulean p-4 font-semibold text-white shadow-sm hover:bg-cerulean focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cerulean"
+            className="mt-1 text-base py-3 px-5 hover:bg-dark-cyan focus:border-white focus:border-2 rounded-md bg-cerulean text-white shadow-sm"
           >
             Register
           </button>
@@ -145,7 +145,7 @@ function App() {
       </div>
       <div className="hidden lg:block relative h-full">
         <img
-          className="max-h-screen basis-2/5 object-cover lg:w-[838px]"
+          className="lg:h-full  basis-2/5 object-cover"
           src={Background}
           alt="A background representing the Universe"
         />

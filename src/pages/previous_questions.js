@@ -29,27 +29,29 @@ function PreviousQuestions() {
   };
 
   return (
-    <div className="bg-previous min-h-screen bg-no-repeat bg-cover">
+    <div className="font-medium">
       <NavBar />
-      <div className="flex mt-8 ml-32 text-xl">
-        <h1 className="text-cerulean hover:underline">
-          {" "}
-          <a href="#/question">Weekly Question</a>
-        </h1>
-        <h1 className="text-white no-underline"> &nbsp;&gt; History</h1>
-      </div>
+      <div className="bg-previous min-h-screen bg-cover">
+        <div className="flex ml-32 text-xl">
+          <h1 className="text-cerulean hover:underline mt-8">
+            <a href="#/question">Weekly Question</a>
+          </h1>
+          <h1 className="text-white no-underline mt-8">
+            &nbsp;&gt; Previous Questions
+          </h1>
+        </div>
 
-      {questions
-        .sort((a, b) => new Date(b.week) - new Date(a.week))
-        .map((questionItem) => (
+        {questions.map((questionItem) => (
           <div
             className=" mt-16 ml-96 gap-8 w-4/6 overflow-scroll no-scrollbar"
             key={questionItem.id}
           >
             <div className="border-b-2 border-white px-2 pb-8">
               <div className="flex gap-6">
-                <h1 className="text-white w-32 pb-8">{questionItem.during}</h1>
-                <h1 className="text-white w-9">
+                <h1 className="text-white w-32 pb-8 font-normal">
+                  {questionItem.formatted_week}
+                </h1>
+                <h1 className="text-white w-9 font-normal">
                   {new Date(questionItem.week).getFullYear()}
                 </h1>
                 <h1 className="text-white text-xl w-full">
@@ -72,7 +74,7 @@ function PreviousQuestions() {
                       key={answer.body}
                     >
                       <div className="text-xl ml-14">{answer.user.email}</div>
-                      <div className="text-xs ml-14">
+                      <div className="text-xs ml-14 font-normal">
                         {new Date(answer.created_at)
                           .toLocaleString(undefined, options)
                           .toUpperCase() +
@@ -80,13 +82,16 @@ function PreviousQuestions() {
                           new Date(answer.created_at).getUTCDate()}
                       </div>
 
-                      <div className="text-base pt-4">{answer.body}</div>
+                      <div className="text-base pt-4 font-normal">
+                        {answer.body}
+                      </div>
                     </div>
                   ))}
               </div>
             </div>
           </div>
         ))}
+      </div>
     </div>
   );
 }

@@ -40,7 +40,7 @@ function Friend() {
   }, [notPaired]);
 
   return (
-    <div>
+    <div className="font-medium">
       <div
         className="bg-cover bg-center h-screen"
         style={{ backgroundImage: `url(${Background})` }}
@@ -56,11 +56,11 @@ function Friend() {
                 </div>
 
                 <div className="w-7/12 mt-6 text-base text-white">
-                  Well, there ain’t one week like the other, right? 
+                  Well, there ain't one week like the other, right?
                   <br />
-                  <br /> This time you haven’t got anyone, no worries. Maybe,
-                  it’s just a sign from the Universe to have some me-time, get a
-                  nice drink and devote 15 min to yourself. Don’t forget to
+                  <br /> This time you haven't got anyone, no worries. Maybe,
+                  it's just a sign from the Universe to have some me-time, get a
+                  nice drink and devote 15 min to yourself. Don't forget to
                   answer the question of the week and get back next week!{" "}
                 </div>
 
@@ -79,11 +79,7 @@ function Friend() {
                 </div>
 
                 <div className="flex items-center mt-16 ml-96">
-                  <img
-                    className="w-24 h-24 h-3/5"
-                    src={Avatar}
-                    alt="AvatarProfile"
-                  />
+                  <img className="w-24 h-24" src={Avatar} alt="AvatarProfile" />
 
                   <div className="ml-4 text-xl text-white">
                     {" "}
