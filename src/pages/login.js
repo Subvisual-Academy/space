@@ -32,9 +32,7 @@ function Login() {
       <div className="flex-col ml-32 w-1/2 mt-80">
         <img className="w-64 h-14" src={Logo} alt="Logo" />
 
-        <div className="text-4xl font-bold text-white mt-6">
-          Login to your account
-        </div>
+        <div className="text-4xl text-white mt-6">Login to your account</div>
 
         <form
           name="login"
