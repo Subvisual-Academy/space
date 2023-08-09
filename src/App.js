@@ -12,16 +12,21 @@ function App() {
     const mail = data.get("email");
     const pass = data.get("password");
     const name = data.get("name");
+    const image_data = data.get("file");
     const confirmPassword = data.get("confirmPassword");
+
+    const formData = new FormData();
+    formData.append("user[profile_pic]", image_data);
+    formData.append("user[name]", name);
+    formData.append("user[email]", mail);
+    formData.append("user[password]", pass);
+    formData.append("user[company_id]", 1);
 
     if (pass === confirmPassword) {
       try {
-        const id = await POST(`users`, {
-          email: mail,
-          name: name,
-          password: pass,
-          company_id: 1, // temporarily so people can still test the app while we make the registering process
-        }).then((response) => response["id"]);
+        const id = await POST(`users`, formData).then(
+          (response) => response["id"]
+        );
 
         try {
           const tokenRes = await POST(`auth/login`, {
@@ -128,6 +133,9 @@ function App() {
                 className="block w-full pl-3 rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-cerulean sm:text-sm sm:leading-6"
               />
             </div>
+          </div>
+          <div className="mt-2 text-white">
+            <input id="file" name="file" type="file" accept="image/*" />
           </div>
           <button
             type="submit"

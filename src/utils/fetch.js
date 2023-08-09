@@ -7,12 +7,16 @@ export async function GET(url) {
   return json;
 }
 
-export async function POST(url, body) {
+export async function POST(
+  url,
+  body,
+  content_type = "application/json; charset=UTF-8"
+) {
   const response = await fetch(process.env.REACT_APP_API_URL + url, {
     method: "POST",
-    body: JSON.stringify(body),
+    body: body,
     headers: {
-      "Content-type": "application/json; charset=UTF-8",
+      "Content-type": content_type,
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   });
