@@ -49,7 +49,7 @@ function Question() {
           email: value.user.email,
           body: value.body,
           time: value.time,
-          user: value.user.id,
+          user: value.user.id
         };
       });
       setAnswers(data);

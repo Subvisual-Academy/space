@@ -5,39 +5,12 @@ import Suitcase from "../assets/role_icon.png";
 import Pin from "../assets/location_icon.png";
 import Discord from "../assets/discord_icon.png";
 import Envelope from "../assets/email_icon.png";
+import InvisibleLab from "../assets/invisible_lab_icon.png";
+
 import List from "../components/list";
 import Info from "../components/info";
 import { GET } from "../utils/fetch";
 import { useState, useEffect } from "react";
-
-const skills = [
-  "Frontend dev",
-  "Java",
-  "Web Dev",
-  "Python",
-  "Backend dev",
-  "React",
-  "Ruby",
-  "CSS",
-  "HTML",
-  "JavaScript",
-  "TypeScript",
-  "Git/Github",
-  "Node.js",
-  "Branding",
-  "Creative Coding",
-  "NextJS",
-  "Interface Design",
-  "Graphic Design",
-  "Database",
-  "Usability testing",
-  "Figma",
-  "Blender",
-  "Elixir",
-  "User research",
-  "Phoenix",
-  "Adobe Creative Cloud",
-];
 
 const current_user_id = 6; //localStorage.getItem("current");
 
@@ -53,7 +26,7 @@ const getAnswers = async () => {
 };
 
 const getQuestion = async (question_id) => {
-  var response = await GET("question/" + question_id);
+  var response = await GET("questions/" + question_id);
   return response;
 };
 
@@ -62,17 +35,26 @@ const getUserData = async () => {
   return response;
 };
 
+const getSkills = async () => {
+  var response = await GET("users/" + current_user_id + "/skills")
+  return response.map(skill => skill["name"]);
+};
+
+const getHobbies = async () => {
+  var response = await GET("users/" + current_user_id + "/hobbies")
+  return response.map(hobby => hobby["name"]);
+};
+
 function Profile() {
   const [answers, setAnswers] = useState([]);
-  const [answersFetched, setAnswersFetched] = useState(false);
   const [questions, setQuestions] = useState([]);
-  const [questionsFetched, setQuestionsFetched] = useState(false);
   const [userData, setUserData] = useState({});
+  const [skills, setSkills] = useState([]);
+  const [hobbies, setHobbies] = useState([]);
 
   useEffect(() => {
     getAnswers().then((response) => {
       setAnswers(response);
-      setAnswersFetched(true);
     });
   }, []);
 
@@ -81,37 +63,36 @@ function Profile() {
   }, []);
 
   useEffect(() => {
-    Promise.all(answers.map((answer) => getQuestion(answer.question_id))).then(
-      (questionsData) => {
-        setQuestions(questionsData);
-        setQuestionsFetched(true);
-        console.log(questionsData);
-      }
-    );
-  }, [answers]);
+    getSkills().then((response) => setSkills(response));
+  }, [skills]);
+
+  useEffect(() => {
+    getHobbies().then((response) => setHobbies(response));
+  }, [hobbies]);
 
   return (
     <div>
       <NavBar />
       <div className="flex">
         <div className="flex-none w-1/3">
-
           <div className="flex-col ml-32 mt-16">
-            <img
-              className="h-60 w-60"
-              src={Avatar}
-              alt="AvatarProfile"
+            <img className="h-60 w-60" src={Avatar} alt="AvatarProfile" />
+
+            <div className="mt-8 mb-8 text-white text-3xl">{userData.name}</div>
+
+            <Info
+              text={userData.company}
+              icon={InvisibleLab}
+              alt={"Invisible Lab icon"}
             />
-
-            <div className="mt-8 mb-8 text-white text-3xl">
-              Name
-            </div>
-
-            <Info info={userData.company} icon={Pencil} alt={"Pencil"} />
-            <Info info={userData.role} icon={Suitcase} alt={"Role icon"} />
-            <Info info={userData.base_office} icon={Pin} alt={"Location icon"} />
-            <Info info={userData.discord} icon={Discord} alt={"Discord icon"} />
-            <Info info={userData.email} icon={Envelope} alt={"Email icon"} />
+            <Info text={userData.role} icon={Suitcase} alt={"Role icon"} />
+            <Info
+              text={userData.base_office}
+              icon={Pin}
+              alt={"Location icon"}
+            />
+            <Info text={userData.discord} icon={Discord} alt={"Discord icon"} />
+            <Info text={userData.email} icon={Envelope} alt={"Email icon"} />
 
             <div className="text-white text-base mt-8 w-60">
               {" "}
@@ -136,7 +117,7 @@ function Profile() {
 
                 <div className="text-white text-xl">Hobbies</div>
 
-                <List things={skills} />
+                <List things={hobbies} />
               </div>
 
               <div className="mt-10 mb-6 text-white text-xl">
@@ -144,22 +125,17 @@ function Profile() {
               </div>
 
               <div className="space-y-4">
-                {answersFetched && questionsFetched ? (
-                  answers.map((answer, index) => (
-                    <div key={index}>
-                      <div className="bg-dark-cyan text-white p-4 rounded-[20px]">
-                        <p className="text-base"> {answer.question_id} </p>
-                        <p className="text-xs">
-                          {" "}
-                          {formatDate(answer.updated_at)}{" "}
-                        </p>
-                        <p className="text-base"> {answer.body} </p>
-                      </div>
+                {answers.map((answer, index) => (
+                  <div key={index}>
+                    <div className="bg-dark-cyan text-white p-4 rounded-[20px]">
+                      <p className="text-base"> {answer.question_id} </p>
+                      <p className="text-xs">
+                        {formatDate(answer.updated_at)}{" "}
+                      </p>
+                      <p className="text-base"> {answer.body} </p>
                     </div>
-                  ))
-                ) : (
-                  <div className="text-white">Loading answers...</div>
-                )}
+                  </div>
+                ))}
               </div>
             </div>
           </div>
