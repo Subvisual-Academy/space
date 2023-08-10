@@ -56,6 +56,11 @@ const getUserData = async () => {
   };
 };
 
+const getQuestion = async(question_id) => {
+  var response = await GET("questions/" + question_id)
+  return response;
+}
+
 function Profile() {
   const [answers, setAnswers] = useState([]);
   const [userData, setUserData] = useState([]);
@@ -63,6 +68,7 @@ function Profile() {
   const [hobbies, setHobbies] = useState([]);
   const [company, setCompany] = useState([]);
   const [companyLogo, setCompanyLogo] = useState({});
+  const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
     getUserData().then((response) => {
@@ -81,8 +87,12 @@ function Profile() {
   }, [hobbies]);
 
   useEffect(() => {
-    getAnswers().then((response) => {
+    getAnswers().then(async (response) => {
       setAnswers(response);
+      const questionPromises = response.map((answer) => getQuestion(answer.question_id));
+      const questionResponses = await Promise.all(questionPromises);
+      const questions = questionResponses.map(response => response["body"]);
+      setQuestions(questions);
     });
   }, []);
 
@@ -90,7 +100,7 @@ function Profile() {
     <div>
       <NavBar />
       <div className="flex">
-        <div className="flex-none w-1/3">
+        <div className="flex-none w-2/5">
           <div className="flex-col ml-32 mt-16">
             <img className="h-60 w-60" src={Avatar} alt="AvatarProfile" />
 
@@ -145,9 +155,9 @@ function Profile() {
             {answers.map((answer, index) => (
               <div key={index}>
                 <div className="bg-dark-cyan text-white mb-4 p-4 rounded-[20px]">
-                  <p className="text-base"> {answer.question_id} </p>
+                  <p className="text-base"> {questions[index]} </p>
                   <p className="text-xs">{formatDate(answer.updated_at)} </p>
-                  <div className="text-base"> hello </div>
+                  <div className="text-base"> {answer.body} </div>
                 </div>
               </div>
             ))}
