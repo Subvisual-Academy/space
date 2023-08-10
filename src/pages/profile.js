@@ -25,16 +25,6 @@ const getAnswers = async () => {
   return response;
 };
 
-const getQuestion = async (question_id) => {
-  var response = await GET("questions/" + question_id);
-  return response;
-};
-
-const getUserData = async () => {
-  var response = await GET("users/" + current_user_id);
-  return response;
-};
-
 const getSkills = async () => {
   var response = await GET("users/" + current_user_id + "/skills");
   return response.map((skill) => skill["name"]);
@@ -45,22 +35,28 @@ const getHobbies = async () => {
   return response.map((hobby) => hobby["name"]);
 };
 
+const getUserData = async () => {
+  var userData = await GET("users/" + current_user_id);
+  var company = await GET("/companies/" + userData.company_id.toString());
+  return {
+    userData: userData,
+    company: company,
+  };
+};
+
 function Profile() {
   const [answers, setAnswers] = useState([]);
-  const [questions, setQuestions] = useState([]);
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState([]);
   const [skills, setSkills] = useState([]);
   const [hobbies, setHobbies] = useState([]);
+  const [company, setCompany] = useState([]);
 
   useEffect(() => {
-    getAnswers().then((response) => {
-      setAnswers(response);
+    getUserData().then((response) => {
+      setUserData(response.userData);
+      setCompany(response.company.name);
     });
-  }, []);
-
-  useEffect(() => {
-    getUserData().then((response) => setUserData(response));
-  }, []);
+  }, [company]);
 
   useEffect(() => {
     getSkills().then((response) => setSkills(response));
@@ -69,6 +65,12 @@ function Profile() {
   useEffect(() => {
     getHobbies().then((response) => setHobbies(response));
   }, [hobbies]);
+
+  useEffect(() => {
+    getAnswers().then((response) => {
+      setAnswers(response);
+    });
+  }, []);
 
   return (
     <div>
@@ -81,7 +83,7 @@ function Profile() {
             <div className="mt-8 mb-8 text-white text-3xl">{userData.name}</div>
 
             <Info
-              text="Company"
+              text={company}
               icon={InvisibleLab}
               alt={"Invisible Lab icon"}
             />
