@@ -21,7 +21,7 @@ const current_user_id = 6; //localStorage.getItem("current");
 
 const companyLogos = {
   "Subvisual": Sub, 
-  "Invisible Lab": InvisibleLab,
+  "Invisible lab": InvisibleLab,
   "Onda": Onda,
   "Pink Room": PinkRoom,
   "Universe": Universe, 
