@@ -6,13 +6,26 @@ import Pin from "../assets/location_icon.png";
 import Discord from "../assets/discord_icon.png";
 import Envelope from "../assets/email_icon.png";
 import InvisibleLab from "../assets/invisible_lab_icon.png";
+import Onda from "../assets/onda_logo.png"
+import Sub from "../assets/sub_logo.png"
+import PinkRoom from "../assets/pink_room_logo.png"
+import Universe from "../assets/universe.jpg"
 
 import List from "../components/list";
 import Info from "../components/info";
 import { GET } from "../utils/fetch";
 import { useState, useEffect } from "react";
 
+
 const current_user_id = 6; //localStorage.getItem("current");
+
+const companyLogos = {
+  "Subvisual": Sub, 
+  "Invisible Lab": InvisibleLab,
+  "Onda": Onda,
+  "Pink Room": PinkRoom,
+  "Universe": Universe, 
+}
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
@@ -50,11 +63,13 @@ function Profile() {
   const [skills, setSkills] = useState([]);
   const [hobbies, setHobbies] = useState([]);
   const [company, setCompany] = useState([]);
+  const [companyLogo, setCompanyLogo] = useState({});
 
   useEffect(() => {
     getUserData().then((response) => {
       setUserData(response.userData);
       setCompany(response.company.name);
+      setCompanyLogo(companyLogos[company])
     });
   }, [company]);
 
@@ -84,8 +99,8 @@ function Profile() {
 
             <Info
               text={company}
-              icon={InvisibleLab}
-              alt={"Invisible Lab icon"}
+              icon={companyLogo}
+              alt={"Company Logo"}
             />
             <Info text={userData.role} icon={Suitcase} alt={"Role icon"} />
             <Info
