@@ -11,6 +11,7 @@ module.exports = {
         "galaxy-pattern": "url('assets/galaxy.png')",
         astronaut: "url('assets/sadAstronaut.png')",
         previous: "url('assets/previous_background.png')",
+        stars: "url('assets/beautiful-shining-stars-night-sky.png')",
       },
       fontFamily: {
         sans: ["IBM Plex Sans"],

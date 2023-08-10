@@ -1,0 +1,189 @@
+import React from "react";
+
+const Hobbies = ({ prevStep, nextStep, handleChange, values }) => {
+  const Continue = (e) => {
+    e.preventDefault();
+    nextStep();
+  };
+
+  const Previous = (e) => {
+    e.preventDefault();
+    prevStep();
+  };
+
+  return (
+    <div className="bg-stars min-h-screen bg-cover bg-no-repeat font-medium top-0">
+      <nav
+        aria-label="Progress"
+        className="items-center text-white p-10 m-auto"
+      >
+        <ol class="flex justify-center">
+          <li class="relative pr-8 sm:pr-20">
+            <div class="absolute inset-0 flex items-center" aria-hidden="true">
+              <div class="h-0.5 w-full bg-cerulean"></div>
+            </div>
+            <button
+              onClick={Previous}
+              type="button"
+              class="relative flex h-8 w-8 items-center justify-center rounded-full bg-cerulean hover:bg-cerulean"
+            >
+              <svg
+                class="h-5 w-5 text-white"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span className="absolute pt-14 mr-3 text-light-gray w-full h-full text-center font-normal text-xs">
+                Personal info
+              </span>
+            </button>
+          </li>
+          <li class="relative pr-8 sm:pr-20">
+            <div class="absolute inset-0 flex items-center" aria-hidden="true">
+              <div class="h-0.5 w-full bg-white"></div>
+            </div>
+            <div
+              class="relative flex h-8 w-8 items-center justify-center rounded-full border-2 border-cerulean bg-white"
+              aria-current="step"
+            >
+              <span
+                className="h-2.5 w-2.5 rounded-full bg-cerulean"
+                aria-hidden="true"
+              ></span>
+              <span className="absolute pt-14 mr-3 text-light-gray w-full h-full text-center font-normal text-xs">
+                Hobbies
+              </span>
+            </div>
+          </li>
+          <li class="relative pr-8 sm:pr-20">
+            <div class="absolute inset-0 flex items-center" aria-hidden="true">
+              <div class="h-0.5 w-full bg-white"></div>
+            </div>
+            <button
+              onClick={Continue}
+              type="button"
+              class="group relative flex h-8 w-8 items-center justify-center rounded-full border-2 border-gray-300 bg-white hover:border-gray-400"
+            >
+              <span
+                class="h-2.5 w-2.5 rounded-full bg-transparent group-hover:bg-gray-300"
+                aria-hidden="true"
+              ></span>
+              <span className="absolute pt-14 mr-3 text-light-gray w-full h-full text-center font-normal text-xs">
+                Skills
+              </span>
+            </button>
+          </li>
+          <li class="relative">
+            <div class="absolute inset-0 flex items-center" aria-hidden="true">
+              <div class="h-0.5 w-full bg-white"></div>
+            </div>
+            <div class="group relative flex h-8 w-8 items-center justify-center rounded-full border-2 border-gray-300 bg-white hover:border-gray-400">
+              <span
+                class="h-2.5 w-2.5 rounded-full bg-transparent group-hover:bg-gray-300"
+                aria-hidden="true"
+              ></span>
+              <span className="absolute pt-14 mr-3 text-light-gray w-full h-full text-center font-normal text-xs">
+                Profile Picture
+              </span>
+            </div>
+          </li>
+        </ol>
+      </nav>
+      <div>
+        <h1 className="text-white mt-9 text-center text-5xl">
+          What are your hobbies?
+        </h1>
+        <h1 className="text-white mt-8 text-center text-xl font-normal">
+          We all have things we enjoy doing, what are your main hobbies? Select
+          <br />
+          as many as you want!
+        </h1>
+        <fieldset>
+          <div class="space-y-5 text-white font-normal">
+            <div class="relative flex items-start">
+              <div class="flex h-6 items-center">
+                <input
+                  id="comments"
+                  aria-describedby="comments-description"
+                  name="comments"
+                  type="checkbox"
+                  class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                />
+              </div>
+              <div class="ml-3 text-sm leading-6">
+                <label for="comments" class="font-medium text-gray-900">
+                  Comments
+                </label>
+                <p id="comments-description" class="text-gray-500">
+                  Get notified when someones posts a comment on a posting.
+                </p>
+              </div>
+            </div>
+            <div class="relative flex items-start">
+              <div class="flex h-6 items-center">
+                <input
+                  id="candidates"
+                  aria-describedby="candidates-description"
+                  name="candidates"
+                  type="checkbox"
+                  class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                />
+              </div>
+              <div class="ml-3 text-sm leading-6">
+                <label for="candidates" class="font-medium text-gray-900">
+                  Candidates
+                </label>
+                <p id="candidates-description" class="text-gray-500">
+                  Get notified when a candidate applies for a job.
+                </p>
+              </div>
+            </div>
+            <div class="relative flex items-start">
+              <div class="flex h-6 items-center">
+                <input
+                  id="offers"
+                  aria-describedby="offers-description"
+                  name="offers"
+                  type="checkbox"
+                  class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                />
+              </div>
+              <div class="ml-3 text-sm leading-6">
+                <label for="offers" class="font-medium text-gray-900">
+                  Offers
+                </label>
+                <p id="offers-description" class="text-gray-500">
+                  Get notified when a candidate accepts or rejects an offer.
+                </p>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <div className="flex justify-center gap-48 text-center mt-20">
+          <button
+            onClick={Previous}
+            type="button"
+            className="rounded-md w-40 bg-transparent p-2 text-base border-cerulean border-2 text-white shadow-sm hover:bg-dark-cyan hover:border-white focus:border-white focus:border-2"
+          >
+            Back
+          </button>
+          <button
+            onClick={Continue}
+            type="submit"
+            className="w-40 p-2 font-medium items-center gap-x-2 rounded-md bg-cerulean text-base text-white shadow-sm hover:bg-dark-cyan focus:border-white focus:border-2"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Hobbies;
