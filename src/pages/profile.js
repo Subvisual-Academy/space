@@ -6,26 +6,25 @@ import Pin from "../assets/location_icon.png";
 import Discord from "../assets/discord_icon.png";
 import Envelope from "../assets/email_icon.png";
 import InvisibleLab from "../assets/invisible_lab_icon.png";
-import Onda from "../assets/onda_logo.png"
-import Sub from "../assets/sub_logo.png"
-import PinkRoom from "../assets/pink_room_logo.png"
-import Universe from "../assets/universe.jpg"
+import Onda from "../assets/onda_logo.png";
+import Sub from "../assets/sub_logo.png";
+import PinkRoom from "../assets/pink_room_logo.png";
+import Universe from "../assets/universe.jpg";
 
 import List from "../components/list";
 import Info from "../components/info";
 import { GET } from "../utils/fetch";
 import { useState, useEffect } from "react";
 
-
 const current_user_id = 6; //localStorage.getItem("current");
 
 const companyLogos = {
-  "Subvisual": Sub, 
+  Subvisual: Sub,
   "Invisible lab": InvisibleLab,
-  "Onda": Onda,
+  Onda: Onda,
   "Pink Room": PinkRoom,
-  "Universe": Universe, 
-}
+  Universe: Universe,
+};
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
@@ -69,7 +68,7 @@ function Profile() {
     getUserData().then((response) => {
       setUserData(response.userData);
       setCompany(response.company.name);
-      setCompanyLogo(companyLogos[company])
+      setCompanyLogo(companyLogos[company]);
     });
   }, [company]);
 
@@ -97,11 +96,7 @@ function Profile() {
 
             <div className="mt-8 mb-8 text-white text-3xl">{userData.name}</div>
 
-            <Info
-              text={company}
-              icon={companyLogo}
-              alt={"Company Logo"}
-            />
+            <Info text={company} icon={companyLogo} alt={"Company Logo"} />
             <Info text={userData.role} icon={Suitcase} alt={"Role icon"} />
             <Info
               text={userData.base_office}
@@ -123,38 +118,40 @@ function Profile() {
         </div>
 
         <div className="flex-grow">
-          <div className="flex">
-            <div className="flex-none w-4/5">
-              <div className="mt-16 w-full bg-lilac p-8 rounded-[20px] text-5xl">
-                <div className="text-white text-xl">Skills</div>
+          <div className="flex-none flex-col w-11/12">
+            <div className="mt-16 bg-lilac p-8 rounded-[20px] text-5xl">
 
-                <List things={skills} />
-
-                <div class="my-8 border-t-2 border-white"></div>
-
-                <div className="text-white text-xl">Hobbies</div>
-
-                <List things={hobbies} />
+              <div className="flex items-center">
+                <div className="flex-none w-11/12 text-white text-xl">Skills</div>
+                <div className="w-1/12 text-white text-base">Edit</div>
+                <img className="h-6 w-6" src={Pencil} alt="Pencil Icon" />
               </div>
 
-              <div className="mt-10 mb-6 text-white text-xl">
-                Weekly Answers
+              <List things={skills} />
+
+              <div class="my-8 border-t-2 border-white"></div>
+
+              <div className="flex items-center">
+                <div className="flex-none w-11/12 text-white text-xl">Hobbies</div>
+                <div className="w-1/12 text-white text-base">Edit</div>
+                <img className="h-6 w-6" src={Pencil} alt="Pencil Icon" />
               </div>
 
-              <div className="space-y-4">
-                {answers.map((answer, index) => (
-                  <div key={index}>
-                    <div className="bg-dark-cyan text-white p-4 rounded-[20px]">
-                      <p className="text-base"> {answer.question_id} </p>
-                      <p className="text-xs">
-                        {formatDate(answer.updated_at)}{" "}
-                      </p>
-                      <p className="text-base"> {answer.body} </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <List things={hobbies} />
             </div>
+
+            <div className="mt-10 mb-6 text-white text-xl">Weekly Answers</div>
+
+            {answers.map((answer, index) => (
+              <div key={index}>
+                <div className="bg-dark-cyan text-white mb-4 p-4 rounded-[20px]">
+                  <p className="text-base"> {answer.question_id} </p>
+                  <p className="text-xs">{formatDate(answer.updated_at)} </p>
+                  <div className="text-base"> hello </div>
+                </div>
+              </div>
+            ))}
+            
           </div>
         </div>
       </div>
