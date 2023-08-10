@@ -36,13 +36,13 @@ const getUserData = async () => {
 };
 
 const getSkills = async () => {
-  var response = await GET("users/" + current_user_id + "/skills")
-  return response.map(skill => skill["name"]);
+  var response = await GET("users/" + current_user_id + "/skills");
+  return response.map((skill) => skill["name"]);
 };
 
 const getHobbies = async () => {
-  var response = await GET("users/" + current_user_id + "/hobbies")
-  return response.map(hobby => hobby["name"]);
+  var response = await GET("users/" + current_user_id + "/hobbies");
+  return response.map((hobby) => hobby["name"]);
 };
 
 function Profile() {
@@ -81,7 +81,7 @@ function Profile() {
             <div className="mt-8 mb-8 text-white text-3xl">{userData.name}</div>
 
             <Info
-              text={userData.company}
+              text="Company"
               icon={InvisibleLab}
               alt={"Invisible Lab icon"}
             />
@@ -94,7 +94,7 @@ function Profile() {
             <Info text={userData.discord} icon={Discord} alt={"Discord icon"} />
             <Info text={userData.email} icon={Envelope} alt={"Email icon"} />
 
-            <div className="text-white text-base mt-8 w-60">
+            <div className="text-white text-base mt-10 w-60">
               {" "}
               {userData.bio}{" "}
             </div>
