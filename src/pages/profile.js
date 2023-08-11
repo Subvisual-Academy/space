@@ -56,10 +56,10 @@ const getUserData = async () => {
   };
 };
 
-const getQuestion = async(question_id) => {
-  var response = await GET("questions/" + question_id)
+const getQuestion = async (question_id) => {
+  var response = await GET("questions/" + question_id);
   return response;
-}
+};
 
 function Profile() {
   const [answers, setAnswers] = useState([]);
@@ -71,12 +71,13 @@ function Profile() {
   const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
-    getUserData().then((response) => {
+    getUserData(current_user_id).then((response) => {
       setUserData(response.userData);
       setCompany(response.company.name);
       setCompanyLogo(companyLogos[company]);
     });
-  }, [company]);
+    console.log(userData);
+  }, [userData, company]);
 
   useEffect(() => {
     getSkills().then((response) => setSkills(response));
@@ -89,9 +90,11 @@ function Profile() {
   useEffect(() => {
     getAnswers().then(async (response) => {
       setAnswers(response);
-      const questionPromises = response.map((answer) => getQuestion(answer.question_id));
+      const questionPromises = response.map((answer) =>
+        getQuestion(answer.question_id)
+      );
       const questionResponses = await Promise.all(questionPromises);
-      const questions = questionResponses.map(response => response["body"]);
+      const questions = questionResponses.map((response) => response["body"]);
       setQuestions(questions);
     });
   }, []);
@@ -130,9 +133,10 @@ function Profile() {
         <div className="flex-grow">
           <div className="flex-none flex-col w-11/12">
             <div className="mt-16 bg-lilac p-8 rounded-[20px] text-5xl">
-
               <div className="flex items-center">
-                <div className="flex-none w-11/12 text-white text-xl">Skills</div>
+                <div className="flex-none w-11/12 text-white text-xl">
+                  Skills
+                </div>
                 <div className="w-1/12 text-white text-base">Edit</div>
                 <img className="h-6 w-6" src={Pencil} alt="Pencil Icon" />
               </div>
@@ -142,7 +146,9 @@ function Profile() {
               <div class="my-8 border-t-2 border-white"></div>
 
               <div className="flex items-center">
-                <div className="flex-none w-11/12 text-white text-xl">Hobbies</div>
+                <div className="flex-none w-11/12 text-white text-xl">
+                  Hobbies
+                </div>
                 <div className="w-1/12 text-white text-base">Edit</div>
                 <img className="h-6 w-6" src={Pencil} alt="Pencil Icon" />
               </div>
@@ -157,11 +163,10 @@ function Profile() {
                 <div className="bg-dark-cyan text-white mb-4 p-4 rounded-[20px]">
                   <p className="text-base"> {questions[index]} </p>
                   <p className="text-xs">{formatDate(answer.updated_at)} </p>
-                  <div className="text-base"> {answer.body} </div>
+                  <div className="text-base break-all"> {answer.body} </div>
                 </div>
               </div>
             ))}
-            
           </div>
         </div>
       </div>
