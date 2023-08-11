@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import UserDetails from "./UserDetails";
 import Information from "./Information";
 import Hobbies from "./Hobbies";
+import Skills from "./Skills";
+import Picture from "./Picture";
 
 export default class Signup extends Component {
   state = {
@@ -86,6 +88,24 @@ export default class Signup extends Component {
       case 3:
         return (
           <Hobbies
+            prevStep={this.prevStep}
+            nextStep={this.nextStep}
+            handleChange={this.handleChange}
+            values={values}
+          />
+        );
+      case 4:
+        return (
+          <Skills
+            prevStep={this.prevStep}
+            nextStep={this.nextStep}
+            handleChange={this.handleChange}
+            values={values}
+          />
+        );
+      case 5:
+        return (
+          <Picture
             prevStep={this.prevStep}
             nextStep={this.nextStep}
             handleChange={this.handleChange}
