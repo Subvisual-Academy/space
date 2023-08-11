@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { GET } from "../utils/fetch";
+
+const getSkills = async () => {
+  const skills = await GET("skills");
+  const skillNames = skills.map((skill) => skill.name);
+  return skillNames;
+};
 
 const Skills = ({ prevStep, nextStep, handleChange, values }) => {
+  console.log(values);
+  const [skills, setSkills] = useState([]);
+
   const Continue = (e) => {
     e.preventDefault();
     nextStep();
@@ -11,14 +21,11 @@ const Skills = ({ prevStep, nextStep, handleChange, values }) => {
     prevStep();
   };
 
-  const skills = [
-    "Adobe",
-    "Elixir",
-    "Operations",
-    "Analytics tools",
-    "Design",
-    "Product",
-  ];
+  useEffect(() => {
+    getSkills().then((response) => {
+      setSkills(response);
+    });
+  }, []);
 
   return (
     <div className="bg-stars min-h-screen bg-cover bg-no-repeat font-medium top-0">
@@ -122,16 +129,18 @@ const Skills = ({ prevStep, nextStep, handleChange, values }) => {
         <fieldset className="mt-10">
           <div className="max-w-screen-md mx-auto text-white font-normal grid grid-cols-3 gap-10 justify-center">
             {skills.map((skill) => (
-              <div className="flex items-center">
+              <div className="flex items-center" key={skill}>
                 <input
-                  id="comments"
-                  aria-describedby="comments-description"
-                  name="comments"
+                  id="skills"
+                  name="skills"
+                  value={skill}
+                  onChange={handleChange("skills", true)}
                   type="checkbox"
+                  checked={values.skills.includes(skill)}
                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                 />
                 <label
-                  htmlFor="comments"
+                  htmlFor="skills"
                   className="ml-2 text-sm font-medium text-gray-900"
                 >
                   {skill}

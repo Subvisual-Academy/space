@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { GET } from "../utils/fetch";
+
+const getHobbies = async () => {
+  const hobbies = await GET("hobbies");
+  const hobbyNames = hobbies.map((hobby) => hobby.name);
+  return hobbyNames;
+};
 
 const Hobbies = ({ prevStep, nextStep, handleChange, values }) => {
+  const [hobbies, setHobbies] = useState([]);
+
   const Continue = (e) => {
     e.preventDefault();
     nextStep();
@@ -11,14 +20,11 @@ const Hobbies = ({ prevStep, nextStep, handleChange, values }) => {
     prevStep();
   };
 
-  const hobbies = [
-    "Anime",
-    "Handcraft",
-    "Psychology",
-    "Art",
-    "Hiking",
-    "Reading",
-  ];
+  useEffect(() => {
+    getHobbies().then((response) => {
+      setHobbies(response);
+    });
+  }, []);
 
   return (
     <div className="bg-stars min-h-screen bg-cover bg-no-repeat font-medium top-0">
@@ -116,16 +122,18 @@ const Hobbies = ({ prevStep, nextStep, handleChange, values }) => {
         <fieldset className="mt-10">
           <div className="max-w-screen-md mx-auto text-white font-normal grid grid-cols-3 gap-10 justify-center">
             {hobbies.map((hobby) => (
-              <div className="flex items-center">
+              <div className="flex items-center" key={hobby}>
                 <input
-                  id="comments"
-                  aria-describedby="comments-description"
-                  name="comments"
+                  id="hobbies"
+                  name="hobbies"
+                  value={hobby}
+                  onChange={handleChange("hobbies", true)}
                   type="checkbox"
+                  checked={values.hobbies.includes(hobby)}
                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                 />
                 <label
-                  htmlFor="comments"
+                  htmlFor="hobbies"
                   className="ml-2 text-sm font-medium text-gray-900"
                 >
                   {hobby}

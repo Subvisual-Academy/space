@@ -1,6 +1,7 @@
 import React from "react";
 
 const Information = ({ prevStep, nextStep, handleChange, values }) => {
+  console.log(values);
   const Continue = (e) => {
     e.preventDefault();
     nextStep();
@@ -109,32 +110,34 @@ const Information = ({ prevStep, nextStep, handleChange, values }) => {
               htmlFor="email"
               className="block text-base leading-6 text-white font-normal"
             >
-              Position
+              Role
             </label>
             <div className="mt-2">
               <input
                 required
-                id="email"
-                type="email"
-                onChange={handleChange("position")}
-                name="email"
+                id="role"
+                type="text"
+                onChange={handleChange("role")}
+                name="role"
+                value={values.role}
                 className="block w-full pl-3 rounded-md focus:border-cerulean border-2 outline-none border-transparent py-2 text-gray-900 shadow-sm sm:text-sm sm:leading-6"
               />
             </div>
           </div>
           <div className="w-1/4">
             <label
-              for="location"
+              htmlFor="company"
               className="block text-sm leading-6 text-white font-normal"
             >
               Company
             </label>
             <select
               required
-              id="Company"
+              id="company"
               onChange={handleChange("company_id")}
-              name="location"
-              className="mt-2 rounded-md block py-3 font-normal text-base w-full rounded-mdpy-1.5 pl-3 pr-64 text-gray-900 focus:border-cerulean border-2 outline-none border-transparent sm:text-sm sm:leading-6"
+              name="company"
+              value={values.company_id}
+              className="mt-2 rounded-md block py-3 font-normal text-base w-full rounded-mdpy-1.5 pl-3 pr-8 text-gray-900 focus:border-cerulean border-2 outline-none border-transparent sm:text-sm sm:leading-6"
             >
               <option value="1" selected>
                 Subvisual
@@ -158,6 +161,7 @@ const Information = ({ prevStep, nextStep, handleChange, values }) => {
                 id="discord"
                 type="text"
                 onChange={handleChange("discord")}
+                value={values.discord}
                 name="email"
                 className="block w-full pl-3 rounded-md focus:border-cerulean border-2 outline-none border-transparent py-2 text-gray-900 shadow-sm sm:text-sm sm:leading-6"
               />
@@ -175,7 +179,8 @@ const Information = ({ prevStep, nextStep, handleChange, values }) => {
                 required
                 id="email"
                 type="email"
-                onChange={handleChange("position")}
+                onChange={handleChange("location")}
+                value={values.location}
                 name="email"
                 className="block w-full pl-3 rounded-md focus:border-cerulean border-2 outline-none border-transparent py-2 text-gray-900 shadow-sm sm:text-sm sm:leading-6"
               />
@@ -191,9 +196,10 @@ const Information = ({ prevStep, nextStep, handleChange, values }) => {
             <textarea
               required
               type="text"
-              name="answer"
+              name="bio"
               rows="4"
               onChange={handleChange("bio")}
+              value={values.bio}
               className="no-scrollbar w-full mr-1 rounded-md peer block text-gray-900 shadow-sm bg-gray-50 py-1.5 pl-3 text-gray-900 focus:border-cerulean border-2 outline-none border-transparent sm:text-sm sm:leading-6 mt-2 placeholder:text-base placeholder:text-gray-400"
               placeholder="Write something about yourself"
             />

@@ -11,14 +11,14 @@ export default class Signup extends Component {
     email: "",
     name: "",
     password: "",
-    position: "",
+    role: "",
     discord: "",
-    company_id: "",
-    base_office: "",
+    company_id: 1,
+    location: "",
     bio: "",
     hobbies: [],
     skills: [],
-    profile_pic: Object,
+    profile_pic: null,
   };
 
   // go back to previous step
@@ -34,9 +34,31 @@ export default class Signup extends Component {
   };
 
   // Handle fields change
-  handleChange = (input) => (e) => {
-    this.setState({ [input]: e.target.value });
-  };
+  handleChange =
+    (input, isCheckbox = false) =>
+    (e) => {
+      const value = isCheckbox
+        ? e.target.value
+        : e.target.type === "file"
+        ? e.target.files[0]
+        : e.target.value;
+
+      this.setState((prevState) => {
+        if (isCheckbox) {
+          const isChecked = e.target.checked;
+
+          if (isChecked) {
+            return { [input]: [...prevState[input], value] };
+          } else {
+            return {
+              [input]: prevState[input].filter((item) => item !== value),
+            };
+          }
+        } else {
+          return { [input]: value };
+        }
+      });
+    };
 
   render() {
     const { step } = this.state;
@@ -44,10 +66,10 @@ export default class Signup extends Component {
       email,
       name,
       password,
-      position,
+      role,
       discord,
       company_id,
-      base_office,
+      location,
       bio,
       hobbies,
       skills,
@@ -57,10 +79,10 @@ export default class Signup extends Component {
       email,
       name,
       password,
-      position,
+      role,
       discord,
       company_id,
-      base_office,
+      location,
       bio,
       hobbies,
       skills,
