@@ -1,115 +1,197 @@
 import NavBar from "../components/navBar";
 import Avatar from "../assets/Avatar profile.png"
+import Toggle from "../assets/chevron_down.svg"
+import Subvisual from "../assets/sub_logo.png"
+import Onda from "../assets/onda_logo.png"
+import PinkRoom from "../assets/pink_room_logo.png"
+import InvisibleLab from "../assets/invisible_lab_icon.png"
+import Universe from "../assets/universe.jpg"
 
-const users = [
-    {
-      "name": "Jess",
-      "role": "Developer",
-      "company": "Subvisual Academy"
-    },
-    {
-      "name": "Tiago",
-      "role": "Developer",
-      "company": "Subvisual Academy"
-    },
-    {
-      "name": "Natalia",
-      "role": "Designer",
-      "company": "Subvisual Academy"
-    },
-    {
-      "name": "Masha",
-      "role": "Product Manager",
-      "company": "Subvisual Academy"
-    },
-    {
-        "name": "Jess",
-        "role": "Developer",
-        "company": "Subvisual Academy"
-      },
-      {
-        "name": "Tiago",
-        "role": "Developer",
-        "company": "Subvisual Academy"
-      },
-      {
-        "name": "Natalia",
-        "role": "Designer",
-        "company": "Subvisual Academy"
-      },
-      {
-        "name": "Masha",
-        "role": "Product Manager",
-        "company": "Subvisual Academy"
-      },
-      {
-        "name": "Jess",
-        "role": "Developer",
-        "company": "Subvisual Academy"
-      },
-      {
-        "name": "Tiago",
-        "role": "Developer",
-        "company": "Subvisual Academy"
-      },
-      {
-        "name": "Natalia",
-        "role": "Designer",
-        "company": "Subvisual Academy"
-      },
-      {
-        "name": "Masha",
-        "role": "Product Manager",
-        "company": "Subvisual Academy"
-      }
+import {useEffect, useState} from "react";
+import {GET} from "../utils/fetch"
+
+const skills = [
+  "Adobe Creative Cloud", "Analytics tools", "Backend dev", "Blender", "Blockchain", "Branding",
+  "Communication", "Creative Coding", "Database", "Experience Design", "Figma", "Frontend dev",
+  "Git / Github", "Graphic Design", "Human Resources", "Interface Design", "Marketing", "Operations",
+  "Product exploration", "Sales", "Strategic planning", "User Research", "Usability Testing"
+]
+const hobbies = [
+  "Anime", "Art", "Board Games", "Children", "Collecting", "Cooking", "Formula 1", "Football", "Gardening",
+  "Handcraft", "Hiking", "Languages", "Making music", "Movies", "Music genres", "Outdoor Activities",
+  "Tennis", "Peers", "Photography", "Psychology", "Reading", "Sports", "Tech / computers", "Travelling",
+  "TV Series", "Video Gaming", "Wellness"
 ]
 
+const companies = [
+  {
+    "name": "Subvisual", 
+    "logo" : Subvisual
+  },
+  {
+    "name": "Onda", 
+    "logo" : Onda
+  },
+  {
+    "name": "Pink Room", 
+    "logo" : PinkRoom
+  },
+  {
+    "name": "Invisible Lab", 
+    "logo" : InvisibleLab
+  },
+  {
+    "name": "Universe", 
+    "logo" : Universe
+  },
+]
 
+const getUsers = async () => {
+  return await GET("users");
+};
 
 function Members() {
-    return(
-        <div>
-            <NavBar />
-            <div className="flex">
-                <div className="flex-none w-1/3">
+  const [users, setUsers] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  useEffect(() => {
+    getUsers().then((response) => setUsers(response));
+  }, []);
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setSearchInput(e.target.value.trim());
+  };
+
+  const toggleExpansion = () => {
+    setIsExpanded(prevState => !prevState);
+  };
+
+  return(
+      <div>
+          <NavBar />
+          <div className="flex">
+
+              <div className="mt-48 ml-32 flex-none w-1/3">
+
+                <div className="mt-3 w-52">
+
+                  <button className="w-52 h-9 bg-dark-gray rounded-md p-4 flex justify-between items-center" onClick={toggleExpansion}>
+                    <div className="text-sm text-white">
+                      Company
+                    </div>
+                    <img
+                      src={Toggle}
+                      alt="Toggle button"
+                    />
+                  </button>
+
+                  <div className={`transition-all ${isExpanded ? 'visible opacity-100 h-auto' : 'invisible opacity-0 h-0'}`}>                 
+                    <div className="mt-2 w-52 bg-dark-gray rounded-md px-4 py-3">
+                      {companies.map((company) => (
+                        <div className="h-9 flex justify-between items-center">
+                          <div className= "flex">
+                            <img className="mr-3 w-6 h-6 rounded-full" src={company.logo} alt="Company logo"></img>
+                            <div className="text-sm text-white font-bold"> {company.name} </div>
+                          </div>
+                          <button className="w-4 h-4 rounded-md bg-white"></button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
 
                 </div>
-                <div className="flex-grow flex-col w-2/3">
-                    <div className="flex">
-                        <div className="flex-none w-3/5">
-                            <input
-                                id="email"
-                                name="email"
-                                type="text"
-                                className="mt-16 w-full h-9 bg-dark-gray text-base text-navbar-components-gray rounded-md hover:border-2 hover:border-white active:border-2 active:border-blue-login p-3"
-                                placeholder="Search for a member of the Space Center"
-                            />
-                        </div>
+
+                <div className="mt-3 w-52">
+
+                  <button className="w-52 h-9 bg-dark-gray rounded-md p-4 flex justify-between items-center" onClick={toggleExpansion}>
+                    <div className="text-sm text-white">
+                      Skills
                     </div>
-                
-                    <div className="mt-8">
-                        <div className="text-white text-xl font-bold">
-                            Members
+                    <img
+                      src={Toggle}
+                      alt="Toggle button"
+                    />
+                  </button>
+
+                  <div className={`transition-all ${isExpanded ? 'visible opacity-100 h-auto' : 'invisible opacity-0 h-0'}`}>                 
+                    <div className="mt-2 w-52 bg-dark-gray rounded-md p-4">
+                      {skills.map((skill, index) => (
+                        <div className=" h-9 flex justify-between items-center">
+                          <div className="text-sm text-white font-bold"> {skill} </div>
+                          <button className="w-4 h-4 rounded-md bg-white"></button>
                         </div>
-                        <div className="mt-10 grid grid-cols-3 gap-y-10">
-                            {users.map((user, index) => (
-                                <div key={index} className="w-64 h-72 bg-dark-cyan text-white rounded-lg flex flex-col justify-center items-center">
-                                    <img
-                                        className="w-32 h-32"
-                                        src={Avatar}
-                                        alt= "Profile pic place holder"
-                                    />
-                                    <p className="mt-6 text-xl"> {user.name} </p>
-                                    <p className="mt-2 text-base">{user.role} </p>
-                                    <div className="mt-2 text-base"> {user.company} </div>
-                                </div>                                  
-                           ))}
-                        </div>
+                      ))}
                     </div>
-                </div>    
-            </div>
+                  </div>
+
+                </div>
+
+                <div className="mt-3 w-52">
+
+                  <button className="w-52 h-9 bg-dark-gray rounded-md p-4 flex justify-between items-center" onClick={toggleExpansion}>
+                    <div className="text-sm text-white">
+                      Hobbies
+                    </div>
+                    <img
+                      src={Toggle}
+                      alt="Toggle button"
+                    />
+                  </button>
+
+                  <div className={`transition-all ${isExpanded ? 'visible opacity-100 h-auto' : 'invisible opacity-0 h-0'}`}>                 
+                    <div className="mt-2 w-52 bg-dark-gray rounded-md p-4">
+                      {hobbies.map((hobby, index) => (
+                        <div className=" h-9 flex justify-between items-center">
+                          <div className="text-sm text-white font-bold"> {hobby} </div>
+                          <button className="w-4 h-4 rounded-md bg-white"></button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div className="flex-grow flex-col w-2/3">
+                  <div className="flex">
+                      <div className="flex-none w-3/5">
+                          <input
+                            type="text"
+                            className="mt-16 w-full h-9 bg-dark-gray text-base text-navbar-components-gray rounded-md hover:border-2 hover:border-white active:border-2 active:border-blue-login p-3"
+                            placeholder="Search for a member of the Space Center"
+                            onChange={handleChange}
+                            value={searchInput}
+                          />
+                      </div>
+                  </div>
+              
+                  <div className="mt-8">
+                      <div className="text-white text-xl font-bold">
+                          Members
+                      </div>
+                      <div className="mt-10 grid grid-cols-3 gap-y-10">
+                          {users.map((user) => (
+                              <div key={user.id} className="w-64 h-72 bg-dark-cyan text-white rounded-lg flex flex-col justify-center items-center">
+                                  <img
+                                      className="w-32 h-32"
+                                      src={Avatar}
+                                      alt= "Profile pic place holder"
+                                  />
+                                  <p className="mt-6 text-xl"> {user.name} </p>
+                                  <p className="mt-2 text-base">{user.role} </p>
+                                  <div className="mt-2 text-base"> {user.company_name} </div>
+                              </div>                                  
+                          ))}
+                      </div>
+                  </div>
+              </div>    
+
         </div>
-    );
+      </div>
+  );
 }
 
 export default Members;
