@@ -1,7 +1,26 @@
 import React from "react";
+import Select from "react-select";
+import Subvisual from "../assets/companies/Subvisual.png";
+import InvisibleLab from "../assets/companies/InvisibleLab.png";
+import Onda from "../assets/companies/Onda.png";
+import PinkRoom from "../assets/companies/PinkRoom.png";
+import Other from "../assets/companies/Other.png";
+
+const companyOptions = [
+  {
+    value: "1",
+    label: "Subvisual",
+    imageSrc: Subvisual,
+  },
+  { value: "2", label: "Invisible Lab", imageSrc: InvisibleLab },
+  { value: "3", label: "Onda", imageSrc: Onda },
+  { value: "4", label: "Pink Room", imageSrc: PinkRoom },
+  { value: "5", label: "Universe", imageSrc: Other },
+];
 
 const Information = ({ prevStep, nextStep, handleChange, values }) => {
   console.log(values);
+
   const Continue = (e) => {
     e.preventDefault();
     nextStep();
@@ -131,23 +150,27 @@ const Information = ({ prevStep, nextStep, handleChange, values }) => {
             >
               Company
             </label>
-            <select
+            <Select
               required
               id="company"
               onChange={handleChange("company_id")}
-              name="company"
-              value={values.company_id}
-              className="mt-2 rounded-md block py-3 font-normal text-base w-full rounded-mdpy-1.5 pl-3 pr-8 text-gray-900 focus:border-cerulean border-2 outline-none border-transparent sm:text-sm sm:leading-6"
-            >
-              <option value="1" selected>
-                Subvisual
-              </option>
-              <option value="2">Invisible Lab</option>
-              <option value="3">Onda</option>
-              <option value="3">Pink Room</option>
-              <option value="3">Universe</option>
-            </select>
+              options={companyOptions}
+              value={companyOptions.find(
+                (option) => option.value === values.company_id
+              )}
+              getOptionLabel={(option) => (
+                <div className="flex items-center">
+                  <img
+                    src={option.imageSrc}
+                    alt={option.label}
+                    className="h-5 w-5 rounded-full mr-2"
+                  />
+                  {option.label}
+                </div>
+              )}
+            />
           </div>
+
           <div className="w-1/4">
             <label
               htmlFor="email"

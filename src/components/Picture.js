@@ -37,16 +37,16 @@ const Picture = ({ prevStep, nextStep, handleChange, values }) => {
       try {
         const tokenRes = await POST(`auth/login`, {
           email: values.email,
-          password: values.pass,
+          password: values.password,
         }).then((response) => response["token"]);
 
         localStorage.setItem("token", tokenRes);
 
-        await POST(`users/` + id + `hobbies`, {
+        await POST(`users/` + id + `/hobbies`, {
           names: values.hobbies,
         });
 
-        await POST(`users/` + id + `skills`, {
+        await POST(`users/` + id + `/skills`, {
           names: values.skills,
         });
         navigate("/home");

@@ -33,31 +33,36 @@ export default class Signup extends Component {
     this.setState({ step: step + 1 });
   };
 
-  // Handle fields change
   handleChange =
     (input, isCheckbox = false) =>
     (e) => {
-      const value = isCheckbox
-        ? e.target.value
-        : e.target.type === "file"
-        ? e.target.files[0]
-        : e.target.value;
+      if (input === "company_id" && !isCheckbox) {
+        // Handling the react-select input
+        this.setState({ [input]: e.value });
+      } else {
+        // Handling other form inputs
+        const value = isCheckbox
+          ? e.target.value
+          : e.target.type === "file"
+          ? e.target.files[0]
+          : e.target.value;
 
-      this.setState((prevState) => {
-        if (isCheckbox) {
-          const isChecked = e.target.checked;
+        this.setState((prevState) => {
+          if (isCheckbox) {
+            const isChecked = e.target.checked;
 
-          if (isChecked) {
-            return { [input]: [...prevState[input], value] };
+            if (isChecked) {
+              return { [input]: [...prevState[input], value] };
+            } else {
+              return {
+                [input]: prevState[input].filter((item) => item !== value),
+              };
+            }
           } else {
-            return {
-              [input]: prevState[input].filter((item) => item !== value),
-            };
+            return { [input]: value };
           }
-        } else {
-          return { [input]: value };
-        }
-      });
+        });
+      }
     };
 
   render() {
