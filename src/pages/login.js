@@ -21,6 +21,7 @@ function Login() {
           localStorage.setItem("token", response["token"]);
           localStorage.setItem("current", response["user"]);
           navigate("/home");
+          navigate(0);
         })
         .catch((error) => {
           console.error("Error occurred during login:", error.message);
