@@ -53,7 +53,10 @@ const getUsers = async () => {
 function Members() {
   const [users, setUsers] = useState([]);
   const [searchInput, setSearchInput] = useState("");
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [companiesToggle, setCompaniesToggle] = useState(false);
+  const [skillsToggle, setSkillsToggle] = useState(false);
+  const [hobbiesToggle, setHobbiesToggle] = useState(false);
+
 
   useEffect(() => {
     getUsers().then((response) => setUsers(response));
@@ -63,9 +66,21 @@ function Members() {
     e.preventDefault();
     setSearchInput(e.target.value.trim());
   };
+  
+  const filteredUsers = users.filter((user) => {
+    return user.name.toLowerCase().includes(searchInput.toLowerCase());
+  });
 
-  const toggleExpansion = () => {
-    setIsExpanded(prevState => !prevState);
+  const toggleCompanies = () => {
+    setCompaniesToggle(prevState => !prevState);
+  };
+
+  const toggleSkills = () => {
+    setSkillsToggle(prevState => !prevState);
+  };
+
+  const toggleHobbies = () => {
+    setHobbiesToggle(prevState => !prevState);
   };
 
   return(
@@ -73,11 +88,11 @@ function Members() {
           <NavBar />
           <div className="flex">
 
-              <div className="mt-48 ml-32 flex-none w-1/3">
+              <div className="mt-48 ml-32 flex-none w-1/4">
 
-                <div className="mt-3 w-52">
+                <div className="mt-3 w-56">
 
-                  <button className="w-52 h-9 bg-dark-gray rounded-md p-4 flex justify-between items-center" onClick={toggleExpansion}>
+                  <button className="w-52 h-9 bg-dark-gray rounded-md p-4 flex justify-between items-center" onClick={toggleCompanies}>
                     <div className="text-sm text-white">
                       Company
                     </div>
@@ -87,7 +102,7 @@ function Members() {
                     />
                   </button>
 
-                  <div className={`transition-all ${isExpanded ? 'visible opacity-100 h-auto' : 'invisible opacity-0 h-0'}`}>                 
+                  <div className={`transition-all ${companiesToggle ? 'visible opacity-100 h-auto' : 'invisible opacity-0 h-0'}`}>                 
                     <div className="mt-2 w-52 bg-dark-gray rounded-md px-4 py-3">
                       {companies.map((company) => (
                         <div className="h-9 flex justify-between items-center">
@@ -105,7 +120,7 @@ function Members() {
 
                 <div className="mt-3 w-52">
 
-                  <button className="w-52 h-9 bg-dark-gray rounded-md p-4 flex justify-between items-center" onClick={toggleExpansion}>
+                  <button className="w-52 h-9 bg-dark-gray rounded-md p-4 flex justify-between items-center" onClick={toggleSkills}>
                     <div className="text-sm text-white">
                       Skills
                     </div>
@@ -115,7 +130,7 @@ function Members() {
                     />
                   </button>
 
-                  <div className={`transition-all ${isExpanded ? 'visible opacity-100 h-auto' : 'invisible opacity-0 h-0'}`}>                 
+                  <div className={`transition-all ${skillsToggle ? 'visible opacity-100 h-auto' : 'invisible opacity-0 h-0'}`}>                 
                     <div className="mt-2 w-52 bg-dark-gray rounded-md p-4">
                       {skills.map((skill, index) => (
                         <div className=" h-9 flex justify-between items-center">
@@ -130,7 +145,7 @@ function Members() {
 
                 <div className="mt-3 w-52">
 
-                  <button className="w-52 h-9 bg-dark-gray rounded-md p-4 flex justify-between items-center" onClick={toggleExpansion}>
+                  <button className="w-52 h-9 bg-dark-gray rounded-md p-4 flex justify-between items-center" onClick={toggleHobbies}>
                     <div className="text-sm text-white">
                       Hobbies
                     </div>
@@ -140,7 +155,7 @@ function Members() {
                     />
                   </button>
 
-                  <div className={`transition-all ${isExpanded ? 'visible opacity-100 h-auto' : 'invisible opacity-0 h-0'}`}>                 
+                  <div className={`transition-all ${hobbiesToggle ? 'visible opacity-100 h-auto' : 'invisible opacity-0 h-0'}`}>                 
                     <div className="mt-2 w-52 bg-dark-gray rounded-md p-4">
                       {hobbies.map((hobby, index) => (
                         <div className=" h-9 flex justify-between items-center">
@@ -155,9 +170,9 @@ function Members() {
 
               </div>
 
-              <div className="flex-grow flex-col w-2/3">
+              <div className="flex-grow flex-col w-3/4">
                   <div className="flex">
-                      <div className="flex-none w-3/5">
+                      <div className="flex-none w-7/12">
                           <input
                             type="text"
                             className="mt-16 w-full h-9 bg-dark-gray text-base text-navbar-components-gray rounded-md hover:border-2 hover:border-white active:border-2 active:border-blue-login p-3"
@@ -173,7 +188,7 @@ function Members() {
                           Members
                       </div>
                       <div className="mt-10 grid grid-cols-3 gap-y-10">
-                          {users.map((user) => (
+                          {filteredUsers.map((user) => (
                               <div key={user.id} className="w-64 h-72 bg-dark-cyan text-white rounded-lg flex flex-col justify-center items-center">
                                   <img
                                       className="w-32 h-32"
