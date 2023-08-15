@@ -57,7 +57,6 @@ function Members() {
   const [skillsToggle, setSkillsToggle] = useState(false);
   const [hobbiesToggle, setHobbiesToggle] = useState(false);
 
-
   useEffect(() => {
     getUsers().then((response) => setUsers(response));
   }, []);
@@ -65,15 +64,36 @@ function Members() {
   const handleChange = (e) => {
     e.preventDefault();
     setSearchInput(e.target.value.trim());
+    filterUsers(e);
   };
-  
-  const filteredUsers = users.filter((user) => {
-    return user.name.toLowerCase().includes(searchInput.toLowerCase());
-  });
+
+  const filterUsers = (e) => {   
+    var filtered = users
+
+    if (searchInput) {
+      filtered = filtered.filter((user => user.name.toLowerCase().includes(searchInput.toLowerCase())));
+    }
+
+    switch (e.target.value) {
+      case 'skill':
+        filtered = users.filter((user) => user.skills.includes(e.target.name));
+        break;
+      case 'hobby':
+        filtered = users.filter((user) => user.hobbies.includes(e.target.name));
+        break;
+      case 'company':
+        filtered = users.filter((user) => user.company_id.includes(e.target.name));
+        break;
+      default:
+        break;
+    }; 
+    setUsers(filtered) 
+  }
 
   const toggleCompanies = () => {
     setCompaniesToggle(prevState => !prevState);
   };
+
 
   const toggleSkills = () => {
     setSkillsToggle(prevState => !prevState);
@@ -110,7 +130,7 @@ function Members() {
                             <img className="mr-3 w-6 h-6 rounded-full" src={company.logo} alt="Company logo"></img>
                             <div className="text-sm text-white font-bold"> {company.name} </div>
                           </div>
-                          <button className="w-4 h-4 rounded-md bg-white"></button>
+                          <button className="w-4 h-4 rounded-md bg-white" name={company.id} value="company" onClick={filterUsers}></button>
                         </div>
                       ))}
                     </div>
@@ -135,7 +155,7 @@ function Members() {
                       {skills.map((skill, index) => (
                         <div className=" h-9 flex justify-between items-center">
                           <div className="text-sm text-white font-bold"> {skill} </div>
-                          <button className="w-4 h-4 rounded-md bg-white"></button>
+                          <button className="w-4 h-4 rounded-md bg-white" name= {skill} value= "skill" onClick={filterUsers}></button>
                         </div>
                       ))}
                     </div>
@@ -160,7 +180,7 @@ function Members() {
                       {hobbies.map((hobby, index) => (
                         <div className=" h-9 flex justify-between items-center">
                           <div className="text-sm text-white font-bold"> {hobby} </div>
-                          <button className="w-4 h-4 rounded-md bg-white"></button>
+                          <button className="w-4 h-4 rounded-md bg-white" name={hobby} value="hobby" onClick={filterUsers}></button>
                         </div>
                       ))}
                     </div>
