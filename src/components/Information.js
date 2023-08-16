@@ -19,7 +19,7 @@ const companyOptions = [
 ];
 
 const Information = ({ prevStep, nextStep, handleChange, values }) => {
-  const Continue = (e) => {
+  const next = (e) => {
     nextStep();
   };
 
@@ -58,7 +58,7 @@ const Information = ({ prevStep, nextStep, handleChange, values }) => {
               <div className="h-0.5 w-full bg-white"></div>
             </div>
             <button
-              onClick={Continue}
+              onClick={next}
               type="button"
               className="group relative flex h-8 w-8 items-center justify-center rounded-full border-2 border-gray-300 bg-white hover:border-gray-400"
             >
@@ -226,7 +226,7 @@ const Information = ({ prevStep, nextStep, handleChange, values }) => {
 
             <div className="flex justify-end">
               <button
-                onClick={Continue}
+                onClick={next}
                 type="button"
                 className="inline-flex mt-8 font-medium items-center gap-x-2 rounded-md bg-cerulean py-2 px-6 text-base text-white shadow-sm hover:bg-dark-cyan focus:border-white focus:border-2"
               >

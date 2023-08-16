@@ -3,8 +3,8 @@ import Background from "../assets/universe_background.png";
 import Logo from "../assets/logo.svg";
 
 const UserDetails = ({ nextStep, handleChange, values }) => {
-  // for continue event listener
-  const Continue = () => {
+  // for next event listener
+  const next = () => {
     nextStep();
   };
 
@@ -15,7 +15,7 @@ const UserDetails = ({ nextStep, handleChange, values }) => {
     const confirmPassword = data.get("confirmPassword");
 
     if (pass === confirmPassword) {
-      Continue();
+      next();
     } else {
       alert("Password doesn't match!");
     }

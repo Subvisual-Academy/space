@@ -10,12 +10,12 @@ const getHobbies = async () => {
 const Hobbies = ({ prevStep, nextStep, handleChange, values }) => {
   const [hobbies, setHobbies] = useState([]);
 
-  const Continue = (e) => {
+  const next = (e) => {
     e.preventDefault();
     nextStep();
   };
 
-  const Previous = (e) => {
+  const previous = (e) => {
     e.preventDefault();
     prevStep();
   };
@@ -38,7 +38,7 @@ const Hobbies = ({ prevStep, nextStep, handleChange, values }) => {
               <div class="h-0.5 w-full bg-cerulean"></div>
             </div>
             <button
-              onClick={Previous}
+              onClick={previous}
               type="button"
               class="relative flex h-8 w-8 items-center justify-center rounded-full bg-cerulean hover:bg-cerulean"
             >
@@ -81,7 +81,7 @@ const Hobbies = ({ prevStep, nextStep, handleChange, values }) => {
               <div class="h-0.5 w-full bg-white"></div>
             </div>
             <button
-              onClick={Continue}
+              onClick={next}
               type="button"
               class="group relative flex h-8 w-8 items-center justify-center rounded-full border-2 border-gray-300 bg-white hover:border-gray-400"
             >
@@ -144,14 +144,14 @@ const Hobbies = ({ prevStep, nextStep, handleChange, values }) => {
         </fieldset>
         <div className="flex justify-center gap-48 text-center mt-16">
           <button
-            onClick={Previous}
+            onClick={previous}
             type="button"
             className="rounded-md w-40 bg-transparent p-2 text-base border-cerulean border-2 text-white shadow-sm hover:bg-dark-cyan hover:border-white focus:border-white focus:border-2"
           >
             Back
           </button>
           <button
-            onClick={Continue}
+            onClick={next}
             type="submit"
             className="w-40 p-2 font-medium items-center gap-x-2 rounded-md bg-cerulean text-base text-white shadow-sm hover:bg-dark-cyan focus:border-white focus:border-2"
           >
