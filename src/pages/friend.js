@@ -121,7 +121,6 @@ function Friend() {
                 </div>
               </div>
             </div>
-          </div>
         )}
 
           <div className="w-1/3 h-1/1 bg-bkg-purple flex-shrink-0">
