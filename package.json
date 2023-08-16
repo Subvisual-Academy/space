@@ -21,7 +21,8 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "lint": "prettier --check src/",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "lint-format": "npm run lint && npm run format"
   },
   "eslintConfig": {
     "extends": [

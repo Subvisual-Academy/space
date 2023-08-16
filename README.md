@@ -1,8 +1,9 @@
 # SPACE
 
-Frontend repo for the SpaceCenter project of Subvisual SummerCamp 2023 
+Frontend repo for the SpaceCenter project of Subvisual SummerCamp 2023
 
 ## `npm install`
+
 Install all the dependencies
 
 ## `npm start`
@@ -13,9 +14,9 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-## `npm run lint`
+## `npm run lint-format`
 
-Runs prettier and verifies if the code is well formatted.
+Runs prettier and verifies if the code is well formatted, formats the code
 
 ## `npm run build`
 
@@ -26,10 +27,6 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-## `npm run format`
-
-Formats the code with prettier.
 
 ## Configuration
 
