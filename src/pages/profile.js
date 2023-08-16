@@ -13,10 +13,10 @@ import Universe from "../assets/universe.jpg";
 
 import List from "../components/list";
 import Info from "../components/info";
-import { GET } from "../utils/fetch";
+import {getAnswers, getSkills, getHobbies, getUserData, getQuestion} from "../utils/getters";
 import { useState, useEffect } from "react";
 
-const current_user_id = 6; //localStorage.getItem("current");
+const current_user_id = localStorage.getItem("current");
 
 const companyLogos = {
   Subvisual: Sub,
@@ -32,35 +32,6 @@ const formatDate = (dateString) => {
   return date.toLocaleString("en-US", options);
 };
 
-const getAnswers = async () => {
-  var response = await GET("users/" + current_user_id + "/answers");
-  return response;
-};
-
-const getSkills = async () => {
-  var response = await GET("users/" + current_user_id + "/skills");
-  return response.map((skill) => skill["name"]);
-};
-
-const getHobbies = async () => {
-  var response = await GET("users/" + current_user_id + "/hobbies");
-  return response.map((hobby) => hobby["name"]);
-};
-
-const getUserData = async () => {
-  var userData = await GET("users/" + current_user_id);
-  var company = await GET("/companies/" + userData.company_id.toString());
-  return {
-    userData: userData,
-    company: company,
-  };
-};
-
-const getQuestion = async (question_id) => {
-  var response = await GET("questions/" + question_id);
-  return response;
-};
-
 function Profile() {
   const [answers, setAnswers] = useState([]);
   const [userData, setUserData] = useState([]);
@@ -72,23 +43,22 @@ function Profile() {
 
   useEffect(() => {
     getUserData(current_user_id).then((response) => {
-      setUserData(response.userData);
-      setCompany(response.company.name);
+      setUserData(response);
+      setCompany(response.company_name);
       setCompanyLogo(companyLogos[company]);
     });
-    console.log(userData);
   }, [userData, company]);
 
   useEffect(() => {
-    getSkills().then((response) => setSkills(response));
-  }, [skills]);
+    getSkills(current_user_id).then((response) => setSkills(response));
+  }, []);
 
   useEffect(() => {
-    getHobbies().then((response) => setHobbies(response));
-  }, [hobbies]);
+    getHobbies(current_user_id).then((response) => setHobbies(response));
+  }, []);
 
   useEffect(() => {
-    getAnswers().then(async (response) => {
+    getAnswers(current_user_id).then(async (response) => {
       setAnswers(response);
       const questionPromises = response.map((answer) =>
         getQuestion(answer.question_id)
@@ -141,7 +111,7 @@ function Profile() {
                 <img className="h-6 w-6" src={Pencil} alt="Pencil Icon" />
               </div>
 
-              <List things={skills} />
+              <List items={skills} />
 
               <div class="my-8 border-t-2 border-white"></div>
 
@@ -153,7 +123,7 @@ function Profile() {
                 <img className="h-6 w-6" src={Pencil} alt="Pencil Icon" />
               </div>
 
-              <List things={hobbies} />
+              <List items={hobbies} />
             </div>
 
             <div className="mt-10 mb-6 text-white text-xl">Weekly Answers</div>
