@@ -96,11 +96,12 @@ const getUsers = async () => {
 
 function Members() {
   const [users, setUsers] = useState([]);
-  const [decrescentOrder, setDecrescentOrder] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [companiesToggle, setCompaniesToggle] = useState(false);
   const [skillsToggle, setSkillsToggle] = useState(false);
   const [hobbiesToggle, setHobbiesToggle] = useState(false);
+  const [sortsToggle, setSortsToggle] = useState(false);
+  const [sortText, setSortText] = useState("Name (A-Z)");
 
   useEffect(() => {
     getUsers().then((response) => {
@@ -117,15 +118,22 @@ function Members() {
 
   const switchOrder = (e) => {
     e.preventDefault();
-    setDecrescentOrder(!decrescentOrder);
-    orderUsers();
-  };
 
-  const orderUsers = (e) => {
+    var order = e.target.value
+    setSortText(order);    
+
     var ordered = users;
-    decrescentOrder
-      ? (ordered = ordered.sort((a, b) => a.name.localeCompare(b.name)))
-      : ordered.sort((a, b) => b.name.localeCompare(a.name));
+    switch (order) {
+      case "Name (A-Z)":
+        ordered = ordered.sort((a, b) => a.name.localeCompare(b.name))
+        break
+      case "Name (Z-A)":
+        ordered = ordered.sort((a, b) => b.name.localeCompare(a.name))
+        break
+      default:
+        ordered = users
+        break
+    }
     setUsers(ordered);
   };
 
@@ -168,14 +176,19 @@ function Members() {
     setHobbiesToggle((prevState) => !prevState);
   };
 
+  const toggleSorts= () => {
+    setSortsToggle((prevState) => !prevState);
+  };
+
   return (
     <div>
       <NavBar />
       <div className="flex">
+
         <div className="mt-48 ml-32 flex-none w-1/4">
-          <div className="mt-3 w-56">
+          <div className="mt-3 w-52">
             <button
-              className="w-52 h-9 bg-dark-gray rounded-md p-4 flex justify-between items-center"
+              className="w-52 h-9 bg-dark-gray rounded-md p-4 flex justify-between items-center focus:border-2 focus:border-white"
               onClick={toggleCompanies}
             >
               <div className="text-sm text-white">Company</div>
@@ -217,7 +230,7 @@ function Members() {
 
           <div className="mt-3 w-52">
             <button
-              className="w-52 h-9 bg-dark-gray rounded-md p-4 flex justify-between items-center"
+              className="w-52 h-9 bg-dark-gray rounded-md p-4 flex justify-between items-center focus:border-2 focus:border-white"
               onClick={toggleSkills}
             >
               <div className="text-sm text-white">Skills</div>
@@ -252,7 +265,7 @@ function Members() {
 
           <div className="mt-3 w-52">
             <button
-              className="w-52 h-9 bg-dark-gray rounded-md p-4 flex justify-between items-center"
+              className="w-52 h-9 bg-dark-gray rounded-md p-4 flex justify-between items-center focus:border-2 focus:border-white"
               onClick={toggleHobbies}
             >
               <div className="text-sm text-white">Hobbies</div>
@@ -286,26 +299,51 @@ function Members() {
           </div>
         </div>
 
-        <div className="flex-grow flex-col w-3/4">
+        <div className="flex-grow w-3/4">
           <div className="flex">
-            <input
-              type="text"
-              className="mt-16 w-7/12 h-9 bg-dark-gray text-base text-navbar-components-gray rounded-md hover:border-2 hover:border-white active:border-2 active:border-blue-login p-3"
-              placeholder="Search for a member of the Space Center"
-              onChange={handleSearch}
-              value={searchInput}
-            />
-            <button
-              className="flex ml-24 mt-16 items-center text-light-gray w-48 h-7"
-              onClick={switchOrder}
-            >
-              Sort by: Name (A-Z)
-              <img
-                className="w-5 h-5 ml-4"
-                src={Dropdown}
-                alt="Dropdown icon"
+            <div className="flex-none w-2/3">
+              <input
+                type="text"
+                className="mt-16 h-9 w-5/6 bg-dark-gray text-base text-navbar-components-gray rounded-md hover:border-2 hover:border-white active:border-2 active:border-blue-login p-3"
+                placeholder="Search for a member of the Space Center"
+                onChange={handleSearch}
+                value={searchInput}
               />
-            </button>
+            </div>
+
+            <div className="flex-grow w-1/3">
+              <div className="ml-12">
+                <button
+                  className="flex mt-16 items-center text-light-gray w-52 h-7 p-2 hover:bg-navbar-gray hover:rounded-lg focus:border-2 focus:border-white"
+                  onClick={toggleSorts}
+                >
+                  Sort by: {sortText}
+                  <img
+                    className="w-5 h-5 ml-4"
+                    src={Dropdown}
+                    alt="Dropdown icon"
+                  />
+                </button>
+
+                <div
+                  className={`transition-all ${
+                    sortsToggle
+                      ? "visible opacity-100 h-auto"
+                      : "invisible opacity-0 h-0"
+                  }`}
+                >
+                  <div className="mt-3 w-48 bg-dark-gray rounded-md p-4">
+                    <button className="w-48 h-9 text-white hover:bg-navbar-components-gray" value="Name (A-Z)" onClick={switchOrder}>
+                      Name (A-Z)
+                    </button>
+                    <button className="w-48 h-9 text-white hover:bg-navbar-components-gray" value="Name (Z-A)" onClick={switchOrder}>
+                      Name (Z-A)
+                    </button>
+                  </div>
+                </div>
+              </div>             
+            </div>
+
           </div>
 
           <div className="mt-8">
@@ -313,7 +351,7 @@ function Members() {
             <div className="mt-10 grid grid-cols-3 gap-y-10">
               {users.map((user) => (
                 <Link to={`/profile/${user.id}`} key={user.id}>
-                  <div className="w-64 h-72 bg-dark-cyan text-white rounded-lg flex flex-col justify-center items-center">
+                  <div className="w-64 h-72 bg-dark-cyan text-white rounded-lg flex flex-col justify-center items-center hover:bg-blue-400">
                     <img
                       className="w-32 h-32"
                       src={Avatar}
@@ -327,8 +365,11 @@ function Members() {
               ))}
             </div>
           </div>
+
         </div>
+
       </div>
+
     </div>
   );
 }
