@@ -1,5 +1,4 @@
 import React from "react";
-import Background from "../assets/beautiful-shining-stars-night-sky.png";
 import AstronautPointing from "../assets/astronaut pointing 1.png";
 import AstronautChilling from "../assets/astronaut-chilling.png";
 import Avatar from "../assets/Avatar profile.png";
@@ -40,10 +39,7 @@ function Friend() {
 
   return (
     <div className="font-medium">
-      <div
-        className="bg-cover bg-center h-screen"
-        style={{ backgroundImage: `url(${Background})` }}
-      >
+      <div className="bg-cover bg-center min-h-screen bg-vacation">
         <NavBar />
 
         <div className="flex">
@@ -54,13 +50,14 @@ function Friend() {
                   Vacation week!
                 </div>
 
-                <div className="w-7/12 mt-6 text-base text-white">
+                <div className="mt-6 text-base text-white w-full">
                   Well, there ain't one week like the other, right?
                   <br />
                   <br /> This time you haven't got anyone, no worries. Maybe,
-                  it's just a sign from the Universe to have some me-time, get a
-                  nice drink and devote 15 min to yourself. Don't forget to
-                  answer the question of the week and get back next week!{" "}
+                  it's just a sign from the <br /> Universe to have some
+                  me-time, get a nice drink and devote 15 min to <br />
+                  yourself. Don't forget to answer the question of the week and
+                  get back next week!
                 </div>
 
                 <img
@@ -81,8 +78,7 @@ function Friend() {
                   <img className="w-24 h-24" src={Avatar} alt="AvatarProfile" />
 
                   <div className="ml-4 text-xl text-white">
-                    {" "}
-                    {friendData.name}{" "}
+                    {friendData.name}
                   </div>
                 </div>
 
@@ -96,8 +92,7 @@ function Friend() {
                       <div className="flex text-base">
                         <div className="text-white"> Email: </div>
                         <div className="ml-2 text-highlighted-button-blue">
-                          {" "}
-                          {friendData.email}{" "}
+                          {friendData.email}
                         </div>
                       </div>
 
@@ -123,7 +118,7 @@ function Friend() {
             </div>
           )}
 
-          <div className="w-1/3 h-1/1 bg-bkg-purple flex-shrink-0">
+          <div className="w-1/3 min-h-screen bg-bkg-purple flex-shrink-0">
             {notPaired ? (
               <div className="text-white mt-10 text-center text-2xl font-bold">
                 Suggested Activities for next week
