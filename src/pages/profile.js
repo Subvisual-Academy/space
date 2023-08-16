@@ -13,7 +13,13 @@ import Universe from "../assets/universe.jpg";
 
 import List from "../components/list";
 import Info from "../components/info";
-import {getAnswers, getSkills, getHobbies, getUserData, getQuestion} from "../utils/getters";
+import {
+  getAnswers,
+  getSkills,
+  getHobbies,
+  getUserData,
+  getQuestion,
+} from "../utils/getters";
 import { useState, useEffect } from "react";
 
 const current_user_id = localStorage.getItem("current");
