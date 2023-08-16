@@ -29,14 +29,13 @@ function Friend() {
   const [notPaired, setNotPaired] = useState(false);
 
   useEffect(() => {
-    getFriend()
-      .then((response) => {
-        if (response.error) {
-          setNotPaired(true); 
-        } else {
-          setFriendData(response);
-        }
-      });
+    getFriend().then((response) => {
+      if (response.error) {
+        setNotPaired(true);
+      } else {
+        setFriendData(response);
+      }
+    });
   }, [notPaired]);
 
   return (
