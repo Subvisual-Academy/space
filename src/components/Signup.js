@@ -1,12 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
 import UserDetails from "./UserDetails";
 import Information from "./Information";
 import Hobbies from "./Hobbies";
 import Skills from "./Skills";
 import Picture from "./Picture";
+import { useState } from "react";
 
-export default class Signup extends Component {
-  state = {
+const Signup = () => {
+  const [step, setStep] = useState(1);
+  const [values, setValues] = useState({
     step: 1,
     email: "",
     name: "",
@@ -19,26 +21,22 @@ export default class Signup extends Component {
     hobbies: [],
     skills: [],
     profile_pic: null,
+  });
+
+  const prevStep = () => {
+    setStep(step - 1);
   };
 
-  // go back to previous step
-  prevStep = () => {
-    const { step } = this.state;
-    this.setState({ step: step - 1 });
+  const nextStep = () => {
+    setStep(step + 1);
   };
 
-  // proceed to the next step
-  nextStep = () => {
-    const { step } = this.state;
-    this.setState({ step: step + 1 });
-  };
-
-  handleChange =
+  const handleChange =
     (input, isCheckbox = false) =>
     (e) => {
       if (input === "company_id" && !isCheckbox) {
         // Handling the react-select input
-        this.setState({ [input]: e.value });
+        setValues({ ...values, [input]: e.value });
       } else {
         // Handling other form inputs
         const value = isCheckbox
@@ -47,100 +45,73 @@ export default class Signup extends Component {
           ? e.target.files[0]
           : e.target.value;
 
-        this.setState((prevState) => {
+        setValues((prevState) => {
           if (isCheckbox) {
             const isChecked = e.target.checked;
 
             if (isChecked) {
-              return { [input]: [...prevState[input], value] };
+              return { ...prevState, [input]: [...prevState[input], value] };
             } else {
               return {
+                ...prevState,
                 [input]: prevState[input].filter((item) => item !== value),
               };
             }
           } else {
-            return { [input]: value };
+            return { ...prevState, [input]: value };
           }
         });
       }
     };
 
-  render() {
-    const { step } = this.state;
-    const {
-      email,
-      name,
-      password,
-      role,
-      discord,
-      company_id,
-      location,
-      bio,
-      hobbies,
-      skills,
-      profile_pic,
-    } = this.state;
-    const values = {
-      email,
-      name,
-      password,
-      role,
-      discord,
-      company_id,
-      location,
-      bio,
-      hobbies,
-      skills,
-      profile_pic,
-    };
-
-    switch (step) {
-      case 1:
-        return (
-          <UserDetails
-            nextStep={this.nextStep}
-            handleChange={this.handleChange}
-            values={values}
-          />
-        );
-      case 2:
-        return (
-          <Information
-            prevStep={this.prevStep}
-            nextStep={this.nextStep}
-            handleChange={this.handleChange}
-            values={values}
-          />
-        );
-      case 3:
-        return (
-          <Hobbies
-            prevStep={this.prevStep}
-            nextStep={this.nextStep}
-            handleChange={this.handleChange}
-            values={values}
-          />
-        );
-      case 4:
-        return (
-          <Skills
-            prevStep={this.prevStep}
-            nextStep={this.nextStep}
-            handleChange={this.handleChange}
-            values={values}
-          />
-        );
-      case 5:
-        return (
-          <Picture
-            prevStep={this.prevStep}
-            nextStep={this.nextStep}
-            handleChange={this.handleChange}
-            values={values}
-          />
-        );
-      default:
-      // do nothing
-    }
+  switch (step) {
+    case 1:
+      return (
+        <UserDetails
+          nextStep={nextStep}
+          handleChange={handleChange}
+          values={values}
+        />
+      );
+    case 2:
+      return (
+        <Information
+          prevStep={prevStep}
+          nextStep={nextStep}
+          handleChange={handleChange}
+          values={values}
+        />
+      );
+    case 3:
+      return (
+        <Hobbies
+          prevStep={prevStep}
+          nextStep={nextStep}
+          handleChange={handleChange}
+          values={values}
+        />
+      );
+    case 4:
+      return (
+        <Skills
+          prevStep={prevStep}
+          nextStep={nextStep}
+          handleChange={handleChange}
+          values={values}
+        />
+      );
+    case 5:
+      return (
+        <Picture
+          prevStep={prevStep}
+          nextStep={nextStep}
+          handleChange={handleChange}
+          values={values}
+        />
+      );
+    default:
+    // do nothing
   }
-}
+};
+
+export default Signup;
