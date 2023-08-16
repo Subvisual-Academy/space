@@ -8,16 +8,13 @@ const getSkills = async () => {
 };
 
 const Skills = ({ prevStep, nextStep, handleChange, values }) => {
-  console.log(values);
   const [skills, setSkills] = useState([]);
 
   const Continue = (e) => {
-    e.preventDefault();
     nextStep();
   };
 
   const Previous = (e) => {
-    e.preventDefault();
     prevStep();
   };
 

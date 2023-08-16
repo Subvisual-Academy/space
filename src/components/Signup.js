@@ -5,8 +5,11 @@ import Hobbies from "./Hobbies";
 import Skills from "./Skills";
 import Picture from "./Picture";
 import { useState } from "react";
+import { POST } from "../utils/fetch";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [values, setValues] = useState({
     step: 1,
@@ -64,6 +67,58 @@ const Signup = () => {
       }
     };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    console.log(values.company_id);
+
+    const formData = new FormData();
+    formData.append("profile_pic", values.profile_pic);
+    formData.append("name", values.name);
+    formData.append("email", values.email);
+    formData.append("password", values.password);
+    formData.append("discord", values.discord);
+    formData.append("location", values.location);
+    formData.append("company_id", values.company_id);
+
+    try {
+      const response = await fetch(process.env.REACT_APP_API_URL + `users`, {
+        method: "POST",
+        body: formData,
+      });
+      if (!response.ok) {
+        const errorMessage = await response.text();
+        throw new Error(errorMessage);
+      }
+      const id = await response.json().then((response) => response["id"]);
+
+      try {
+        const tokenRes = await POST(`auth/login`, {
+          email: values.email,
+          password: values.password,
+        }).then((response) => response["token"]);
+
+        localStorage.setItem("token", tokenRes);
+
+        await POST(`users/` + id + `/hobbies`, {
+          names: values.hobbies,
+        });
+
+        await POST(`users/` + id + `/skills`, {
+          names: values.skills,
+        });
+        navigate("/home");
+        navigate(0);
+      } catch (error) {
+        alert(error.message);
+      }
+
+      localStorage.setItem("current", id);
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   switch (step) {
     case 1:
       return (
@@ -104,8 +159,8 @@ const Signup = () => {
       return (
         <Picture
           prevStep={prevStep}
-          nextStep={nextStep}
           handleChange={handleChange}
+          handleSubmit={handleSubmit}
           values={values}
         />
       );

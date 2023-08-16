@@ -1,64 +1,8 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { POST } from "../utils/fetch";
 
-const Picture = ({ prevStep, nextStep, handleChange, values }) => {
-  const navigate = useNavigate();
+const Picture = ({ prevStep, handleChange, handleSubmit, values }) => {
   const Previous = (e) => {
-    e.preventDefault();
     prevStep();
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    console.log(values.company_id);
-
-    const formData = new FormData();
-    formData.append("profile_pic", values.profile_pic);
-    formData.append("name", values.name);
-    formData.append("email", values.email);
-    formData.append("password", values.password);
-    formData.append("discord", values.discord);
-    formData.append("location", values.location);
-    formData.append("company_id", values.company_id);
-
-    try {
-      const response = await fetch(process.env.REACT_APP_API_URL + `users`, {
-        method: "POST",
-        body: formData,
-      });
-      if (!response.ok) {
-        const errorMessage = await response.text();
-        throw new Error(errorMessage);
-      }
-      const id = await response.json().then((response) => response["id"]);
-
-      try {
-        const tokenRes = await POST(`auth/login`, {
-          email: values.email,
-          password: values.password,
-        }).then((response) => response["token"]);
-
-        localStorage.setItem("token", tokenRes);
-
-        await POST(`users/` + id + `/hobbies`, {
-          names: values.hobbies,
-        });
-
-        await POST(`users/` + id + `/skills`, {
-          names: values.skills,
-        });
-        navigate("/home");
-        navigate(0);
-      } catch (error) {
-        alert(error.message);
-      }
-
-      localStorage.setItem("current", id);
-    } catch (error) {
-      alert(error.message);
-    }
   };
 
   return (

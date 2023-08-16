@@ -19,10 +19,7 @@ const companyOptions = [
 ];
 
 const Information = ({ prevStep, nextStep, handleChange, values }) => {
-  console.log(values);
-
   const Continue = (e) => {
-    e.preventDefault();
     nextStep();
   };
 
@@ -230,7 +227,7 @@ const Information = ({ prevStep, nextStep, handleChange, values }) => {
             <div className="flex justify-end">
               <button
                 onClick={Continue}
-                type="submit"
+                type="button"
                 className="inline-flex mt-8 font-medium items-center gap-x-2 rounded-md bg-cerulean py-2 px-6 text-base text-white shadow-sm hover:bg-dark-cyan focus:border-white focus:border-2"
               >
                 Next
