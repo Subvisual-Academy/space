@@ -5,7 +5,7 @@ import Enter from "../assets/Enter_icon.svg";
 import Ok from "../assets/okkhand.png";
 import { GET, POST } from "../utils/fetch";
 import Astronaut from "../assets/sadAstronaut.png";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router-dom";
 
 const curr = new Date();
 
@@ -88,13 +88,14 @@ function Question() {
   return (
     <div>
       <NavBar />
-      <div className="bg-cod-gray absolute h-full w-full flex items-start flex-auto">
-        <div className="bg-cover bg-no-repeat bg-galaxy-pattern h-full">
+      <div className="bg-cod-gray absolute min-h-screen w-full flex flex-shrink items-start flex-auto font-medium">
+        <div className="bg-cover bg-no-repeat bg-galaxy-pattern basis-2/3 min-h-screen">
           <div className="ml-32">
-            <h1 className="text-white text-xl mt-8">Question of the Week</h1>
+            <h1 className="text-white text-xl mt-8">Weekly Question</h1>
+            <h1 className="text-white mt-20 text-3xl">{content}</h1>
             {answered ? (
-              <div className="text-white mt-36 text-xl mr-24">
-                <h1>
+              <div className="text-white mt-20 text-xl mr-24">
+                <h1 className="font-normal">
                   Cool, thank you for sharing. Now you can go check the answers
                   of other members of the Subvisual Universe!
                 </h1>
@@ -103,18 +104,27 @@ function Question() {
                   src={Ok}
                   alt="An astronaut giving the ok sign"
                 />
+                <Link to="/previous">
+                  <button
+                    type="button"
+                    class="rounded-md mt-10 w-3/5 bg-transparent px-3.5 py-2.5 text-base border-cerulean border-2 text-white shadow-sm hover:bg-dark-cyan hover:border-white focus:border-white focus:border-2"
+                  >
+                    Previous questions
+                  </button>
+                </Link>
               </div>
             ) : (
-              <form onSubmit={handleSubmit}>
-                <h1 className="text-white mt-36 text-5xl">{content}</h1>
+              <form onSubmit={handleSubmit} className=" mr-72">
                 <h1 className="text-white mt-9">
                   {((7 - curr.getDay() + 1) % 7 || 7) + " DAYS LEFT TO ANSWER"}
                 </h1>
                 <div className="relative mt-2">
-                  <input
+                  <textarea
+                    required
                     type="text"
                     name="answer"
-                    className="peer block w-2/4 border-0 bg-gray-50 py-1.5 pl-3 text-gray-900 focus:ring-0 sm:text-sm sm:leading-6 mt-12 placeholder:text-base"
+                    rows="4"
+                    className="no-scrollbar w-full mr-1 rounded-md peer block text-gray-900 shadow-sm bg-gray-50 py-1.5 pl-3 text-gray-900 focus:border-cerulean border-2 outline-none border-transparent sm:text-sm sm:leading-6 mt-12 placeholder:text-base placeholder:text-gray-400"
                     placeholder="Type your answer here"
                   />
                   <div
@@ -125,7 +135,7 @@ function Question() {
                 <div className="flex gap-8 mt-10">
                   <button
                     type="submit"
-                    className="inline-flex items-center gap-x-2 rounded-md bg-cerulean px-3.5 py-2.5 text-base text-white shadow-sm hover:bg-cerulean focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cerulean"
+                    className="inline-flex font-normal items-center gap-x-2 rounded-md bg-cerulean py-2 px-6 text-base text-white shadow-sm hover:bg-dark-cyan focus:border-white focus:border-2"
                   >
                     Answer
                     <img
@@ -141,11 +151,21 @@ function Question() {
                     <img className="ml-2" src={Enter} alt="Enter Arrow" />
                   </div>
                 </div>
+                <div>
+                  <Link to="/previous">
+                    <button
+                      type="button"
+                      class="rounded-md lg:mt-20 w-full bg-transparent px-3.5 py-2.5 text-base border-cerulean border-2 text-white shadow-sm hover:bg-dark-cyan hover:border-white focus:border-white focus:border-2"
+                    >
+                      Previous questions
+                    </button>
+                  </Link>
+                </div>
               </form>
             )}
           </div>
         </div>
-        <div className="bg-blackcurrant flex flex-col grow items-center lg:max-h-screen w-full h-full">
+        <div className="bg-blackcurrant h-screen flex flex-col basis-1/3 items-center">
           <h1 className="text-white text-5xl mt-8">Answers of this week</h1>
           <form className="mt-8 gap-8 text-white flex flex-col overflow-scroll no-scrollbar">
             {answers.length === 0 ? (
@@ -161,18 +181,18 @@ function Question() {
             ) : (
               answers.map((item) => (
                 <div
-                  className="bg-dove-gray p-4 flex flex-col rounded-3xl h-auto w-72"
+                  className="bg-dark-cyan p-4 flex flex-col rounded-3xl h-auto w-72"
                   key={item.body}
                 >
                   <div className="text-xl text-center">{item.email}</div>
-                  <div className="text-xs text-center">
+                  <div className="text-xs text-center font-normal">
                     {item.time
                       .toLocaleString(undefined, options)
                       .toUpperCase() +
                       " " +
                       item.time.getUTCDate()}
                   </div>
-                  <div className="text-base pt-4">{item.body}</div>
+                  <div className="text-base pt-4 font-normal">{item.body}</div>
                 </div>
               ))
             )}

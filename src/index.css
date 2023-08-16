@@ -3,29 +3,17 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "OpenSans";
-  font-style: normal;
-  font-weight: 400;
-  src: local("OpenSans"), local("OpenSans"),
-    url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff)
-      format("woff");
-}
-
-@font-face {
-  font-family: "AudioWide";
-  font-style: normal;
-  font-weight: 400;
-  src: url("./fonts/Audiowide-Regular.woff2") format("woff2"),
-    url("./fonts/Audiowide-Regular.woff") format("woff");
-}
-
-@font-face {
-  font-family: "IBMPlexSans";
+  font-family: "IBM Plex Sans";
   font-style: normal;
   font-weight: 500;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/ibmplexsans/v19/zYX9KVElMYYaJe8bpLHnCwDKjSL9AIFsdA.woff2)
-    format("woff2");
+  src: url("./fonts/IBMPlexSans-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/IBMPlexSans-Regular.ttf") format("truetype");
 }
 
 @layer utilities {

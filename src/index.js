@@ -3,44 +3,53 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { createHashRouter, RouterProvider } from "react-router-dom";
+import {
+  HashRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Home from "./pages/home";
 import Login from "./pages/login";
 import Question from "./pages/question";
 import Friend from "./pages/friend";
 import Profile from "./pages/profile";
+import jwt_decode from "jwt-decode";
+import PreviousQuestions from "./pages/previous_questions";
 
-const router = createHashRouter([
-  {
-    path: "/",
-    element: <App />,
-  },
-  {
-    path: "home",
-    element: <Home />,
-  },
-  {
-    path: "question",
-    element: <Question />,
-  },
-  {
-    path: "friend",
-    element: <Friend />,
-  },
-  {
-    path: "login",
-    element: <Login />,
-  },
-  {
-    path: "profile",
-    element: <Profile />,
-  },
-]);
+function MainRouter() {
+  const token = localStorage.getItem("token");
+  const isAuthenticated = token
+    ? jwt_decode(token).user_id === parseInt(localStorage.getItem("current"))
+    : false;
+
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<App />} />
+        {isAuthenticated ? (
+          <>
+            <Route path="/home" element={<Home />} />
+            <Route path="/question" element={<Question />} />
+            <Route path="/friend" element={<Friend />} />
+            <Route path="/previous" element={<PreviousQuestions />} />
+            <Route path="/profile" element={<Profile />} />
+          </>
+        ) : (
+          <>
+            <Route path="/login" element={<Login />} />
+            <Route path="/*" element={<Navigate to="/login" />} />
+          </>
+        )}
+      </Routes>
+    </Router>
+  );
+}
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <MainRouter />
   </React.StrictMode>
 );
 
