@@ -88,7 +88,7 @@ function Profile() {
             <Info text={company} icon={companyLogo} alt={"Company Logo"} />
             <Info text={userData.role} icon={Suitcase} alt={"Role icon"} />
             <Info
-              text={userData.base_office}
+              text={userData.location}
               icon={Pin}
               alt={"Location icon"}
             />
