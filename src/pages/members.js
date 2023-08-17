@@ -97,9 +97,6 @@ const getUsers = async () => {
 function Members() {
   const [users, setUsers] = useState([]);
   const [searchInput, setSearchInput] = useState("");
-  const [companiesToggle, setCompaniesToggle] = useState(false);
-  const [skillsToggle, setSkillsToggle] = useState(false);
-  const [hobbiesToggle, setHobbiesToggle] = useState(false);
   const [sortsToggle, setSortsToggle] = useState(false);
   const [sortText, setSortText] = useState("Name (A-Z)");
 
@@ -145,36 +142,7 @@ function Members() {
         user.name.toLowerCase().includes(searchInput.toLowerCase())
       );
     }
-
-    switch (e.target.value) {
-      case "skill":
-        filtered = users.filter((user) => user.skills.includes(e.target.name));
-        break;
-      case "hobby":
-        filtered = users.filter((user) => user.hobbies.includes(e.target.name));
-        break;
-      case "company":
-        filtered = users.filter((user) =>
-          user.company_id.includes(e.target.name)
-        );
-        break;
-      default:
-        break;
-    }
-    setUsers(filtered);
-  };
-
-  const toggleCompanies = () => {
-    setCompaniesToggle((prevState) => !prevState);
-  };
-
-  const toggleSkills = () => {
-    setSkillsToggle((prevState) => !prevState);
-  };
-
-  const toggleHobbies = () => {
-    setHobbiesToggle((prevState) => !prevState);
-  };
+  }
 
   const toggleSorts= () => {
     setSortsToggle((prevState) => !prevState);
@@ -183,123 +151,7 @@ function Members() {
   return (
     <div>
       <NavBar />
-      <div className="flex">
-
-        <div className="mt-48 ml-32 flex-none w-1/4">
-          <div className="mt-3 w-52">
-            <button
-              className="w-52 h-9 bg-dark-gray rounded-md p-4 flex justify-between items-center focus:border-2 focus:border-white"
-              onClick={toggleCompanies}
-            >
-              <div className="text-sm text-white">Company</div>
-              <img src={Toggle} alt="Toggle button" />
-            </button>
-
-            <div
-              className={`transition-all ${
-                companiesToggle
-                  ? "visible opacity-100 h-auto"
-                  : "invisible opacity-0 h-0"
-              }`}
-            >
-              <div className="mt-2 w-52 bg-dark-gray rounded-md px-4 py-3">
-                {companies.map((company) => (
-                  <div className="h-9 flex justify-between items-center">
-                    <div className="flex">
-                      <img
-                        className="mr-3 w-6 h-6 rounded-full"
-                        src={company.logo}
-                        alt="Company logo"
-                      ></img>
-                      <div className="text-sm text-white font-bold">
-                        {" "}
-                        {company.name}{" "}
-                      </div>
-                    </div>
-                    <button
-                      className="w-4 h-4 rounded-md bg-white"
-                      name={company.id}
-                      value="company"
-                      onClick={filterUsers}
-                    ></button>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-3 w-52">
-            <button
-              className="w-52 h-9 bg-dark-gray rounded-md p-4 flex justify-between items-center focus:border-2 focus:border-white"
-              onClick={toggleSkills}
-            >
-              <div className="text-sm text-white">Skills</div>
-              <img src={Toggle} alt="Toggle button" />
-            </button>
-
-            <div
-              className={`transition-all ${
-                skillsToggle
-                  ? "visible opacity-100 h-auto"
-                  : "invisible opacity-0 h-0"
-              }`}
-            >
-              <div className="mt-2 w-52 bg-dark-gray rounded-md p-4">
-                {skills.map((skill, index) => (
-                  <div className=" h-9 flex justify-between items-center">
-                    <div className="text-sm text-white font-bold">
-                      {" "}
-                      {skill}{" "}
-                    </div>
-                    <button
-                      className="w-4 h-4 rounded-md bg-white"
-                      name={skill}
-                      value="skill"
-                      onClick={filterUsers}
-                    ></button>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-3 w-52">
-            <button
-              className="w-52 h-9 bg-dark-gray rounded-md p-4 flex justify-between items-center focus:border-2 focus:border-white"
-              onClick={toggleHobbies}
-            >
-              <div className="text-sm text-white">Hobbies</div>
-              <img src={Toggle} alt="Toggle button" />
-            </button>
-
-            <div
-              className={`transition-all ${
-                hobbiesToggle
-                  ? "visible opacity-100 h-auto"
-                  : "invisible opacity-0 h-0"
-              }`}
-            >
-              <div className="mt-2 w-52 bg-dark-gray rounded-md p-4">
-                {hobbies.map((hobby, index) => (
-                  <div className=" h-9 flex justify-between items-center">
-                    <div className="text-sm text-white font-bold">
-                      {" "}
-                      {hobby}{" "}
-                    </div>
-                    <button
-                      className="w-4 h-4 rounded-md bg-white"
-                      name={hobby}
-                      value="hobby"
-                      onClick={filterUsers}
-                    ></button>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex-grow w-3/4">
+        <div className="ml-44">
           <div className="flex">
             <div className="flex-none w-2/3">
               <input
@@ -312,7 +164,7 @@ function Members() {
             </div>
 
             <div className="flex-grow w-1/3">
-              <div className="ml-12">
+              <div className="ml-52">
                 <button
                   className="flex mt-16 items-center text-light-gray w-52 h-7 p-2 hover:bg-navbar-gray hover:rounded-lg focus:border-2 focus:border-white"
                   onClick={toggleSorts}
@@ -348,14 +200,14 @@ function Members() {
 
           <div className="mt-8">
             <div className="text-white text-xl font-bold">Members</div>
-            <div className="mt-10 grid grid-cols-3 gap-y-10">
+            <div className="mt-10 grid grid-cols-4 gap-y-10">
               {users.map((user) => (
                 <Link to={`/profile/${user.id}`} key={user.id}>
                   <div className="w-64 h-72 bg-dark-cyan text-white rounded-lg flex flex-col justify-center items-center hover:bg-blue-400">
                     <img
-                      className="w-32 h-32"
-                      src={Avatar}
-                      alt="Profile pic place holder"
+                      className="w-32 h-32 rounded-full"
+                      src= {user.profile_pic}
+                      alt="User profile pic"
                     />
                     <p className="mt-6 text-xl"> {user.name} </p>
                     <p className="mt-2 text-base">{user.role} </p>
@@ -365,11 +217,7 @@ function Members() {
               ))}
             </div>
           </div>
-
         </div>
-
-      </div>
-
     </div>
   );
 }
