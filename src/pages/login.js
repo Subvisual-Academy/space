@@ -1,5 +1,5 @@
 import Background from "../assets/space-background.png";
-import Logo from "../assets/login-logo.png";
+import Logo from "../assets/logo.svg";
 import { useNavigate } from "react-router-dom";
 import { POST } from "../utils/fetch";
 
@@ -20,7 +20,9 @@ function Login() {
         .then((response) => {
           localStorage.setItem("token", response["token"]);
           localStorage.setItem("current", response["user"]);
+          localStorage.setItem("image", response["profile_pic"]);
           navigate("/home");
+          navigate(0);
         })
         .catch((error) => {
           console.error("Error occurred during login:", error.message);
@@ -77,24 +79,19 @@ function Login() {
           </a>
         </form>
       </div>
-
-      <div
-        className="w-1/2"
-        style={{
-          backgroundImage: `url(${Background})`,
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "100% 100%",
-        }}
-      >
-        <img className="mt-96 ml-40" src={Logo} alt="Space Center Logo" />
-        {/*
-        <img
-          className="absolute top-[calc(50%-theme(space.96)/4)] left-[calc(50%-theme(space.72)/1.25)]"
-          src={Logo}
-          alt="Space Center Logo"
-        />
-  */}
+      <div className="flex items-start flex-auto bg-cod-gray font-medium">
+        <div className="hidden lg:block relative min-h-screen">
+          <img
+            className="lg:h-full  basis-2/5 object-cover"
+            src={Background}
+            alt="A background representing the Universe"
+          />
+          <img
+            className="absolute h-96 w-72 top-[calc(50%-theme(space.96)/2)] left-[calc(50%-theme(space.72)/2)]"
+            src={Logo}
+            alt="Space Center Logo"
+          />
+        </div>
       </div>
     </div>
   );

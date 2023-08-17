@@ -12,6 +12,7 @@ module.exports = {
         astronaut: "url('assets/sadAstronaut.png')",
         previous: "url('assets/previous_background.png')",
         stars: "url('assets/beautiful-shining-stars-night-sky.png')",
+        vacation: "url('assets/beautiful-shining-stars-night-sky.png')",
       },
       fontFamily: {
         sans: ["IBM Plex Sans"],
@@ -40,6 +41,9 @@ module.exports = {
         "light-gray": "#CCCCCC",
         cerulean: "#06B4C6",
         "off-white": "#F7F7F7",
+        "dark-gray": "#333333",
+        "blue-400": "#048795",
+        "lilac": "#36293D",
       },
     },
   },

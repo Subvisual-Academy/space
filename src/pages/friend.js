@@ -1,8 +1,6 @@
 import React from "react";
-import Background from "../assets/beautiful-shining-stars-night-sky.png";
 import AstronautPointing from "../assets/astronaut pointing 1.png";
 import AstronautChilling from "../assets/astronaut-chilling.png";
-import Avatar from "../assets/Avatar profile.png";
 
 import Skriblio from "../assets/skriblio.png";
 import CardGames from "../assets/card_games.png";
@@ -19,72 +17,73 @@ import { useState } from "react";
 
 const current_user_id = localStorage.getItem("current");
 
-const getFriend = async () => {
-  var response = await GET("weekly_friends/" + current_user_id);
-  return response;
-};
-
 function Friend() {
-  const [friendData, setFriendData] = useState({ email: "", id: "" });
+  const [friendData, setFriendData] = useState({});
   const [notPaired, setNotPaired] = useState(false);
 
-  useEffect(() => {
-    getFriend()
-      .then((response) => {
+  const getFriend = async () => {
+    var response = await GET("weekly_friends/" + current_user_id).then(
+      (response) => {
         if (response.error) {
-          setNotPaired(true); 
+          setNotPaired(true);
         } else {
           setFriendData(response);
         }
-      });
+      }
+    );
+    return response;
+  };
+
+  useEffect(() => {
+    getFriend();
   }, [notPaired]);
 
   return (
     <div className="font-medium">
-      <div
-        className="bg-cover bg-center h-screen"
-        style={{ backgroundImage: `url(${Background})` }}
-      >
+      <div className="bg-cover bg-center min-h-screen bg-vacation">
         <NavBar />
 
         <div className="flex">
           {notPaired ? (
             <div className="w-2/3 h-full">
               <div className="ml-32">
-                <div className="text-white mt-9 text-5xl font-bold">
-                  Vacation week!
-                </div>
+                <div className="text-white mt-9 text-5xl">Vacation week!</div>
 
-                <div className="w-7/12 mt-6 text-base text-white">
-                  Well, there ain't one week like the other, right?
-                  <br />
-                  <br /> This time you haven't got anyone, no worries. Maybe,
-                  it's just a sign from the Universe to have some me-time, get a
-                  nice drink and devote 15 min to yourself. Don't forget to
-                  answer the question of the week and get back next week!{" "}
+                <div className="mt-6 text-base text-white w-full font-normal">
+                  <p>Well, there ain't one week like the other, right?</p>
+                  <p className="mt-4 w-3/5">
+                    This time you haven't got anyone, no worries. Maybe, it's
+                    just a sign from the Universe to have some me-time, get a
+                    nice drink and devote 15 min to yourself. Don't forget to
+                    answer the question of the week and get back next week!
+                  </p>
                 </div>
-
-                <img
-                  className="mt-8 h-2/3 relative z-10"
-                  src={AstronautChilling}
-                  alt="AstronautChilling"
-                />
+                <div className="flex justify-center">
+                  <img
+                    className="mt-8 h-2/3 z-10"
+                    src={AstronautChilling}
+                    alt="AstronautChilling"
+                  />
+                </div>
               </div>
             </div>
           ) : (
             <div>
               <div>
-                <div className="text-white ml-32 mt-9 text-5xl font-bold">
+                <div className="text-white ml-32 mt-9 text-5xl">
                   Your friend this week is...
                 </div>
 
                 <div className="flex items-center mt-16 ml-96">
-                  <img className="w-24 h-24" src={Avatar} alt="AvatarProfile" />
+                  <img
+                    className="w-24 h-24 rounded-full"
+                    src={friendData.profile_pic}
+                    alt="AvatarProfile"
+                  />
 
-                  <div className="ml-4 text-xl text-white">
-                    {" "}
-                    {friendData.name}{" "}
-                  </div>
+                  <span className="ml-4 text-xl text-white">
+                    {friendData.name}
+                  </span>
                 </div>
 
                 <div className="flex">
@@ -96,18 +95,16 @@ function Friend() {
                     <div className="items-center">
                       <div className="flex text-base">
                         <div className="text-white"> Email: </div>
-                        <div className="ml-2 text-highlighted-button-blue">
-                          {" "}
-                          {friendData.email}{" "}
-                        </div>
+                        <span className="ml-2 text-highlighted-button-blue">
+                          {friendData.email}
+                        </span>
                       </div>
 
                       <div className="flex text-base text-white">
                         <div className="text-white"> Discord: </div>
-                        <div className="ml-2 text-highlighted-button-blue">
-                          {" "}
-                          {friendData.discord}{" "}
-                        </div>
+                        <span className="ml-2 text-highlighted-button-blue">
+                          {friendData.discord}
+                        </span>
                       </div>
 
                       <div className="mt-4 w-1/1 text-base text-white">
@@ -124,7 +121,7 @@ function Friend() {
             </div>
           )}
 
-          <div className="w-1/3 h-1/1 bg-bkg-purple flex-shrink-0">
+          <div className="w-1/3 min-h-screen bg-bkg-purple flex-shrink-0">
             {notPaired ? (
               <div className="text-white mt-10 text-center text-2xl font-bold">
                 Suggested Activities for next week

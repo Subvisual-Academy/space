@@ -13,8 +13,10 @@ import Home from "./pages/home";
 import Login from "./pages/login";
 import Question from "./pages/question";
 import Friend from "./pages/friend";
+import Profile from "./pages/profile";
 import jwt_decode from "jwt-decode";
 import PreviousQuestions from "./pages/previous_questions";
+import Members from "./pages/members";
 
 function MainRouter() {
   const token = localStorage.getItem("token");
@@ -32,6 +34,9 @@ function MainRouter() {
             <Route path="/question" element={<Question />} />
             <Route path="/friend" element={<Friend />} />
             <Route path="/previous" element={<PreviousQuestions />} />
+            <Route path="/members" element={<Members />} />
+            <Route path="/profile" element={<Profile />} />
+
           </>
         ) : (
           <>
