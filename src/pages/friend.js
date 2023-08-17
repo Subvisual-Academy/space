@@ -1,7 +1,6 @@
 import React from "react";
 import AstronautPointing from "../assets/astronaut pointing 1.png";
 import AstronautChilling from "../assets/astronaut-chilling.png";
-import Avatar from "../assets/avatar-profile.png";
 
 import Skriblio from "../assets/skriblio.png";
 import CardGames from "../assets/card_games.png";
@@ -18,23 +17,25 @@ import { useState } from "react";
 
 const current_user_id = localStorage.getItem("current");
 
-const getFriend = async () => {
-  var response = await GET("weekly_friends/" + current_user_id);
-  return response;
-};
-
 function Friend() {
   const [friendData, setFriendData] = useState({});
   const [notPaired, setNotPaired] = useState(false);
 
-  useEffect(() => {
-    getFriend().then((response) => {
-      if (response.error) {
-        setNotPaired(true);
-      } else {
-        setFriendData(response);
+  const getFriend = async () => {
+    var response = await GET("weekly_friends/" + current_user_id).then(
+      (response) => {
+        if (response.error) {
+          setNotPaired(true);
+        } else {
+          setFriendData(response);
+        }
       }
-    });
+    );
+    return response;
+  };
+
+  useEffect(() => {
+    getFriend();
   }, [notPaired]);
 
   return (

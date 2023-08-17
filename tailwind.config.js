@@ -38,6 +38,8 @@ module.exports = {
         "highlighted-button-blue": "#39E7F9",
         "blue-login": "#06B4C6",
         "light-gray": "#CCCCCC",
+        "dark-gray": "#333333",
+        "blue-400": "#048795",
         "cerulean": "#06B4C6",
         "lilac": "#36293D",
       },
