@@ -81,7 +81,7 @@ function Profile() {
       <div className="flex">
         <div className="flex-none w-2/5">
           <div className="flex-col ml-32 mt-16">
-            <img className="h-60 w-60" src={Avatar} alt="AvatarProfile" />
+            <img className="h-60 w-60 rounded-lg" src={localStorage.getItem("image")} alt="User profile avatar" />
 
             <div className="mt-8 mb-8 text-white text-3xl">{userData.name}</div>
 
