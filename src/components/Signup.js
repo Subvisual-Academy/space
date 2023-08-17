@@ -75,9 +75,11 @@ const Signup = () => {
     formData.append("name", values.name);
     formData.append("email", values.email);
     formData.append("password", values.password);
+    formData.append("role", values.role);
     formData.append("discord", values.discord);
     formData.append("location", values.location);
     formData.append("company_id", values.company_id);
+    formData.append("bio", values.bio);
 
     try {
       const response = await fetch(process.env.REACT_APP_API_URL + `users`, {
