@@ -88,7 +88,9 @@ const Signup = () => {
         const errorMessage = await response.text();
         throw new Error(errorMessage);
       }
-      const id = await response.json().then((response) => response["id"]);
+      const info = await response.json().then((response) => {
+        return { id: response["id"], image: response["profile_pic"] };
+      });
 
       try {
         const tokenRes = await POST(`auth/login`, {
@@ -98,11 +100,11 @@ const Signup = () => {
 
         localStorage.setItem("token", tokenRes);
 
-        await POST(`users/` + id + `/hobbies`, {
+        await POST(`users/` + info["id"] + `/hobbies`, {
           names: values.hobbies,
         });
 
-        await POST(`users/` + id + `/skills`, {
+        await POST(`users/` + info["id"] + `/skills`, {
           names: values.skills,
         });
         navigate("/home");
@@ -111,7 +113,8 @@ const Signup = () => {
         alert(error.message);
       }
 
-      localStorage.setItem("current", id);
+      localStorage.setItem("current", info["id"]);
+      localStorage.setItem("image", info["image"]);
     } catch (error) {
       alert(error.message);
     }
