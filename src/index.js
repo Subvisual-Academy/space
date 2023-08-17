@@ -36,7 +36,6 @@ function MainRouter() {
             <Route path="/previous" element={<PreviousQuestions />} />
             <Route path="/members" element={<Members />} />
             <Route path="/profile" element={<Profile />} />
-
           </>
         ) : (
           <>
