@@ -45,11 +45,11 @@ function Question() {
     ).then((values) => {
       const data = values.map((value) => {
         return {
-          email: value.user.email,
           body: value.body,
           time: value.time,
           user: value.user.id,
           image: value.user.profile_pic,
+          name: value.user.name,
         };
       });
       setAnswers(data);
@@ -194,7 +194,7 @@ function Question() {
                       alt="User profile pic"
                     />
                     <div className="ml-4">
-                      <div className="text-xl">{item.email}</div>
+                      <div className="text-xl">{item.name}</div>
                       <div className="text-xs font-normal">
                         {item.time
                           .toLocaleString(undefined, options)
