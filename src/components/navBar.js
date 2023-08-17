@@ -1,7 +1,6 @@
 import Logo from "../assets/logo.png";
 import { NavLink } from "react-router-dom";
 import Settings from "../assets/Dropdown.png";
-import Profile from "../assets/Avatar.png";
 
 function NavBar() {
   return (
@@ -60,7 +59,11 @@ function NavBar() {
         <div className="flex items-center ml-auto mr-8">
           <NavLink to="/profile">
             <button className="mr-4 w-8 h-8 rounded-full hover:ring hover: ring-opacity hover:ring-highlighted-button-blue">
-              <img src={Profile} alt="Profile" />
+              <img
+                className="rounded-full"
+                src={localStorage.getItem("image")}
+                alt="Profile"
+              />
             </button>
           </NavLink>
 

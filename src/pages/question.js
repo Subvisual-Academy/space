@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import NavBar from "../components/navBar";
 import Check from "../assets/Check.svg";
-import Enter from "../assets/Enter_icon.svg";
 import Ok from "../assets/okkhand.png";
 import { GET, POST } from "../utils/fetch";
 import Astronaut from "../assets/sadAstronaut.png";
@@ -144,12 +143,6 @@ function Question() {
                       alt="Space Center Logo"
                     />
                   </button>
-                  <div className="flex">
-                    <div className="mt-2 text-base text-white w-20 whitespace-nowrap">
-                      Press Enter
-                    </div>
-                    <img className="ml-2" src={Enter} alt="Enter Arrow" />
-                  </div>
                 </div>
                 <div>
                   <Link to="/previous">
@@ -166,17 +159,26 @@ function Question() {
           </div>
         </div>
         <div className="bg-blackcurrant h-screen flex flex-col basis-1/3 items-center">
-          <h1 className="text-white text-5xl mt-8">Answers of this week</h1>
+          <h1 className="text-white text-5xl mt-8 ml-1">
+            Answers of this week
+          </h1>
           <form className="mt-8 gap-8 text-white flex flex-col overflow-scroll no-scrollbar">
             {answers.length === 0 ? (
-              <div className="h-full w-full items-center">
-                <h1 className="text-center">No answers yet</h1>
-                <img
-                  className="max-h-screen basis-2/5 object-cover mt-20 ml-20 relative"
-                  src={Astronaut}
-                  alt="Sad Astronaut sitting on a rock"
-                />
-                <h1 className="text-center mt-8">Be the first to answer!</h1>
+              <div>
+                <div className="relative">
+                  <img
+                    className="max-h-screen basis-2/5 object-cover mt-20 ml-20"
+                    src={Astronaut}
+                    alt="Sad Astronaut sitting on a rock"
+                  />
+                  <h1 className="absolute top-1/4 left-[60%] transform -translate-x-1/2 -translate-y-1/2 text-center text-white">
+                    No answers yet
+                  </h1>
+                </div>
+
+                <h1 className="text-center ml-14 text-white">
+                  Be the first to answer!
+                </h1>
               </div>
             ) : (
               answers.map((item) => (
