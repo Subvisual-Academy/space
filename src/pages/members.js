@@ -1,94 +1,9 @@
 import NavBar from "../components/navBar";
-import Avatar from "../assets/Avatar profile.png";
-import Toggle from "../assets/chevron_down.svg";
-import Subvisual from "../assets/sub_logo.png";
-import Onda from "../assets/onda_logo.png";
-import PinkRoom from "../assets/pink_room_logo.png";
-import InvisibleLab from "../assets/invisible_lab_icon.png";
-import Universe from "../assets/universe.jpg";
 import Dropdown from "../assets/chevron_down.svg";
 
 import { useEffect, useState } from "react";
 import { GET } from "../utils/fetch";
 import { Link } from "react-router-dom";
-
-const skills = [
-  "Adobe Creative Cloud",
-  "Analytics tools",
-  "Backend dev",
-  "Blender",
-  "Blockchain",
-  "Branding",
-  "Communication",
-  "Creative Coding",
-  "Database",
-  "Experience Design",
-  "Figma",
-  "Frontend dev",
-  "Git / Github",
-  "Graphic Design",
-  "Human Resources",
-  "Interface Design",
-  "Marketing",
-  "Operations",
-  "Product exploration",
-  "Sales",
-  "Strategic planning",
-  "User Research",
-  "Usability Testing",
-];
-const hobbies = [
-  "Anime",
-  "Art",
-  "Board Games",
-  "Children",
-  "Collecting",
-  "Cooking",
-  "Formula 1",
-  "Football",
-  "Gardening",
-  "Handcraft",
-  "Hiking",
-  "Languages",
-  "Making music",
-  "Movies",
-  "Music genres",
-  "Outdoor Activities",
-  "Tennis",
-  "Peers",
-  "Photography",
-  "Psychology",
-  "Reading",
-  "Sports",
-  "Tech / computers",
-  "Travelling",
-  "TV Series",
-  "Video Gaming",
-  "Wellness",
-];
-
-const companies = [
-  {
-    name: "Subvisual",
-    logo: Subvisual,
-  },
-  {
-    name: "Onda",
-    logo: Onda,
-  },
-  {
-    name: "Pink Room",
-    logo: PinkRoom,
-  },
-  {
-    name: "Invisible Lab",
-    logo: InvisibleLab,
-  },
-  {
-    name: "Universe",
-    logo: Universe,
-  },
-];
 
 const getUsers = async () => {
   return await GET("users");
