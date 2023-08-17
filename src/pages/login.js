@@ -50,7 +50,7 @@ function Login() {
             id="email"
             name="email"
             type="text"
-            className="bg-white text-base rounded-md w-3/4 h-10 hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login p-2"
+            className="block w-3/4 pl-3 rounded-md focus:border-cerulean border-2 outline-none border-transparent py-2 text-gray-900 shadow-sm sm:text-sm sm:leading-6"
           />
 
           <div className="text-white text-base mt-6 font-normal">Password</div>
@@ -58,7 +58,7 @@ function Login() {
             id="password"
             name="password"
             type="password"
-            className="bg-white text-base rounded-md w-3/4 h-10 hover:border-4 hover:border-blue-login active:border-4 active:border-blue-login p-2"
+            className="block w-3/4 pl-3 rounded-md focus:border-cerulean border-2 outline-none border-transparent py-2 text-gray-900 shadow-sm sm:text-sm sm:leading-6"
           />
 
           <button
