@@ -49,6 +49,7 @@ function Question() {
           body: value.body,
           time: value.time,
           user: value.user.id,
+          image: value.user.profile_pic,
         };
       });
       setAnswers(data);
@@ -186,13 +187,20 @@ function Question() {
                   className="bg-dark-cyan p-4 flex flex-col rounded-3xl h-auto w-72"
                   key={item.body}
                 >
-                  <div className="text-xl text-center">{item.email}</div>
-                  <div className="text-xs text-center font-normal">
-                    {item.time
-                      .toLocaleString(undefined, options)
-                      .toUpperCase() +
-                      " " +
-                      item.time.getUTCDate()}
+                  <div>
+                    <img
+                      className=" w-11 h-11 rounded-full absolute"
+                      src={item.image}
+                      alt="User profile pic"
+                    />
+                    <div className="text-xl ml-14">{item.email}</div>
+                    <div className="text-xs ml-14 font-normal">
+                      {item.time
+                        .toLocaleString(undefined, options)
+                        .toUpperCase() +
+                        " " +
+                        item.time.getUTCDate()}
+                    </div>
                   </div>
                   <div className="text-base pt-4 font-normal">{item.body}</div>
                 </div>
