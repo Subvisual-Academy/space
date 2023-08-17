@@ -70,8 +70,6 @@ const Signup = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    console.log(values.company_id);
-
     const formData = new FormData();
     formData.append("profile_pic", values.profile_pic);
     formData.append("name", values.name);
