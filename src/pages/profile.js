@@ -1,4 +1,3 @@
-import Avatar from "../assets/avatar-profile.png";
 import NavBar from "../components/navBar";
 import Pencil from "../assets/pencil-icon.png";
 import Suitcase from "../assets/role_icon.png";
