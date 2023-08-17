@@ -79,7 +79,7 @@ function PreviousQuestions() {
                           src={answer.user.profile_pic}
                           alt="User profile pic"
                         />
-                        <div className="text-xl ml-14">{answer.user.email}</div>
+                        <div className="text-xl ml-14">{answer.user.name}</div>
                         <div className="text-xs ml-14 font-normal">
                           {new Date(answer.created_at)
                             .toLocaleString(undefined, options)
