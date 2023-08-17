@@ -5,7 +5,7 @@ import Settings from "../assets/Dropdown.png";
 function NavBar() {
   return (
     <div>
-      <div className="bg-navbar-gray flex items-center max-h-16">
+      <div className="bg-navbar-gray flex items-center max-h-16 font-medium">
         <div className="flex items-center p-4 ">
           <NavLink to="/home">
             <img className="ml-4 mr-12" src={Logo} alt="Space Center Logo" />
@@ -15,7 +15,7 @@ function NavBar() {
             to="/home"
             className={({ isActive, isPending }) =>
               isActive
-                ? "mr-8 text-white font-bold border-b-4 border-highlighted-button-blue"
+                ? "mr-8 text-white border-b-4 border-highlighted-button-blue"
                 : "mr-8 text-navbar-components-gray hover:text-white hover:border-b-4 hover:border-highlighted-button-blue"
             }
           >
@@ -26,7 +26,7 @@ function NavBar() {
             to="/question"
             className={({ isActive, isPending }) =>
               isActive
-                ? "mr-8 text-white font-bold border-b-4 border-highlighted-button-blue"
+                ? "mr-8 text-white border-b-4 border-highlighted-button-blue"
                 : "mr-8 text-navbar-components-gray hover:text-white hover:border-b-4 hover:border-highlighted-button-blue"
             }
           >
@@ -37,7 +37,7 @@ function NavBar() {
             to="/friend"
             className={({ isActive, isPending }) =>
               isActive
-                ? "mr-8 text-white font-bold border-b-4 border-highlighted-button-blue"
+                ? "mr-8 text-white border-b-4 border-highlighted-button-blue"
                 : "mr-8 text-navbar-components-gray hover:text-white hover:border-b-4 hover:border-highlighted-button-blue"
             }
           >
@@ -48,7 +48,7 @@ function NavBar() {
             to="/members"
             className={({ isActive, isPending }) =>
               isActive
-                ? "text-white font-bold border-b-4 border-highlighted-button-blue"
+                ? "text-white border-b-4 border-highlighted-button-blue"
                 : "text-navbar-components-gray hover:text-white hover:border-b-4 hover:border-highlighted-button-blue"
             }
           >
@@ -67,11 +67,9 @@ function NavBar() {
             </button>
           </NavLink>
 
-          <NavLink to="/settings">
-            <button className="w-6 h-6 rounded-full hover:ring hover: ring-opacity hover:ring-highlighted-button-blue">
-              <img src={Settings} alt="Settings Button" />
-            </button>
-          </NavLink>
+          <button className="w-6 h-6 rounded-full hover:ring hover: ring-opacity hover:ring-highlighted-button-blue">
+            <img src={Settings} alt="Settings Button" />
+          </button>
         </div>
       </div>
     </div>
