@@ -73,13 +73,20 @@ function PreviousQuestions() {
                       className="bg-dark-cyan p-4 flex flex-col rounded-3xl h-auto w-full text-white mb-3"
                       key={answer.body}
                     >
-                      <div className="text-xl ml-14">{answer.user.email}</div>
-                      <div className="text-xs ml-14 font-normal">
-                        {new Date(answer.created_at)
-                          .toLocaleString(undefined, options)
-                          .toUpperCase() +
-                          " " +
-                          new Date(answer.created_at).getUTCDate()}
+                      <div>
+                        <img
+                          className=" w-11 h-11 rounded-full absolute"
+                          src={answer.user.profile_pic}
+                          alt="User profile pic"
+                        />
+                        <div className="text-xl ml-14">{answer.user.email}</div>
+                        <div className="text-xs ml-14 font-normal">
+                          {new Date(answer.created_at)
+                            .toLocaleString(undefined, options)
+                            .toUpperCase() +
+                            " " +
+                            new Date(answer.created_at).getUTCDate()}
+                        </div>
                       </div>
 
                       <div className="text-base pt-4 font-normal">
