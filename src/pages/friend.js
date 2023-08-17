@@ -22,13 +22,15 @@ function Friend() {
   const [notPaired, setNotPaired] = useState(false);
 
   const getFriend = async () => {
-    var response = await GET("weekly_friends/" + current_user_id).then((response) => {
-      if (response.error) {
-        setNotPaired(true);
-      } else {
-        setFriendData(response);
+    var response = await GET("weekly_friends/" + current_user_id).then(
+      (response) => {
+        if (response.error) {
+          setNotPaired(true);
+        } else {
+          setFriendData(response);
+        }
       }
-    });;
+    );
     return response;
   };
 

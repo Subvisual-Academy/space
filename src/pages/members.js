@@ -5,21 +5,21 @@ import { useEffect, useState } from "react";
 import { GET } from "../utils/fetch";
 import { Link } from "react-router-dom";
 
-const getUsers = async () => {
-  return await GET("users");
-};
-
 function Members() {
   const [users, setUsers] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [sortsToggle, setSortsToggle] = useState(false);
   const [sortText, setSortText] = useState("Name (A-Z)");
 
-  useEffect(() => {
-    getUsers().then((response) => {
+  const getUsers = async () => {
+    return await GET("users").then((response) => {
       const sortedUsers = response.sort((a, b) => a.name.localeCompare(b.name));
       setUsers(sortedUsers);
     });
+  };
+
+  useEffect(() => {
+    getUsers();
   }, []);
 
   const handleSearch = (e) => {
