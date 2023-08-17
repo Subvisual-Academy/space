@@ -20,6 +20,7 @@ function Login() {
         .then((response) => {
           localStorage.setItem("token", response["token"]);
           localStorage.setItem("current", response["user"]);
+          localStorage.setItem("image", response["profile_pic"]);
           navigate("/home");
           navigate(0);
         })

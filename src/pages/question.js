@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import NavBar from "../components/navBar";
 import Check from "../assets/Check.svg";
-import Enter from "../assets/Enter_icon.svg";
 import Ok from "../assets/okkhand.png";
 import { GET, POST } from "../utils/fetch";
 import Astronaut from "../assets/sadAstronaut.png";

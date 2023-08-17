@@ -16,12 +16,14 @@ function App() {
 
     if (pass === confirmPassword) {
       try {
-        const id = await POST(`users`, {
+        const info = await POST(`users`, {
           email: mail,
           name: name,
           password: pass,
           company_id: 1, // temporarily so people can still test the app while we make the registering process
-        }).then((response) => response["id"]);
+        }).then((response) => {
+          return { id: response["id"], image: response["profile_pic"] };
+        });
 
         try {
           const tokenRes = await POST(`auth/login`, {
@@ -36,7 +38,8 @@ function App() {
           alert(error.message);
         }
 
-        localStorage.setItem("current", id);
+        localStorage.setItem("current", info["id"]);
+        localStorage.setItem("image", info["image"]);
       } catch (error) {
         alert(error.message);
       }
