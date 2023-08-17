@@ -187,19 +187,21 @@ function Question() {
                   className="bg-dark-cyan p-4 flex flex-col rounded-3xl h-auto w-72"
                   key={item.body}
                 >
-                  <div>
+                  <div className="flex">
                     <img
-                      className=" w-11 h-11 rounded-full absolute"
+                      className="w-11 h-11 rounded-full relative"
                       src={item.image}
                       alt="User profile pic"
                     />
-                    <div className="text-xl ml-14">{item.name}</div>
-                    <div className="text-xs ml-14 font-normal">
-                      {item.time
-                        .toLocaleString(undefined, options)
-                        .toUpperCase() +
-                        " " +
-                        item.time.getUTCDate()}
+                    <div className="ml-4">
+                      <div className="text-xl">{item.name}</div>
+                      <div className="text-xs font-normal">
+                        {item.time
+                          .toLocaleString(undefined, options)
+                          .toUpperCase() +
+                          " " +
+                          item.time.getUTCDate()}
+                      </div>
                     </div>
                   </div>
                   <div className="text-base pt-4 font-normal">{item.body}</div>
